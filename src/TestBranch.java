@@ -1,6 +1,6 @@
 
 public class TestBranch {
 	public TestBranch() {
-System.out.println("Test");
-}
+		System.out.println("Test");
+	}
 }
