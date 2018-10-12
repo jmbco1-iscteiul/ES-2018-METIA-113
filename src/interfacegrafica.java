@@ -51,7 +51,7 @@
 			panel.add(button, BorderLayout.EAST);
 			frame.add(panel, BorderLayout.NORTH);
 
-			JButton bface = new JButton("FACEBOOK");
+			JButton bface = new JButton("Facebook");
 			panel2.add(bface);
 			panel1.add(panel2);
 			JButton bmail = new JButton("EMAIL");
