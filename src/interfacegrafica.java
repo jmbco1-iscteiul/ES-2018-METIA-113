@@ -24,8 +24,6 @@
 		public interfacegrafica() {
 			frame = new JFrame("MAIN MENU");
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//			frame.setLayout(new FlowLayout());
-//			frame.setLayout(new BorderLayout());
 			addFrameContent();
 			frame.pack();
 		}
