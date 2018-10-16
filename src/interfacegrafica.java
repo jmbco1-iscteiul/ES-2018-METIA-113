@@ -26,7 +26,7 @@
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //			frame.setLayout(new FlowLayout());
 //			frame.setLayout(new BorderLayout());
-			addFrameContent();//jjj
+			addFrameContent();
 			frame.pack();
 		}
 		
