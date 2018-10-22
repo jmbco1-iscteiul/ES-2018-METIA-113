@@ -3,7 +3,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello World!!!!");
 		
-		Interfacegrafica i = new Interfacegrafica();
+		InterfaceGrafica i = new InterfaceGrafica();
 		i.open();
 	}
 }
