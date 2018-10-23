@@ -1,5 +1,6 @@
 package facebook;
 
+
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.FacebookClient.AccessToken;
@@ -10,6 +11,7 @@ public class Facebook {
 	private final static String accessToken="";//preencher pelo utilizador
 	private final static String ID="";
 	private final static String pass="";
+//	SignIN clientFacebook;
 	
 	private FacebookClient fbClient;
 	
@@ -29,8 +31,10 @@ public class Facebook {
 		System.out.println("Expires: " + extendedAccessToken.getExpires());
 	}
 	
-	
-	
+//	public SignIN getClient() {
+//		return clientFacebook;
+//	}
+//	
 	
 	public static void main(String[] args) {
 		new Facebook();
