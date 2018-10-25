@@ -52,4 +52,6 @@
 <OtherNewTag>More new data</OtherNewTag>
 <Service Account="mail" Password="pass" Token="token"/>
 <OtherNewTag>More new data</OtherNewTag>
+<Service Account="mail" Password="pass" Token="token"/>
+<OtherNewTag>More new data</OtherNewTag>
 </XML>

@@ -6,5 +6,7 @@ public class Main {
 		InterfaceGrafica i = new InterfaceGrafica();
 		i.open();
 		new XmlProject();
+		System.out.println("sss");
+
 	}
 }

@@ -15,7 +15,6 @@ public class Leitura {
 	public Leitura (Document doc) throws Exception {
 		
         System.out.println("\n----- Search the XML document with xpath queries -----");  
-        
         // Query 1 
         System.out.println("Query 1: ");
         XPathFactory xpathFactory = XPathFactory.newInstance();
