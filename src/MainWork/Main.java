@@ -3,9 +3,9 @@ package MainWork;
 public class Main {
 public static void main(String[] args) {
 		
-		InterfaceGrafica i = new InterfaceGrafica();
+		Interfacegrafica i = new Interfacegrafica();
 		i.open();
-		new XmlProject();
+//		new XmlProject();
 
 	}
 }

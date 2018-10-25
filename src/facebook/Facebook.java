@@ -16,13 +16,13 @@ public class Facebook {
 	private final static String ID="273663319921533";
 	private final static String pass="dcc1e2de5a8a44804e89913f31dcd496";
 	public SignIN clientFacebook;
+	public String procurar;
 	
-	private FacebookClient fbClient;
+	public FacebookClient fbClient;
 	
-	public Facebook(SignIN a) {
-		this.clientFacebook = a;
-		autenticacao();
-		search("a todos");
+	public Facebook(String procurar) {
+		this.procurar=procurar;
+//		autenticacao();
 	}
 
 	
@@ -37,7 +37,7 @@ public class Facebook {
 		//System.out.println("Expires: " + extendedAccessToken.getExpires());
 	}
 	
-	public void search(String palavra) {
+	public void search() {
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");
 		int counter5 = 0;
@@ -45,7 +45,7 @@ public class Facebook {
 
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
-				if (aPost.getMessage() != null && aPost.getMessage().contains(palavra)) {
+				if (aPost.getMessage() != null && aPost.getMessage().contains(procurar)) {
 					System.out.println("---- Post "+ counter5 + " ----");
 					System.out.println("Id: "+"fb.com/"+aPost.getId());
 					System.out.println("Message: "+aPost.getMessage());

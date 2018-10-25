@@ -16,6 +16,8 @@ package MainWork;
 	import javax.swing.JTextField;
 	import javax.swing.WindowConstants;
 
+import facebook.Facebook;
+
 
 		public class Interfacegrafica{
 			
@@ -37,6 +39,8 @@ package MainWork;
 				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				addFrameContent();
 				frame.pack();
+				LoginFace();
+				   
 			}
 			
 			public void open() {
@@ -134,12 +138,22 @@ package MainWork;
 				
 				frame.add(panelp,BorderLayout.NORTH);
 				frame.add(panelp1,BorderLayout.SOUTH);
-				
-			
-				   
+	
 			}
 
-			
+			public void  LoginFace() {
+				bface.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					String procurar=label.getText();
+					System.out.println(procurar);
+					Facebook f= new Facebook (procurar);
+					f.autenticacao();
+					f.search();
+				}
+			});	
+
+			}
 
 		}
 
