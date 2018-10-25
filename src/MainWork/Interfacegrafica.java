@@ -8,9 +8,12 @@ package MainWork;
 	import java.awt.GridLayout;
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
-	import javax.swing.JButton;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 	import javax.swing.JFrame;
-	import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 	import javax.swing.JScrollPane;
 	import javax.swing.JTextArea;
 	import javax.swing.JTextField;
@@ -32,6 +35,8 @@ import facebook.Facebook;
 			JButton borigem = new JButton("Origem");
 			JButton bkeyword = new JButton("Palavra-Chave");
 			JButton bperiodoinfo = new JButton("Período da Informação");
+			DefaultListModel<String> model = new DefaultListModel<>();
+			JList<String> list = new JList<>(model);
 			
 			public Interfacegrafica() {
 				
@@ -124,10 +129,8 @@ import facebook.Facebook;
 //				panelp2.add(panel6);
 				
 
-				text1.setEditable(false);
-				text1.setWrapStyleWord(true);
-				text1.setLineWrap(true);
-				JScrollPane scrollpane1 = new JScrollPane(text1);
+				
+				JScrollPane scrollpane1 = new JScrollPane(list);
 				panelp1.add(scrollpane1);
 				
 				Dimension d2= new Dimension(170,60);
@@ -147,9 +150,8 @@ import facebook.Facebook;
 						
 					String procurar=label.getText();
 					System.out.println(procurar);
-					Facebook f= new Facebook (procurar);
-					f.autenticacao();
-					f.search();
+					Facebook f= new Facebook (model);
+					f.search(procurar);
 				}
 			});	
 

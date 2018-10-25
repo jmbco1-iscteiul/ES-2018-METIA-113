@@ -41,13 +41,13 @@ public class XmlProject {
 
 			//Leitura
 			Leitura l = new Leitura(doc);
-			Facebook f = new Facebook(procurar);
-			SignIN  client1 = f.getClientFacebook();
+//			Facebook f = new Facebook(procurar);
+//			SignIN  client1 = f.getClientFacebook();
 
 
 
 			//Adiciona
-			AddToFile add = new AddToFile(doc, client1);
+//			AddToFile add = new AddToFile(doc, client1);
 
 			//			Remover
 
