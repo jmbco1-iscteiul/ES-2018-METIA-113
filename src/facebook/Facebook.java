@@ -15,32 +15,26 @@ import MainWork.Interfacegrafica;
 import MainWork.SignIN;
 
 public class Facebook {
-	Interfacegrafica i;
-	private final static String accessToken="EAAD45TT4030BAMppoeRyc1RtdOfUzobKEP18LZCzAmZB9vzxZA3WafngiZBvZCE00TJm6cFyUwEKcOx4hdKJYuJQkDX5DPk5kdjo8321wWGRl6ZCYmkiXVMdAmxkuW205CGKpBDB4Ek9w71RJiXGtIX29iYPVZCQ8MZD";//preencher pelo utilizador
-	private final static String ID="273663319921533";
-	private final static String pass="dcc1e2de5a8a44804e89913f31dcd496";
+	private String token;
 	public SignIN clientFacebook;
-	public DefaultListModel<String> t;
 	public FacebookClient fbClient;
 	
-	public Facebook( DefaultListModel<String> model) {
-		this.t=model;
+	public Facebook(String token) {
+		this.token=token;
 		autenticacao();
 	}
 
 	
 	public void autenticacao() {
-		fbClient = new DefaultFacebookClient(accessToken);
+		fbClient = new DefaultFacebookClient(token);
 		User me = fbClient.fetchObject("me", User.class);
 		System.out.println("Facebook:");
 		System.out.println("Id: " + me.getId());
 		System.out.println("Name: " + me.getName());
 		System.out.println(me.getName());
-		//AccessToken extendedAccessToken = fbClient.obtainExtendedAccessToken(clientFacebook.getMail(),clientFacebook.getPass());
-		//System.out.println("Expires: " + extendedAccessToken.getExpires());
 	}
 	
-	public void search(String p) {
+	public void search(String p, DefaultListModel<String> t) {
 	
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");

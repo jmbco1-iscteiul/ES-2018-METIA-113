@@ -5,8 +5,6 @@ public class SignIN {
 	private String pass;
 	private String token;
 	
-
-	
 	public SignIN (String token, String mail, String pass) {
 		this.token = token;
 		this.mail = mail;

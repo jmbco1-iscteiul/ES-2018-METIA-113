@@ -31,6 +31,7 @@ import facebook.Facebook;
 public class Interfacegrafica{
 
 	private JFrame frame;
+	private BomDiaAcademia bda;
 
 	JTextField label = new JTextField();
 	JTextArea text1 = new JTextArea();
@@ -45,14 +46,15 @@ public class Interfacegrafica{
 	JList<String> list = new JList<>(model);
 
 	
-	public Interfacegrafica() {
+	public Interfacegrafica(BomDiaAcademia bda) {
+		
+		this.bda = bda;
 
 		frame = new JFrame("MAIN MENU");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
-		LoginFace();
-
+		open();
 	}
 /**
  * 
@@ -133,6 +135,13 @@ public class Interfacegrafica{
 
 		Dimension d5= new Dimension(160,60);
 		bface.setPreferredSize(d5);
+		bface.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String procurar=label.getText();
+				System.out.println(procurar);
+				bda.getFacebook().search(procurar,model);
+			}
+		});	
 		panel2.add(bface);
 		panel1.add(panel2);
 
@@ -148,8 +157,6 @@ public class Interfacegrafica{
 		panelp1.add(panel1);
 		//				panelp2.add(panel6);
 
-
-
 		JScrollPane scrollpane1 = new JScrollPane(list);
 		panelp1.add(scrollpane1);
 
@@ -163,24 +170,12 @@ public class Interfacegrafica{
 		frame.add(panelp1,BorderLayout.SOUTH);
 
 	}
-
-	/**
-	 * Função onde que faz a pesquisa de uma palava inserida, na barra de pesquisa, clicando botão Facebook.
-	 * Aqui faz-se a pesquisa de de todos os estados onde se encontre a palavra pretendida 
-	 * @author Brogueira
-	 */
-	public void  LoginFace() {
-		bface.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				String procurar=label.getText();
-				System.out.println(procurar);
-				Facebook f= new Facebook (model);
-				f.search(procurar);
-			}
-		});	
-
-	}
+//
+//	/**
+//	 * Função onde que faz a pesquisa de uma palava inserida, na barra de pesquisa, clicando botão Facebook.
+//	 * Aqui faz-se a pesquisa de de todos os estados onde se encontre a palavra pretendida 
+//	 * @author Brogueira
+//	 */
 
 }
 
