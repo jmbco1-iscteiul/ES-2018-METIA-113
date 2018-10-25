@@ -4,6 +4,12 @@ import javax.swing.DefaultListModel;
 
 import facebook.Facebook;
 
+/**
+ * Motor principal da aplicação onde se encontram todos os métodos principais.
+ * 
+ * @author Brogueira
+ *
+ */
 public class BomDiaAcademia {
 	private static String token ="EAAD45TT4030BAMppoeRyc1RtdOfUzobKEP18LZCzAmZB9vzxZA3WafngiZBvZCE00TJm6cFyUwEKcOx4hdKJYuJQkDX5DPk5kdjo8321wWGRl6ZCYmkiXVMdAmxkuW205CGKpBDB4Ek9w71RJiXGtIX29iYPVZCQ8MZD";//preencher pelo utilizador
 	private Facebook facebook;

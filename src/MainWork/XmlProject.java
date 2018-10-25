@@ -27,6 +27,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
+/**
+ * Classe do ficheiro XML onde se acede ao ficheiro, se faz a leitura deste e se guarda o que se pretende nele também.
+ * @author Brogueira
+ *
+ */
 public class XmlProject {
 
 
@@ -40,16 +45,6 @@ public class XmlProject {
 
 			//Leitura
 			Leitura l = new Leitura(doc);
-
-			//Adiciona
-//			AddToFile add = new AddToFile(doc, client1);
-
-			//			Remover
-
-			//			Element element = (Element) doc.getElementsByTagName("mail").item(0);
-			//		    Node parent = element.getParentNode();
-			//		    parent.removeChild(element)
-			//		    parent.normalize();
 
 			// Save XML document
 			Save s = new Save(doc);

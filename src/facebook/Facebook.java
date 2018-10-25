@@ -14,6 +14,13 @@ import com.restfb.types.User;
 import MainWork.Interfacegrafica;
 import MainWork.SignIN;
 
+/**
+ * Classe que represa a funcionalidade Facebook, onde se acede ao facebook através da autenticação e onde se pode 
+ * consultar posts e fazer pesquisas destes mesmos através de uma String pretendida.
+ *  
+ * @author Brogueira
+ *
+ */
 public class Facebook {
 	private String token;
 	public SignIN clientFacebook;
@@ -24,7 +31,11 @@ public class Facebook {
 		autenticacao();
 	}
 
-	
+/**
+ * Função para autenticação no facebook, com o token respetivo.
+ * 
+ * @author Brogueira
+ */
 	public void autenticacao() {
 		fbClient = new DefaultFacebookClient(token);
 		User me = fbClient.fetchObject("me", User.class);
@@ -34,6 +45,15 @@ public class Facebook {
 		System.out.println(me.getName());
 	}
 	
+	
+	/**
+	 * Função que tem como objetivo pesquisar todos os post com uma String pretentida.
+	 *
+	 * @param p - String a pesquisar
+	 * @param t - lista de resultados
+	 * 
+	 * @author Brogueira
+	 */
 	public void search(String p, DefaultListModel<String> t) {
 	
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);

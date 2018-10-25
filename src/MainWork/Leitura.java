@@ -10,6 +10,14 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
+/**
+ * 
+ * Classe que faz a leitura do ficheiro XML
+ * 
+ * @author Brogueira
+ *
+ */
+
 public class Leitura {
 	
 	public Leitura (Document doc) throws Exception {

@@ -5,6 +5,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+/**
+ * 
+ * Classe que tem como objetivo adicionar todos os atributos pretendidos(Token, Account e Password) ao ficheiro XML.
+ * 
+ * @author Brogueira
+ *
+ */
 public class AddToFile {
 
 	public AddToFile(Document doc, SignIN client) {
