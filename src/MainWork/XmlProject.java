@@ -1,4 +1,4 @@
-
+package MainWork;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,13 +20,18 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.UserDataHandler;
+
+import facebook.*;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 public class XmlProject {
-	public static void main(String[] args){
+	private  static String token ="EAAD45TT4030BAMppoeRyc1RtdOfUzobKEP18LZCzAmZB9vzxZA3WafngiZBvZCE00TJm6cFyUwEKcOx4hdKJYuJQkDX5DPk5kdjo8321wWGRl6ZCYmkiXVMdAmxkuW205CGKpBDB4Ek9w71RJiXGtIX29iYPVZCQ8MZD";//preencher pelo utilizador
+	
 
+	public XmlProject() {
 		try {	
 			File inputFile = new File("config.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -36,11 +41,20 @@ public class XmlProject {
 
 			//Leitura
 			Leitura l = new Leitura(doc);
-			
-			SignIN client = new SignIN("smtp", "tio@tudo.com", "pass");
-			
+			Facebook f = new Facebook(new SignIN (token, "mail", "pass"));
+			SignIN  client1 = f.getClientFacebook();
+
+
+
 			//Adiciona
-			AddToFile add = new AddToFile(doc, client);
+			AddToFile add = new AddToFile(doc, client1);
+
+			//			Remover
+
+			//			Element element = (Element) doc.getElementsByTagName("mail").item(0);
+			//		    Node parent = element.getParentNode();
+			//		    parent.removeChild(element)
+			//		    parent.normalize();
 
 			// Save XML document
 			Save s = new Save(doc);
