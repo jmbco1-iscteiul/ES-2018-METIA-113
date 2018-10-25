@@ -1,3 +1,4 @@
+package MainWork;
 
 
 import org.w3c.dom.Document;
@@ -12,7 +13,7 @@ public class AddToFile {
 		System.out.println("\n----- Adding new element <Service> with attributes to the XML document -----");
 
 		Element newElement1 = doc.createElement("Service");
-		newElement1.setAttribute("Protocol", client.getProtocol());
+		newElement1.setAttribute("Token", client.getToken());
 		newElement1.setAttribute("Account", client.getMail());
 		newElement1.setAttribute("Password", client.getPass());
 

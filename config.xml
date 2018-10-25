@@ -38,4 +38,18 @@
 <OtherNewTag>More new data</OtherNewTag>
 <Service Account="pombo@tudo.com" Password="pass" Protocol="smtp"/>
 <OtherNewTag>More new data</OtherNewTag>
+<Service Account="tio@tudo.com" Password="pass" Token="smtp"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="tio@tudo.com" Password="pass" Token="smtp"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="tio@tudo.com" Password="pass" Token="smtp"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="mail" Password="pass" Token="token"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="mail" Password="pass" Token="token"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="mail" Password="pass" Token="token"/>
+<OtherNewTag>More new data</OtherNewTag>
+<Service Account="mail" Password="pass" Token="token"/>
+<OtherNewTag>More new data</OtherNewTag>
 </XML>
