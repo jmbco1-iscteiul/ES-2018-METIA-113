@@ -1,7 +1,11 @@
 package facebook;
 
+import java.util.List;
+
+import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.types.Post;
 import com.restfb.types.User;
 
 import MainWork.SignIN;
@@ -18,6 +22,7 @@ public class Facebook {
 	public Facebook(SignIN a) {
 		this.clientFacebook = a;
 		autenticacao();
+		search("a todos");
 	}
 
 	
@@ -32,8 +37,29 @@ public class Facebook {
 		//System.out.println("Expires: " + extendedAccessToken.getExpires());
 	}
 	
+	public void search(String palavra) {
+		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
+		System.out.println("\nPosts:");
+		int counter5 = 0;
+		int counterTotal = 0;
+
+		for (List<Post> page : result) {
+			for (Post aPost : page) {
+				if (aPost.getMessage() != null && aPost.getMessage().contains(palavra)) {
+					System.out.println("---- Post "+ counter5 + " ----");
+					System.out.println("Id: "+"fb.com/"+aPost.getId());
+					System.out.println("Message: "+aPost.getMessage());
+					System.out.println("Created: "+aPost.getCreatedTime());
+					counter5++;
+				}
+				counterTotal++;
+			}
+		}
+		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
+	}
+	
 	public SignIN getClientFacebook() {
 		return clientFacebook;
 	}
+	
 }
-
