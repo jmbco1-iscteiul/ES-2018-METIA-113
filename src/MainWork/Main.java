@@ -1,7 +1,7 @@
 package MainWork;
 
 public class Main {
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		
 		InterfaceGrafica i = new InterfaceGrafica();
 		i.open();
