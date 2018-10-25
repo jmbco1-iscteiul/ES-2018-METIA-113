@@ -20,6 +20,7 @@ public class Facebook {
 //		autenticacao();
 	}
 
+	
 	public void autenticacao() {
 		fbClient = new DefaultFacebookClient(clientFacebook.getToken());
 		User me = fbClient.fetchObject("me", User.class);
