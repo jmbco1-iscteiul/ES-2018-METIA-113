@@ -1,4 +1,6 @@
+package MainWork;
 
+	
 	import java.awt.BorderLayout;
 	import java.awt.Color;
 	import java.awt.Dimension;
@@ -15,7 +17,7 @@
 	import javax.swing.WindowConstants;
 
 
-		public class InterfaceGrafica{
+		public class Interfacegrafica{
 			
 			private JFrame frame;
 		
@@ -29,7 +31,7 @@
 			JButton bkeyword = new JButton("Palavra-Chave");
 			JButton bperiodoinfo = new JButton("Período da Informação");
 			
-			public InterfaceGrafica() {
+			public Interfacegrafica() {
 				
 				frame = new JFrame("MAIN MENU");
 				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -139,6 +141,6 @@
 
 			
 
-	}
+		}
 
 
