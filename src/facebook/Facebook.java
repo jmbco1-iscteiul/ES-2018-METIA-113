@@ -47,7 +47,7 @@ public class Facebook {
 	
 	
 	/**
-	 * Função que tem como objetivo pesquisar todos os post com uma String pretentida.
+	 * Função que tem como objetivo pesquisar todos os posts com uma String pretentida.
 	 *
 	 * @param p - String a pesquisar
 	 * @param t - lista de resultados
