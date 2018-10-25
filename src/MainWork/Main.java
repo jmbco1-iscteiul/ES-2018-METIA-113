@@ -7,5 +7,6 @@ public class Main {
 		i.open();
 		new XmlProject();
 		System.out.println("sss");
+
 	}
 }

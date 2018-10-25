@@ -1,10 +1,10 @@
 package facebook;
 
-import MainWork.*;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
-import com.restfb.FacebookClient.AccessToken;
 import com.restfb.types.User;
+
+import MainWork.SignIN;
 
 public class Facebook {
 
@@ -20,6 +20,7 @@ public class Facebook {
 		autenticacao();
 	}
 
+	
 	public void autenticacao() {
 		fbClient = new DefaultFacebookClient(clientFacebook.getToken());
 		User me = fbClient.fetchObject("me", User.class);
