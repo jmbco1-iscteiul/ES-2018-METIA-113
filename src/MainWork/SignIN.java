@@ -4,6 +4,7 @@ public class SignIN {
 	private String mail;
 	private String pass;
 	private String token;
+	
 
 	
 	public SignIN (String token, String mail, String pass) {

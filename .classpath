@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Brogueira/Desktop/restfb-2.11.0.jar"/>
+	<classpathentry kind="lib" path="/Users/joaocardoso/Downloads/facebookexample/restfb-2.10.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -28,6 +28,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 public class XmlProject {
+	private  static String token ="EAAD45TT4030BAMppoeRyc1RtdOfUzobKEP18LZCzAmZB9vzxZA3WafngiZBvZCE00TJm6cFyUwEKcOx4hdKJYuJQkDX5DPk5kdjo8321wWGRl6ZCYmkiXVMdAmxkuW205CGKpBDB4Ek9w71RJiXGtIX29iYPVZCQ8MZD";//preencher pelo utilizador
+	
 
 	public XmlProject() {
 		try {	
@@ -39,7 +41,7 @@ public class XmlProject {
 
 			//Leitura
 			Leitura l = new Leitura(doc);
-			Facebook f = new Facebook(new SignIN ("token", "mail", "pass"));
+			Facebook f = new Facebook(new SignIN (token, "mail", "pass"));
 			SignIN  client1 = f.getClientFacebook();
 
 
