@@ -20,6 +20,7 @@ public final class TwitterAccess  {
 	public static void main(String[] args) {
 		TwitterAccess t = new TwitterAccess();
 		t.autenticacao();
+		t.getTimeline();
 	}
 
 
@@ -40,6 +41,26 @@ public final class TwitterAccess  {
 	}
 
 
-	
+	public void getTimeline(){
+
+		try{
+			System.out.println("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
+			int counter=0;
+			int counterTotal = 0;
+			for (Status status : timelineStatuses) {
+				// Filters only tweets from user "catarina"
+				if (status.getUser().getName() != null) {
+					System.out.println(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
+					System.out.println("____________________________________________________________");
+					counter++;
+				}
+				counterTotal++;
+			}
+
+
+			System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
+		} catch (Exception e) { 
+			System.out.println(e.getMessage() + " - deu erro"); }
+	}
 
 }
