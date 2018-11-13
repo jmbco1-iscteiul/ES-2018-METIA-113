@@ -12,11 +12,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/Users/joaocardoso/Downloads/facebookexample/restfb-2.10.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="BibliotecasExternas/restfb-2.11.0.jar"/>
+	<classpathentry kind="lib" path="BibliotecasExternas/twitter4j-core-4.0.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
