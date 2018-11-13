@@ -16,11 +16,13 @@ public final class TwitterAccess  {
 
 	Twitter twitter = TwitterFactory.getSingleton();
 	List<Status> timelineStatuses = new ArrayList<Status>();
+	private static String estado = "O projeto de ES é interessante";
 
 	public static void main(String[] args) {
 		TwitterAccess t = new TwitterAccess();
 		t.autenticacao();
 		t.getTimeline();
+		t.updateStatus(estado);
 	}
 
 
@@ -61,6 +63,16 @@ public final class TwitterAccess  {
 			System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
 		} catch (Exception e) { 
 			System.out.println(e.getMessage() + " - deu erro"); }
+	}
+
+	public void updateStatus(String estado) {
+		Status status = null;
+		try {
+			status = twitter.updateStatus(estado);
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Successfully updated the status to [" + status.getText() + "].");
 	}
 
 }
