@@ -20,7 +20,7 @@ import org.w3c.dom.Document;
 
 public class Save {
 	public Save(Document doc) throws Exception {
-		System.out.println("\nSave XML document.");
+		System.out.println("\nSave XML document. ");
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		StreamResult result = new StreamResult(new FileOutputStream("config.xml"));
