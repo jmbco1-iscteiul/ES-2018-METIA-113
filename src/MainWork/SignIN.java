@@ -2,7 +2,7 @@ package MainWork;
 
 /**
  * 
- * Classe que caracteriza os métodos de autênticação, o e-mail, uma password e o token respetivo de cada utilizador.
+ * Classe que caracteriza os mÃ©todos de autenticaÃ§Ã£o, o e-mail, uma password e o token respetivo de cada utilizador.
  * 
  * @author Brogueira
  *

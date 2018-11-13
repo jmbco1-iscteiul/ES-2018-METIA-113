@@ -22,8 +22,8 @@ import javax.swing.WindowConstants;
 import facebook.Facebook;
 
 /**
- * Interface gráfica principal desenvolvida, com todos os butões descritos para Facebook, Twitter e E-mail. Também
- * se apresenta a barra de pesquisa e o botão  respetivo (search).
+ * Interface grÃ¡fica principal desenvolvida, com todos os butÃµes descritos para Facebook, Twitter e E-mail. TambÃ©m
+ * se apresenta a barra de pesquisa e o botÃ£o  respetivo (search).
  * 
  * @author Brogueira
  *
@@ -58,7 +58,7 @@ public class Interfacegrafica{
 	}
 /**
  * 
- * Função que abre a janela principal e lhe o tamanha pretendido
+ * Funï¿½ï¿½o que abre a janela principal e lhe o tamanha pretendido
  * 
  * @author Brogueira
  * 
@@ -71,8 +71,8 @@ public class Interfacegrafica{
 	}
 /**
  * 
- * Função que cria a disposição dos botões, da barra e da caixa onde se representa os resultados das pesquisas.
- * É criado um Layout principal e posteriormente os Layouts secundários.
+ * Funï¿½ï¿½o que cria a disposiï¿½ï¿½o dos botï¿½es, da barra e da caixa onde se representa os resultados das pesquisas.
+ * ï¿½ criado um Layout principal e posteriormente os Layouts secundï¿½rios.
  * 
  * @author Brogueira
  * 
@@ -172,7 +172,7 @@ public class Interfacegrafica{
 	}
 //
 //	/**
-//	 * Função onde que faz a pesquisa de uma palava inserida, na barra de pesquisa, clicando botão Facebook.
+//	 * Funï¿½ï¿½o onde que faz a pesquisa de uma palava inserida, na barra de pesquisa, clicando botï¿½o Facebook.
 //	 * Aqui faz-se a pesquisa de de todos os estados onde se encontre a palavra pretendida 
 //	 * @author Brogueira
 //	 */

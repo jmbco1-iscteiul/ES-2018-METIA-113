@@ -15,8 +15,8 @@ import MainWork.Interfacegrafica;
 import MainWork.SignIN;
 
 /**
- * Classe que represa a funcionalidade Facebook, onde se acede ao facebook através da autenticação e onde se pode 
- * consultar posts e fazer pesquisas destes mesmos através de uma String pretendida.
+ * Classe que represa a funcionalidade Facebook, onde se acede ao facebook atravÃ©s da autenticÃ§Ã£o e onde se pode 
+ * consultar posts e fazer pesquisas destes mesmos atravÃ©s de uma String pretendida.
  *  
  * @author Brogueira
  *
@@ -32,7 +32,7 @@ public class Facebook {
 	}
 
 /**
- * Função para autenticação no facebook, com o token respetivo.
+ * FunÃ§Ã£o para autenticaÃ§Ã£o no facebook, com o token respetivo.
  * 
  * @author Brogueira
  */
@@ -47,7 +47,7 @@ public class Facebook {
 	
 	
 	/**
-	 * Função que tem como objetivo pesquisar todos os posts com uma String pretentida.
+	 * Funï¿½ï¿½o que tem como objetivo pesquisar todos os posts com uma String pretentida.
 	 *
 	 * @param p - String a pesquisar
 	 * @param t - lista de resultados

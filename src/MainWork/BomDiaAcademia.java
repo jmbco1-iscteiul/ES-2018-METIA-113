@@ -5,7 +5,7 @@ import javax.swing.DefaultListModel;
 import facebook.Facebook;
 
 /**
- * Motor principal da aplicação onde se encontram todos os métodos principais.
+ * Motor principal da aplicaÃ§Ã£o onde se encontram todos os mÃ©todos principais.
  * 
  * @author Brogueira
  *

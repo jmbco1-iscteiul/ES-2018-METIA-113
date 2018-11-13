@@ -28,7 +28,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 /**
- * Classe do ficheiro XML onde se acede ao ficheiro, se faz a leitura deste e se guarda o que se pretende nele também.
+ * Classe do ficheiro XML onde se acede ao ficheiro, se faz a leitura deste e se guarda o que se pretende nele tambÃ©m.
  * @author Brogueira
  *
  */
