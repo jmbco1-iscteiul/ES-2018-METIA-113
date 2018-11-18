@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.Query;
+import javax.swing.DefaultListModel;
 
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -21,8 +22,6 @@ public final class TwitterAccess  {
 	public static void main(String[] args) {
 		TwitterAccess t = new TwitterAccess();
 		t.autenticacao();
-		t.getTimeline();
-		t.updateStatus(estado);
 	}
 
 
@@ -43,26 +42,26 @@ public final class TwitterAccess  {
 	}
 
 
-	public void getTimeline(){
+	public void getTimeline(String procurar,  DefaultListModel<String> t){
 
 		try{
-			System.out.println("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
+			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
 			int counter=0;
 			int counterTotal = 0;
 			for (Status status : timelineStatuses) {
 				// Filters only tweets from user "catarina"
 				if (status.getUser().getName() != null) {
-					System.out.println(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
-					System.out.println("____________________________________________________________");
+					t.addElement(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
+					t.addElement("____________________________________________________________");
 					counter++;
 				}
 				counterTotal++;
 			}
 
 
-			System.out.println("-------------\nNº of Results: " + counter+"/"+counterTotal);
+			t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
 		} catch (Exception e) { 
-			System.out.println(e.getMessage() + " - deu erro"); }
+			t.addElement(e.getMessage() + " - deu erro"); }
 	}
 
 	public void updateStatus(String estado) {

@@ -15,12 +15,16 @@ public class BomDiaAcademia {
 	private Facebook facebook;
 	private Interfacegrafica i;
 	private XmlProject xml;
+	private TwitterAccess twitter;
+	private EmailReader mail;
 
 	private DefaultListModel<String> t;
 
 	public BomDiaAcademia() {
 		t = new DefaultListModel<>();
 		facebook = new Facebook(token);
+		twitter = new TwitterAccess ();
+		mail = new EmailReader();
 		i = new Interfacegrafica(this);
 		xml = new XmlProject();
 	}
@@ -35,6 +39,16 @@ public class BomDiaAcademia {
 
 	public static void main(String[] args) {
 		new BomDiaAcademia();
+	}
+
+	public TwitterAccess getTwitter() {
+
+		return twitter;
+	}
+
+	public EmailReader getMail() {
+	
+		return mail;
 	}
 
 }

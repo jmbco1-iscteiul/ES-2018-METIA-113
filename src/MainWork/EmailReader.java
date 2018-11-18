@@ -6,6 +6,7 @@ import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 
@@ -25,8 +26,7 @@ public class EmailReader {
 		props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 
-		iniSessao(mail, pass);
-		caixaChegada();
+//		iniSessao(mail, pass);
 //		caixaTemp(5);
 	}
 
@@ -34,9 +34,10 @@ public class EmailReader {
 		try {
 			Session session = Session.getDefaultInstance(props, null);
 			store = session.getStore("imaps");
-			store.connect("smtp-mail.outlook.com", mail, pass);
+			store.connect("migigaspar@hotmail.com", mail, pass);
+			System.out.println("--------------------");
 		} catch (Exception e) {
-			System.out.println("Erro");
+			System.out.println("Erro 1");
 		}
 	}
 
@@ -58,14 +59,24 @@ public class EmailReader {
 		}
 	}
 	
-	public void caixaChegada() {
+	public void caixaChegada(DefaultListModel<String> t) {
 		try {
+			iniSessao(mail, pass);
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
 			Message messages[] = inbox.getMessages();
+			
+			for(Message message : messages) { 
+					t.addElement(message.getSubject());
+						long date = message.getReceivedDate().getTime();
+							java.util.Date dateTime=new java.util.Date((long)date*1000);
+								String datum = String.valueOf(dateTime);
+									t.addElement(datum);
+									t.addElement("-------------------------------------");
+			}
 			System.out.println(messages.length);
 		} catch (Exception e) {
-			System.out.println("Erro");
+			System.out.println("Erro 2");
 		}
 	}
 
