@@ -26,7 +26,7 @@ public class EmailReader {
 		props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 
-//		iniSessao(mail, pass);
+		iniSessao(mail, pass);
 //		caixaTemp(5);
 	}
 
@@ -61,7 +61,6 @@ public class EmailReader {
 	
 	public void caixaChegada(DefaultListModel<String> t) {
 		try {
-			iniSessao(mail, pass);
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
 			Message messages[] = inbox.getMessages();

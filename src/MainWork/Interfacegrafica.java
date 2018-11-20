@@ -268,7 +268,7 @@ public class Interfacegrafica{
 
 
   public void escreverPostFace() {
-	  bmail.addActionListener(new ActionListener() {
+	  bescreverpostf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=textface.getText();
@@ -290,7 +290,7 @@ public class Interfacegrafica{
   }
   
   public void escreverMail() {
-	  bescreverpostf.addActionListener(new ActionListener() {
+	  bescrevermail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=textmail.getText();
