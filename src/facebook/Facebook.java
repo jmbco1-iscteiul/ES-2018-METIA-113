@@ -84,6 +84,33 @@ public class Facebook {
 	
 	}
 	
+	public void timeline( DefaultListModel<String> t) {
+		
+		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
+		System.out.println("\nPosts:");
+		int counter5 = 0;
+		int counterTotal = 0;
+
+		for (List<Post> page : result) {
+			for (Post aPost : page) {
+					t.addElement("---- Post "+ counter5 + " ----");
+					t.addElement("Id: "+"fb.com/"+aPost.getId());
+					t.addElement("Message: "+aPost.getMessage());
+					t.addElement("---- Post "+ counter5 + " ----");
+					t.addElement("Created: "+aPost.getCreatedTime());
+					System.out.println("---- Post "+ counter5 + " ----");
+					System.out.println("Id: "+"fb.com/"+aPost.getId());
+					System.out.println("Message: "+aPost.getMessage());
+					System.out.println("Created: "+aPost.getCreatedTime());
+					counter5++;	
+			}
+		}
+		counterTotal++;
+		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
+		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
+		
+	
+	}
 	public SignIN getClientFacebook() {
 		return clientFacebook;
 	}

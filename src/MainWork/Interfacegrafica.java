@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import facebook.Facebook;
@@ -40,9 +41,12 @@ public class Interfacegrafica{
 	JTextField textdestinatario = new JTextField();
 	JTextArea text1 = new JTextArea();
 	JTextArea text2 = new JTextArea();
-	JButton bface = new JButton("TimeLine FACEBOOK");
-	JButton bmail = new JButton("TimeLine EMAIL");
-	JButton btwitter = new JButton("TimeLine TWITTER");
+	JButton bface = new JButton("TimeLine");
+	JButton bmail = new JButton("TimeLine");
+	JButton btwitter = new JButton("TimeLine");
+	JButton bfaceprocurar = new JButton("Procurar Palavra");
+	JButton bmailprocurar = new JButton("Procurar Palavra");
+	JButton btwitterprocurar = new JButton("Procurar Palavra");
 	JButton borigem = new JButton("Origem");
 	JButton bkeyword = new JButton("Palavra-Chave");
 	JButton bperiodoinfo = new JButton("Período da Informação");
@@ -62,9 +66,18 @@ public class Interfacegrafica{
 		addFrameContent();
 		frame.pack();
 		open();
+		
 		getFaceTimeLine();
 		getTwitterTimeLine();
 		getEmailTimeLine();
+		
+		escreverPostFace();
+		escreverPostTwitter();
+		escreverMail();
+		
+		procurarpalavraFace();
+		procurarpalavraTwitter();
+		procurarpalavraMail();	
 	}
 /**
  * 
@@ -110,10 +123,12 @@ public class Interfacegrafica{
 		
 		Color color= new Color(128,128,255);
 		
+		list.setFont(new Font("SansSerif", Font.BOLD, 15));
+		
 		Dimension d1= new Dimension(500,20);
 		label.setPreferredSize(d1);
 		JTextArea area3 = new JTextArea();
-		area3.setText("Procurar palavra que desejar:");
+		area3.setText("Escrever palavra que desejar procurar:");
 		area3.setEditable(false);
 		
 		area3.setFont(new Font("SansSerif", Font.BOLD, 15));
@@ -157,9 +172,19 @@ public class Interfacegrafica{
 		bface.setFont(new Font("SansSerif", Font.BOLD, 20));
 		bmail.setFont(new Font("SansSerif", Font.BOLD, 20));
 		btwitter.setFont(new Font("SansSerif", Font.BOLD, 20));
+		bfaceprocurar.setFont(new Font("SansSerif", Font.BOLD, 15));
+		bmailprocurar.setFont(new Font("SansSerif", Font.BOLD, 15));
+		btwitterprocurar.setFont(new Font("SansSerif", Font.BOLD, 15));
 
-		Dimension d5= new Dimension(300,60);
+		Dimension d5= new Dimension(150,60);
 		bface.setPreferredSize(d5);
+		bmail.setPreferredSize(d5);
+		btwitter.setPreferredSize(d5);
+		
+		Dimension d8= new Dimension(180,60);
+		bfaceprocurar.setPreferredSize(d8);
+		bmailprocurar.setPreferredSize(d8);
+		btwitterprocurar.setPreferredSize(d8);
 		
 		Dimension d6= new Dimension(300,30);
 		textmail.setPreferredSize(d6);
@@ -167,24 +192,46 @@ public class Interfacegrafica{
 		textface.setPreferredSize(d6);
 		textdestinatario.setPreferredSize(d6);
 		
+
+		JTextArea face = new JTextArea();
+		face.setText("FACEBOOK:");
+		face.setEditable(false);
+		face.setFont(new Font("SansSerif", Font.BOLD, 20));
+		face.setForeground(color);
+		panel2.add(face);
 		panel2.add(bface);
+		panel2.add(bfaceprocurar);
+		
 		panel14.add(textface, BorderLayout.CENTER);
 		panel14.add(bescreverpostf, BorderLayout.EAST);
 		
 		panel16.add(panel2);
 		panel16.add(panel14);
 
-		bmail.setPreferredSize(d5);
+	
+		JTextArea twitter = new JTextArea();
+		twitter.setText("TWITTER:");
+		twitter.setEditable(false);
+		twitter.setFont(new Font("SansSerif", Font.BOLD, 20));
+		twitter.setForeground(color);
+		panel3.add(twitter);
 		panel3.add(btwitter);
+		panel3.add(btwitterprocurar);
+		
 		panel15.add(texttwitter, BorderLayout.CENTER);
 		panel15.add(bescreverpost, BorderLayout.EAST);
 		
 		panel16.add(panel3);
 		panel16.add(panel15);
 
-
-		btwitter.setPreferredSize(d5);
+		JTextArea mail = new JTextArea();
+		mail.setText("E-MAIL:");
+		mail.setEditable(false);
+		mail.setFont(new Font("SansSerif", Font.BOLD, 20));
+		mail.setForeground(color);
+		panel4.add(mail);
 		panel4.add(bmail);
+		panel4.add(bmailprocurar);
 		panel16.add(panel4);
 		
 		panel6.add(textmail, BorderLayout.CENTER);
@@ -237,9 +284,7 @@ public class Interfacegrafica{
 		bface.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				String procurar=label.getText();
-				System.out.println(procurar);
-				bda.getFacebook().search(procurar,model);
+				bda.getFacebook().timeline(model);
 			}
 		});
 	}
@@ -248,9 +293,7 @@ public class Interfacegrafica{
 		btwitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				String procurar=label.getText();
-				System.out.println(procurar);
-				bda.getTwitter().getTimeline(procurar,model);
+				bda.getTwitter().getTimeline(model);
 			}
 		});
 	}
@@ -259,8 +302,6 @@ public class Interfacegrafica{
 		bmail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				String procurar=label.getText();
-				System.out.println(procurar);
 				bda.getMail().caixaChegada(model);
 			}
 		});
@@ -273,7 +314,7 @@ public class Interfacegrafica{
 				model.clear();
 				String procurar=textface.getText();
 				System.out.println(procurar);
-				bda.getMail().caixaChegada(model);
+				bda.getFacebook();
 			}
 		});
   }
@@ -294,6 +335,39 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=textmail.getText();
+				System.out.println(procurar);
+				bda.getMail().caixaChegada(model);
+			}
+		});
+  }
+  
+  public void procurarpalavraFace() {
+	  bfaceprocurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				String procurar=label.getText();
+				System.out.println(procurar);
+				bda.getFacebook().search(procurar,model);
+			}
+		});
+  }
+  
+  public void procurarpalavraTwitter() {
+	  btwitterprocurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				String procurar=label.getText();
+				System.out.println(procurar);
+				bda.getTwitter().searchTweet(procurar, model);
+			}
+		});
+  }
+  
+  public void procurarpalavraMail() {
+	  bmailprocurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				String procurar=label.getText();
 				System.out.println(procurar);
 				bda.getMail().caixaChegada(model);
 			}

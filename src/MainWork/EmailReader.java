@@ -25,21 +25,23 @@ public class EmailReader {
 		pass = JOptionPane.showInputDialog("pass");
 		props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
-
 		iniSessao(mail, pass);
-//		caixaTemp(5);
 	}
 
 	public void iniSessao(String mail, String pass) {
 		try {
 			Session session = Session.getDefaultInstance(props, null);
 			store = session.getStore("imaps");
-			store.connect("migigaspar@hotmail.com", mail, pass);
+			store.connect("smtp-mail.outlook.com", mail, pass);
 			System.out.println("--------------------");
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Erro 1");
 		}
+		caixaTemp(5);
 	}
+	
+	
 
 	public void caixaTemp(int dias) {
 		try {
@@ -59,7 +61,8 @@ public class EmailReader {
 		}
 	}
 	
-	public void caixaChegada(DefaultListModel<String> t) {
+	public void caixaChegada(DefaultListModel<String> t) {	
+//		iniSessao(mail, pass);
 		try {
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
@@ -75,6 +78,7 @@ public class EmailReader {
 			}
 			System.out.println(messages.length);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Erro 2");
 		}
 	}

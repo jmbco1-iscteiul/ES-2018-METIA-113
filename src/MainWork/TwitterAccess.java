@@ -17,12 +17,7 @@ public final class TwitterAccess  {
 
 	Twitter twitter = TwitterFactory.getSingleton();
 	List<Status> timelineStatuses = new ArrayList<Status>();
-	private static String estado = "O projeto de ES é interessante";
 
-	public static void main(String[] args) {
-		TwitterAccess t = new TwitterAccess();
-		t.autenticacao();
-	}
 
 
 	public void autenticacao () {	
@@ -42,14 +37,13 @@ public final class TwitterAccess  {
 	}
 
 
-	public void getTimeline(String procurar,  DefaultListModel<String> t){
-
+	public void getTimeline(DefaultListModel<String> t){
+		autenticacao();
 		try{
 			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
 			int counter=0;
 			int counterTotal = 0;
 			for (Status status : timelineStatuses) {
-				// Filters only tweets from user "catarina"
 				if (status.getUser().getName() != null) {
 					t.addElement(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
 					t.addElement("____________________________________________________________");
@@ -74,4 +68,17 @@ public final class TwitterAccess  {
 		System.out.println("Successfully updated the status to [" + status.getText() + "].");
 	}
 
+	public void searchTweet(String palavra,DefaultListModel<String> t) {
+		int counter=0;
+		int counterTotal=0;
+		for(Status status : timelineStatuses) {
+			if(status.getText().contains(palavra)) {
+				t.addElement("@" + status.getUser().getScreenName() + ":" + status.getText());
+				counter++;
+			}
+			counterTotal++;
+		}
+		t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
+	}
+	
 }
