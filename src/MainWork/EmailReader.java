@@ -17,14 +17,14 @@ private static final int dayInMilis = 86400000;
 	private Properties props;
 	private Store store;
 
-	private String mail = "jmbco1@iscte-iul.pt";
-	private String pass = "1997BC1964ab";
+	private String mail;
+	private String pass;
 
 
 
 	public EmailReader() {
-//		mail = JOptionPane.showInputDialog("mail");
-//		pass = JOptionPane.showInputDialog("pass");
+		mail = JOptionPane.showInputDialog("mail");
+		pass = JOptionPane.showInputDialog("pass");
 		props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 

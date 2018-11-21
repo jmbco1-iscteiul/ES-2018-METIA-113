@@ -17,13 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import facebook.Facebook;
 
 /**
- * Interface gráfica principal desenvolvida, com todos os butões descritos para Facebook, Twitter e E-mail. Também
+ * Interface gráfica principal desenvolvida, com todos os botões descritos para Facebook, Twitter e E-mail. Também
  * se apresenta a barra de pesquisa e o botão  respetivo (search).
  * 
  * @author Brogueira
@@ -34,27 +33,25 @@ public class Interfacegrafica{
 	private JFrame frame;
 	private BomDiaAcademia bda;
 
-	JTextField label = new JTextField();
-	JTextField textface = new JTextField();
-	JTextField textmail = new JTextField();
-	JTextField texttwitter = new JTextField();
-	JTextField textdestinatario = new JTextField();
-	JTextArea text1 = new JTextArea();
-	JTextArea text2 = new JTextArea();
-	JButton bface = new JButton("TimeLine");
-	JButton bmail = new JButton("TimeLine");
-	JButton btwitter = new JButton("TimeLine");
-	JButton bfaceprocurar = new JButton("Procurar Palavra");
-	JButton bmailprocurar = new JButton("Procurar Palavra");
-	JButton btwitterprocurar = new JButton("Procurar Palavra");
-	JButton borigem = new JButton("Origem");
-	JButton bkeyword = new JButton("Palavra-Chave");
-	JButton bperiodoinfo = new JButton("Período da Informação");
-	JButton bescreverpost = new JButton("Escrever Post");
-	JButton bescreverpostf = new JButton("Escrever Post");
-	JButton bescrevermail = new JButton("Escrever Email");
-	DefaultListModel<String> model = new DefaultListModel<>();
-	JList<String> list = new JList<>(model);
+	private JTextField label = new JTextField();
+	private JTextField textface = new JTextField();
+	private JTextField textmail = new JTextField();
+	private JTextField texttwitter = new JTextField();
+	private JTextField textdestinatario = new JTextField();
+	private JButton bface = new JButton("TimeLine");
+	private JButton bmail = new JButton("TimeLine");
+	private JButton btwitter = new JButton("TimeLine");
+	private	JButton bfaceprocurar = new JButton("Procurar Palavra");
+	private JButton bmailprocurar = new JButton("Procurar Palavra");
+	private JButton btwitterprocurar = new JButton("Procurar Palavra");
+	private JButton borigem = new JButton("Origem");
+	private JButton bkeyword = new JButton("Palavra-Chave");
+	private	JButton bperiodoinfo = new JButton("Período da Informação");
+	private	JButton bescreverpost = new JButton("Escrever Post");
+	private	JButton bescreverpostf = new JButton("Escrever Post");
+	private	JButton bescrevermail = new JButton("Escrever Email");
+	private	DefaultListModel<String> model = new DefaultListModel<>();
+	private	JList<String> list = new JList<>(model);
 
 	
 	public Interfacegrafica(BomDiaAcademia bda) {
