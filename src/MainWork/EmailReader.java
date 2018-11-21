@@ -21,6 +21,7 @@ private static final int dayInMilis = 86400000;
 	private String pass = "1997BC1964ab";
 
 
+
 	public EmailReader() {
 //		mail = JOptionPane.showInputDialog("mail");
 //		pass = JOptionPane.showInputDialog("pass");
