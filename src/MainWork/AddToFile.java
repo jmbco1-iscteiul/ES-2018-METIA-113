@@ -3,7 +3,9 @@ package MainWork;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  * 
@@ -26,11 +28,25 @@ public class AddToFile {
 
 
 		// Add new nodes to XML document (root element)
-		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());         
+//		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());         
+//		Node n = doc.getDocumentElement();
+//		n.appendChild(newElement1);
+		
+
+		System.out.println("Root element :" + doc.getDocumentElement().getNodeName()); 
+		
+		NodeList nodes = doc.getDocumentElement().getChildNodes();
 		Node n = doc.getDocumentElement();
-		n.appendChild(newElement1);
 		
-		
+		for (int i = 0; i < nodes.getLength(); i++) {
+			if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap atr = nodes.item(i).getAttributes();
+				Node nodeatr = atr.getNamedItem("Account");
+				if(!client.getMail().equals(nodeatr.getTextContent())) {
+					n.appendChild(newElement1);
+				}
+			}
+		}		
 	}
 
 }
