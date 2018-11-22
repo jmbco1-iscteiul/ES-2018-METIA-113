@@ -8,6 +8,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Remove {
 	
@@ -20,19 +21,16 @@ public class Remove {
 		XPath xpath = xpathFactory.newXPath();
 		XPathExpression expr = xpath.compile("/XML/Service/@*");
 
-		Node node = doc.getDocumentElement().getFirstChild(); 
-
-		while (node != null) {
-			if (node.getNodeType() == Node.ELEMENT_NODE) {
-				Element eElement = (Element) node;
-				NamedNodeMap atr = node.getAttributes();
+		NodeList nodes = doc.getDocumentElement().getChildNodes();
+		
+		for (int i = 0; i < nodes.getLength(); i++) {
+			if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap atr = nodes.item(i).getAttributes();
 				Node nodeatr = atr.getNamedItem("Account");
-				if (apagar.equals(nodeatr.getTextContent())) {
-					System.out.println("Apaguei");
-					doc.getDocumentElement().removeChild(node);
+				if(apagar.equals(nodeatr.getTextContent())) {
+					doc.getDocumentElement().removeChild(nodes.item(i));
 				}
 			}
-			node = node.getNextSibling();
-		} 
+		}
 	}
 }

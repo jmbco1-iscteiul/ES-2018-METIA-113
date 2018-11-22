@@ -24,17 +24,11 @@ public class AddToFile {
 		newElement1.setAttribute("Account", client.getMail());
 		newElement1.setAttribute("Password", client.getPass());
 
-		// Adding new element OtherNewTag to the XML document (root node)
-		System.out.println("----- Adding new element <OtherNewTag> to the XML document -----");
-
-		Element newElement2 = doc.createElement("OtherNewTag");
-		newElement2.setTextContent("More new data"); 
 
 		// Add new nodes to XML document (root element)
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());         
 		Node n = doc.getDocumentElement();
 		n.appendChild(newElement1);
-		n.appendChild(newElement2);         
 		
 		
 	}
