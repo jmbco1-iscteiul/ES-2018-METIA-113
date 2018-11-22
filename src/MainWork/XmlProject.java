@@ -46,9 +46,13 @@ public class XmlProject {
 			//Leitura
 			Leitura l = new Leitura(doc);
 
-		//Remove XML
-		//Remove r = new Remove(doc, "tio@tudo.com");
+			String mail = "mai";
 			
+		//Remove XML
+		//Remove r = new Remove(doc, "mail");
+			
+			//Edit XML
+			//Edit edit = new Edit(doc, mail, client);
 			
 			
 			// Save XML document
