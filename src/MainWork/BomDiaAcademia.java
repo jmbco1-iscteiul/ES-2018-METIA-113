@@ -16,10 +16,7 @@ public class BomDiaAcademia {
 	private TwitterAccess twitter;
 	private Email mail;
 
-//	private DefaultListModel<Message> t;
-
 	public BomDiaAcademia() {
-//		t = new DefaultListModel<Message>();
 		facebook = new Facebook(token);
 		twitter = new TwitterAccess ();
 		mail = new Email();
@@ -30,10 +27,6 @@ public class BomDiaAcademia {
 	public Facebook getFacebook() {
 		return facebook;
 	}
-
-//	public DefaultListModel<Message> getT() {
-//		return t;
-//	}
 
 	public TwitterAccess getTwitter() {
 
