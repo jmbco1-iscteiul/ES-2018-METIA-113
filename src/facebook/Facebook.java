@@ -24,7 +24,6 @@ import MainWork.SignIN;
  *
  */
 
-
 public class Facebook {
 	private String token;
 	public SignIN clientFacebook;
