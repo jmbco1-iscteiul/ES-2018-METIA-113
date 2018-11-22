@@ -16,7 +16,7 @@ public class BomDiaAcademia {
 	private Interfacegrafica i;
 	private XmlProject xml;
 	private TwitterAccess twitter;
-	private EmailReader mail;
+	private Email mail;
 
 	private DefaultListModel<String> t;
 
@@ -24,7 +24,7 @@ public class BomDiaAcademia {
 		t = new DefaultListModel<>();
 		facebook = new Facebook(token);
 		twitter = new TwitterAccess ();
-		mail = new EmailReader();
+		mail = new Email();
 		i = new Interfacegrafica(this);
 		xml = new XmlProject();
 	}
@@ -46,7 +46,7 @@ public class BomDiaAcademia {
 		return twitter;
 	}
 
-	public EmailReader getMail() {
+	public Email getMail() {
 	
 		return mail;
 	}
