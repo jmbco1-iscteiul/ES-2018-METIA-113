@@ -8,7 +8,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +22,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * Interface gráfica principal desenvolvida, com todos os botões descritos para Facebook, Twitter e E-mail. Também
@@ -50,8 +55,8 @@ public class Interfacegrafica{
 	private	JButton bescreverpost = new JButton("Escrever Post");
 	private	JButton bescreverpostf = new JButton("Escrever Post");
 	private	JButton bescrevermail = new JButton("Escrever Email");
-	private	DefaultListModel<String> model = new DefaultListModel<>();
-	private	JList<String> list = new JList<>(model);
+	private	DefaultListModel<Mensagem> model = new DefaultListModel<>();
+	private	JList<Mensagem> list = new JList<>(model);
 
 	
 	public Interfacegrafica(BomDiaAcademia bda) {
@@ -75,6 +80,8 @@ public class Interfacegrafica{
 		procurarpalavraFace();
 		procurarpalavraTwitter();
 		procurarpalavraMail();	
+		
+		
 	}
 /**
  * 
@@ -413,6 +420,22 @@ public class Interfacegrafica{
 				bda.getMail().procurarpalavra(model,procurar);
 			}
 		});
+  }
+  
+  public void selectMail() {
+	list.addListSelectionListener(new ListSelectionListener() {
+		
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			Mensagem m = list.getSelectedValue();
+			try {
+				System.out.println(m.toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	});  
   }
   
   

@@ -1,7 +1,5 @@
 package MainWork;
 
-import javax.swing.DefaultListModel;
-
 import facebook.Facebook;
 
 /**
@@ -18,10 +16,10 @@ public class BomDiaAcademia {
 	private TwitterAccess twitter;
 	private Email mail;
 
-	private DefaultListModel<String> t;
+//	private DefaultListModel<Message> t;
 
 	public BomDiaAcademia() {
-		t = new DefaultListModel<>();
+//		t = new DefaultListModel<Message>();
 		facebook = new Facebook(token);
 		twitter = new TwitterAccess ();
 		mail = new Email();
@@ -33,13 +31,9 @@ public class BomDiaAcademia {
 		return facebook;
 	}
 
-	public DefaultListModel<String> getT() {
-		return t;
-	}
-
-	public static void main(String[] args) {
-		new BomDiaAcademia();
-	}
+//	public DefaultListModel<Message> getT() {
+//		return t;
+//	}
 
 	public TwitterAccess getTwitter() {
 
@@ -49,6 +43,10 @@ public class BomDiaAcademia {
 	public Email getMail() {
 	
 		return mail;
+	}
+	
+	public static void main(String[] args) {
+		new BomDiaAcademia();
 	}
 
 }

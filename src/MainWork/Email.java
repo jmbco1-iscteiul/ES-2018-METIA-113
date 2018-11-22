@@ -36,19 +36,19 @@ public class Email {
 
 
 	public Email() {
-	
+
 		iniSessaoReader(mail, pass);
 		iniSessaoSender();
 	}
-/**
- * Função que faz a autenticação do utilizador e que permite receber assim receber emails
- * 
- * @param mail- email do utilizador
- * @param pass- password do utilizador
- * 
- * @author Brogueira
- */
-	
+	/**
+	 * Função que faz a autenticação do utilizador e que permite receber assim receber emails
+	 * 
+	 * @param mail- email do utilizador
+	 * @param pass- password do utilizador
+	 * 
+	 * @author Brogueira
+	 */
+
 	public void iniSessaoReader(String mail, String pass) {
 		propsReader = System.getProperties();
 		propsReader.setProperty("mail.store.protocol", "imaps");
@@ -61,7 +61,7 @@ public class Email {
 			System.out.println("Erro 1");
 		}
 	}
-	
+
 	/**
 	 * Função que cria as condições para depois se enviar emails
 	 * 
@@ -94,58 +94,59 @@ public class Email {
 			System.out.println("Erro");
 		}
 	}
-	
-/**
- * Função que que representa a Timeline do email
- * 
- * @param t - Lista que representa a interface gráfica onde vão aparecer os emails
- */
 
-	public void caixaChegada(DefaultListModel<String> t) {
+	/**
+	 * Função que que representa a Timeline do email
+	 * 
+	 * @param t - Lista que representa a interface gráfica onde vão aparecer os emails
+	 */
+
+	public void caixaChegada(DefaultListModel<Mensagem> t) {
 		try {
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
 			Message messages[] = inbox.getMessages();
-			System.out.println("o tamanho Ã©: " + messages.length);
+			System.out.println("o tamanho é: " + messages.length);
 			for(Message message : messages) { 
-				t.addElement(message.getSubject());
-				long date = message.getReceivedDate().getTime();
-				java.util.Date dateTime=new java.util.Date((long)date*1000);
-				String datum = String.valueOf(dateTime);
-				t.addElement(datum);
-				t.addElement("-------------------------------------");
+				Mensagem m = new Mensagem("M", message.getSubject(), message.getReceivedDate());
+				t.addElement(m);
+				//				long date = message.getReceivedDate().getTime();
+				//				java.util.Date dateTime=new java.util.Date((long)date*1000);
+				//				String datum = String.valueOf(dateTime);
+				//				t.addElement(datum);
+				//				t.addElement("-------------------------------------");
 			}
 			System.out.println(messages.length);
 		} catch (Exception e) {
 			System.out.println("Erro 2");
 		}
 	}
-	
-/**
- * Função que permite fazer a pesquisa de um email através de uma palavra, onde são apresentados todos os emails que 
- * contenham essa palavra
- * 
- * @param t - lista de emails onde se procura a procura
- * @param p - palavra a pesquisar
- * 
- * @author Brogueira
- */
-	
-	public void procurarpalavra(DefaultListModel<String> t,String p) {
+
+	/**
+	 * Função que permite fazer a pesquisa de um email através de uma palavra, onde são apresentados todos os emails que 
+	 * contenham essa palavra
+	 * 
+	 * @param t - lista de emails onde se procura a procura
+	 * @param p - palavra a pesquisar
+	 * 
+	 * @author Brogueira
+	 */
+
+	public void procurarpalavra(DefaultListModel<Mensagem> t,String p) {
 		try {
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
 			Message messages[] = inbox.getMessages();
-			System.out.println("o tamanho Ã©: " + messages.length);
+			System.out.println("o tamanho é: " + messages.length);
 			for(Message message : messages) { 
 				System.out.println(message.getSubject());
 				if (message.getSubject().contains(p)) {
-				t.addElement(message.getSubject());
-				long date = message.getReceivedDate().getTime();
-				java.util.Date dateTime=new java.util.Date((long)date*1000);
-				String datum = String.valueOf(dateTime);
-				t.addElement(datum);
-				t.addElement("-------------------------------------");
+					t.addElement(new Mensagem("M", message.getSubject(), message.getReceivedDate()));
+//					long date = message.getReceivedDate().getTime();
+//					java.util.Date dateTime=new java.util.Date((long)date*1000);
+//					String datum = String.valueOf(dateTime);
+					//				t.addElement(datum);
+					//				t.addElement("-------------------------------------");
 				}
 			}
 			System.out.println(messages.length);
@@ -153,17 +154,18 @@ public class Email {
 			System.out.println("Erro 2");
 		}
 	}
-	
-/**
- * Função que permita enviar um email.
- * 
- * @param to - onde se indica quem é o destinatário do email
- * @param messageText - onde se introduz o conteúdo do email 
- * @param subject - onde se indica o assunto do email
- * 
- * @author Brogueira
- */
-	
+
+
+	/**
+	 * Função que permita enviar um email.
+	 * 
+	 * @param to - onde se indica quem é o destinatário do email
+	 * @param messageText - onde se introduz o conteúdo do email 
+	 * @param subject - onde se indica o assunto do email
+	 * 
+	 * @author Brogueira
+	 */
+
 	public void sendMail(String to, String messageText, String subject) {
 		try {
 			Session mailSession = Session.getDefaultInstance(propsSender, null);

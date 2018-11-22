@@ -14,6 +14,7 @@ import com.restfb.types.Post;
 import com.restfb.types.User;
 
 import MainWork.Interfacegrafica;
+import MainWork.Mensagem;
 import MainWork.SignIN;
 
 /**
@@ -59,7 +60,7 @@ public class Facebook {
 	 * 
 	 * @author Brogueira
 	 */
-	public void search(String p, DefaultListModel<String> t) {
+	public void search(String p, DefaultListModel<Mensagem> t) {
 	
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");
@@ -69,21 +70,22 @@ public class Facebook {
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				if (aPost.getMessage() != null && aPost.getMessage().contains(p)) {
-					t.addElement("---- Post "+ counter5 + " ----");
-					t.addElement("Id: "+"fb.com/"+aPost.getId());
-					t.addElement("Message: "+aPost.getMessage());
-					t.addElement("---- Post "+ counter5 + " ----");
-					t.addElement("Created: "+aPost.getCreatedTime());
-					System.out.println("---- Post "+ counter5 + " ----");
-					System.out.println("Id: "+"fb.com/"+aPost.getId());
-					System.out.println("Message: "+aPost.getMessage());
-					System.out.println("Created: "+aPost.getCreatedTime());
+//					t.addElement("---- Post "+ counter5 + " ----");
+//					t.addElement("Id: "+"fb.com/"+aPost.getId());
+//					t.addElement("Message: "+aPost.getMessage());
+//					t.addElement("---- Post "+ counter5 + " ----");
+//					t.addElement("Created: "+aPost.getCreatedTime());
+//					System.out.println("---- Post "+ counter5 + " ----");
+//					System.out.println("Id: "+"fb.com/"+aPost.getId());
+//					System.out.println("Message: "+aPost.getMessage());
+//					System.out.println("Created: "+aPost.getCreatedTime());
+					t.addElement(new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime()));
 					counter5++;
 				}
 				counterTotal++;
 			}
 		}
-		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
+//		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
 		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
 		
 	
@@ -94,7 +96,7 @@ public class Facebook {
 	 * @param t- Lista da interface gráfica onde aperecem todos os posts~
 	 * @author Brogueira
 	 */
-	public void timeline( DefaultListModel<String> t) {
+	public void timeline( DefaultListModel<Mensagem> t) {
 		
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
 		System.out.println("\nPosts:");
@@ -103,20 +105,22 @@ public class Facebook {
 
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
-					t.addElement("---- Post "+ counter5 + " ----");
-					t.addElement("Id: "+"fb.com/"+aPost.getId());
-					t.addElement("Message: "+aPost.getMessage());
-					t.addElement("---- Post "+ counter5 + " ----");
-					t.addElement("Created: "+aPost.getCreatedTime());
-					System.out.println("---- Post "+ counter5 + " ----");
-					System.out.println("Id: "+"fb.com/"+aPost.getId());
-					System.out.println("Message: "+aPost.getMessage());
-					System.out.println("Created: "+aPost.getCreatedTime());
+					Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
+//					t.addElement("---- Post "+ counter5 + " ----");
+//					t.addElement("Id: "+"fb.com/"+aPost.getId());
+//					t.addElement("Message: "+aPost.getMessage());
+//					t.addElement("---- Post "+ counter5 + " ----");
+//					t.addElement("Created: "+aPost.getCreatedTime());
+					t.addElement(m);
+//					System.out.println("---- Post "+ counter5 + " ----");
+//					System.out.println("Id: "+"fb.com/"+aPost.getId());
+//					System.out.println("Message: "+aPost.getMessage());
+//					System.out.println("Created: "+aPost.getCreatedTime());
 					counter5++;	
 			}
 		}
 		counterTotal++;
-		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
+//		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
 		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
 		
 	

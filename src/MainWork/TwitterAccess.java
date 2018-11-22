@@ -56,25 +56,29 @@ public final class TwitterAccess  {
 	 * @author Brogueira
 	 */
 
-	public void getTimeline(DefaultListModel<String> t){
+	public void getTimeline(DefaultListModel<Mensagem> t){
 		autenticacao();
 		try{
-			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
+//			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
 			int counter=0;
 			int counterTotal = 0;
 			for (Status status : timelineStatuses) {
 				if (status.getUser().getName() != null) {
-					t.addElement(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
-					t.addElement("____________________________________________________________");
+//					t.addElement(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
+					Mensagem m = new Mensagem("T", status.getText(), status.getUser().getName(), status.getCreatedAt());
+					t.addElement(m);
+//					t.addElement("____________________________________________________________");
 					counter++;
 				}
 				counterTotal++;
 			}
 
 
-			t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
+//			t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
 		} catch (Exception e) { 
-			t.addElement(e.getMessage() + " - deu erro"); }
+			System.out.println("erro");
+		}
+//			t.addElement(e.getMessage() + " - deu erro"); }
 	}
 
 	/**
@@ -104,17 +108,19 @@ public final class TwitterAccess  {
 	 *@author Brogueira
 	 */
 	
-	public void searchTweet(String palavra,DefaultListModel<String> t) {
+	public void searchTweet(String palavra,DefaultListModel<Mensagem> t) {
 		int counter=0;
 		int counterTotal=0;
 		for(Status status : timelineStatuses) {
 			if(status.getText().contains(palavra)) {
-				t.addElement("@" + status.getUser().getScreenName() + ":" + status.getText());
+//				t.addElement("@" + status.getUser().getScreenName() + ":" + status.getText());
+				Mensagem m = new Mensagem("T", status.getText(), status.getUser().getScreenName(), status.getCreatedAt());
+				t.addElement(m);
 				counter++;
 			}
 			counterTotal++;
 		}
-		t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
+//		t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
 	}
 	
 }
