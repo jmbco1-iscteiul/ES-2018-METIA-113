@@ -20,7 +20,7 @@ public class Remove {
 		XPath xpath = xpathFactory.newXPath();
 		XPathExpression expr = xpath.compile("/XML/Service/@*");
 
-		Node node = doc.getDocumentElement().getFirstChild();
+		Node node = doc.getDocumentElement().getFirstChild(); 
 
 		while (node != null) {
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
