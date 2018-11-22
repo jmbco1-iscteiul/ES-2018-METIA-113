@@ -1,6 +1,7 @@
 package MainWork;
 
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Properties;
 
 import javax.mail.Folder;
@@ -23,14 +24,12 @@ public class Email {
 	private Properties propsSender;
 	private Store store;
 
-	private String mail;
-	private String pass;
+	private String mail="es.pos.amigos@hotmail.com";
+	private String pass="afogaoganso69";
 
 
 	public Email() {
-		mail = JOptionPane.showInputDialog("mail");
-		pass = JOptionPane.showInputDialog("pass");
-
+	
 		iniSessaoReader(mail, pass);
 		iniSessaoSender();
 	}
@@ -95,6 +94,30 @@ public class Email {
 			System.out.println("Erro 2");
 		}
 	}
+	
+	public void procurarpalavra(DefaultListModel<String> t,String p) {
+		try {
+			Folder inbox = store.getFolder("Inbox");
+			inbox.open(Folder.READ_ONLY);
+			Message messages[] = inbox.getMessages();
+			System.out.println("o tamanho Ã©: " + messages.length);
+			for(Message message : messages) { 
+				System.out.println(message.getSubject());
+				if (message.getSubject().contains(p)) {
+				t.addElement(message.getSubject());
+				long date = message.getReceivedDate().getTime();
+				java.util.Date dateTime=new java.util.Date((long)date*1000);
+				String datum = String.valueOf(dateTime);
+				t.addElement(datum);
+				t.addElement("-------------------------------------");
+				}
+			}
+			System.out.println(messages.length);
+		} catch (Exception e) {
+			System.out.println("Erro 2");
+		}
+	}
+	
 	
 	public void sendMail(String to, String messageText, String subject) {
 		try {

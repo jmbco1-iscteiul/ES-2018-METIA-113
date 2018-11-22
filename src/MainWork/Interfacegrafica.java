@@ -37,7 +37,8 @@ public class Interfacegrafica{
 	private JTextField textface = new JTextField();
 	private JTextField textmail = new JTextField();
 	private JTextField texttwitter = new JTextField();
-	private JTextField textdestinatario = new JTextField();
+	private JTextField textde = new JTextField();
+	private JTextField textpara = new JTextField();
 	private JButton bface = new JButton("TimeLine");
 	private JButton bmail = new JButton("TimeLine");
 	private JButton btwitter = new JButton("TimeLine");
@@ -85,7 +86,7 @@ public class Interfacegrafica{
  */
 	public void open() {
 
-		frame.setSize(1000, 1050);
+		frame.setSize(1000, 900);
 		frame.setVisible(true);
 
 	}
@@ -117,7 +118,8 @@ public class Interfacegrafica{
 		JPanel panel3 = new JPanel();
 		JPanel panel4 = new JPanel();
 		JPanel panel6 = new JPanel();
-		
+		JPanel panel20 = new JPanel();
+		JPanel panel21 = new JPanel();
 		Color color= new Color(128,128,255);
 		
 		list.setFont(new Font("SansSerif", Font.BOLD, 15));
@@ -130,7 +132,6 @@ public class Interfacegrafica{
 		
 		area3.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area3.setForeground(color);
-		
 		panelp.add(area3, BorderLayout.CENTER);
 		panelp.add(label, BorderLayout.EAST);
 
@@ -138,9 +139,10 @@ public class Interfacegrafica{
 		JTextArea area1 = new JTextArea();
 		area1.setText("Filtros:");
 		area1.setEditable(false);
-		
 		area1.setFont(new Font("SansSerif", Font.BOLD, 40));
 		area1.setForeground(color);
+		Dimension d10= new Dimension(490,30);
+		area1.setPreferredSize(d10);
 		panel13.add(area1);
 
 
@@ -164,8 +166,8 @@ public class Interfacegrafica{
 		
 		panel13.add(area);
 		panel19.add(panel13);
-		
-		panel1.add(panel13);
+		panel20.add(panel13);
+//		panel1.add(panel13);
 		bface.setFont(new Font("SansSerif", Font.BOLD, 20));
 		bmail.setFont(new Font("SansSerif", Font.BOLD, 20));
 		btwitter.setFont(new Font("SansSerif", Font.BOLD, 20));
@@ -187,7 +189,6 @@ public class Interfacegrafica{
 		textmail.setPreferredSize(d6);
 		texttwitter.setPreferredSize(d6);
 		textface.setPreferredSize(d6);
-		textdestinatario.setPreferredSize(d6);
 		
 
 		JTextArea face = new JTextArea();
@@ -235,27 +236,39 @@ public class Interfacegrafica{
 		panel6.add(bescrevermail, BorderLayout.EAST);
 		panel17.add(panel6);
 		
-		Dimension d7= new Dimension(200,15);
-		textdestinatario.setPreferredSize(d7);
+		Dimension d7= new Dimension(200,30);
+		textpara.setPreferredSize(d7);
+		textde.setPreferredSize(d7);
 		
 		JTextArea area2 = new JTextArea();
-		area2.setText("Destinatário:");
+		area2.setText("Para:");
 		area2.setEditable(false);
-		
 		area2.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area2.setForeground(color);
 		
+		JTextArea area4 = new JTextArea();
+		area4.setText("De:");
+		area4.setEditable(false);
+		area4.setFont(new Font("SansSerif", Font.BOLD, 15));
+		area4.setForeground(color);
+		
+		panel19.add(area4, BorderLayout.CENTER);
+		panel19.add(textde, BorderLayout.EAST);
+		
 		panel19.add(area2, BorderLayout.CENTER);
-		panel19.add(textdestinatario, BorderLayout.EAST);
+		panel19.add(textpara, BorderLayout.EAST);
+		
 
 		panel17.add(panel19);
 		panel16.add(panel17);
 		
 		panel18.add(panel16);
-		panel1.add(panel18);
-
+		
+		panel21.add(panel20);
+		panel21.add(panel18);
+		
 		panelp.add(search);
-		panelp1.add(panel1);
+		panelp1.add(panel21);
 		//				panelp2.add(panel6);
 
 		JScrollPane scrollpane1 = new JScrollPane(list);
@@ -266,7 +279,7 @@ public class Interfacegrafica{
 	
 
 		frame.add(panelp,BorderLayout.NORTH);
-		frame.add(panelp1,BorderLayout.SOUTH);
+		frame.add(panelp1);
 
 	}
 //
@@ -333,7 +346,7 @@ public class Interfacegrafica{
 				model.clear();
 				String procurar=textmail.getText();
 				System.out.println(procurar);
-				bda.getMail().caixaChegada(model);
+				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textde.getText());
 			}
 		});
   }
@@ -366,7 +379,7 @@ public class Interfacegrafica{
 				model.clear();
 				String procurar=label.getText();
 				System.out.println(procurar);
-				bda.getMail().caixaChegada(model);
+				bda.getMail().procurarpalavra(model,procurar);
 			}
 		});
   }
