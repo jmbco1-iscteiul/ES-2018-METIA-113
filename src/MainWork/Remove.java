@@ -10,6 +10,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * Classe que tem como função remover dados do ficheiro XML
+ * 
+ * @author Brogueira
+ *
+ */
 public class Remove {
 	
 	public Remove (Document doc, String apagar) throws Exception{

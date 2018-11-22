@@ -40,7 +40,15 @@ public class Email {
 		iniSessaoReader(mail, pass);
 		iniSessaoSender();
 	}
-
+/**
+ * Função que faz a autenticação do utilizador e que permite receber assim receber emails
+ * 
+ * @param mail- email do utilizador
+ * @param pass- password do utilizador
+ * 
+ * @author Brogueira
+ */
+	
 	public void iniSessaoReader(String mail, String pass) {
 		propsReader = System.getProperties();
 		propsReader.setProperty("mail.store.protocol", "imaps");
@@ -54,6 +62,11 @@ public class Email {
 		}
 	}
 	
+	/**
+	 * Função que cria as condições para depois se enviar emails
+	 * 
+	 * @author Brogueira
+	 */
 	public void iniSessaoSender() {
 
 		propsSender = System.getProperties();

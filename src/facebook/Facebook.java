@@ -89,6 +89,11 @@ public class Facebook {
 	
 	}
 	
+	/**
+	 * Função que permite obter a timeline do Facebook do utilizador
+	 * @param t- Lista da interface gráfica onde aperecem todos os posts~
+	 * @author Brogueira
+	 */
 	public void timeline( DefaultListModel<String> t) {
 		
 		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
@@ -116,10 +121,16 @@ public class Facebook {
 		
 	
 	}
+	
 	public SignIN getClientFacebook() {
 		return clientFacebook;
 	}
 	
+	/**
+	 * Função que permite fazer posts no facebook
+	 * @param post- conteúdo do post
+	 * @author Brogueira
+	 */
 	
 	public void makePost(String post) {
 		fbClient.publish(groupID + "/feed", GraphResponse.class, Parameter.with("message", post));

@@ -13,13 +13,25 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * Classe que impleta a funcionalidade Twitter onde se pode aceder a este através da autenticção,  
+ * consultar tweets e fazer pesquisas destes mesmos através de uma String pretendida.
+ * 
+ * @author Brogueira
+ *
+ */
+
 public final class TwitterAccess  {
 
 	Twitter twitter = TwitterFactory.getSingleton();
 	List<Status> timelineStatuses = new ArrayList<Status>();
 
 
-
+/**
+ * Função que faz a autenticação no Twitter com os tokens respetivos
+ * 
+ * @author Brogueira
+ */
 	public void autenticacao () {	
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -35,7 +47,14 @@ public final class TwitterAccess  {
 			System.out.println(e.getMessage()); 
 		}
 	}
-
+	
+	/**
+	 * Função que permite obter a timeline do Twitter do utilizador
+	 * 
+	 * @param t- Lista da interface gráfica onde aperecem todos os tweets
+	 * 
+	 * @author Brogueira
+	 */
 
 	public void getTimeline(DefaultListModel<String> t){
 		autenticacao();
@@ -58,6 +77,14 @@ public final class TwitterAccess  {
 			t.addElement(e.getMessage() + " - deu erro"); }
 	}
 
+	/**
+	 * Função que permite que sejam publicados novos tweets
+	 * 
+	 * @param estado- Conteúdo do novo tweet
+	 * 
+	 * @author Brogueira
+	 */
+	
 	public void updateStatus(String estado) {
 		Status status = null;
 		try {
@@ -68,6 +95,15 @@ public final class TwitterAccess  {
 		System.out.println("Successfully updated the status to [" + status.getText() + "].");
 	}
 
+	/**
+	 * Função que permite pesquisar tweets através de uma String específica
+	 * 
+	 * @param palavra- palavra a pesquisas tweets
+	 * @param t- Lista da interface gráfica onde aperecem todos os tweets
+	 *
+	 *@author Brogueira
+	 */
+	
 	public void searchTweet(String palavra,DefaultListModel<String> t) {
 		int counter=0;
 		int counterTotal=0;

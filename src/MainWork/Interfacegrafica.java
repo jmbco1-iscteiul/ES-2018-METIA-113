@@ -78,7 +78,7 @@ public class Interfacegrafica{
 	}
 /**
  * 
- * Fun��o que abre a janela principal e lhe o tamanha pretendido
+ * Função que abre a janela principal e lhe o tamanha pretendido
  * 
  * @author Brogueira
  * 
@@ -90,12 +90,10 @@ public class Interfacegrafica{
 
 	}
 /**
- * 
- * Fun��o que cria a disposi��o dos bot�es, da barra e da caixa onde se representa os resultados das pesquisas.
- * � criado um Layout principal e posteriormente os Layouts secund�rios.
- * 
- * @author Brogueira
- * 
+ * Função que cria a disposição dos botões, da barra e da caixa onde se representa os resultados das pesquisas.
+ *  Cria-se um Layout principal e posteriormente os Layouts secundários.
+ *  
+ *  @author Brogueira
  */
 	private void addFrameContent() {
 
@@ -271,13 +269,12 @@ public class Interfacegrafica{
 		frame.add(panelp1);
 
 	}
-//
-//	/**
-//	 * Fun��o onde que faz a pesquisa de uma palava inserida, na barra de pesquisa, clicando bot�o Facebook.
-//	 * Aqui faz-se a pesquisa de de todos os estados onde se encontre a palavra pretendida 
-//	 * @author Brogueira
-//	 */
 
+	/**
+	 * Função que vai buscar a timeline do facebook e a representa na janela de visualização
+	 * 
+	 * @author Brogueira
+	 */
 	
 	public void getFaceTimeLine() {
 		bface.addActionListener(new ActionListener() {
@@ -288,6 +285,12 @@ public class Interfacegrafica{
 		});
 	}
 	
+/**
+ * Função que vai buscar a timeline do twitter e a representa na janela de visualização
+ * 
+ * @author Brogueira
+ */
+	
 	public void getTwitterTimeLine() {
 		btwitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -296,6 +299,10 @@ public class Interfacegrafica{
 			}
 		});
 	}
+	
+	/**
+	 * Função que vai buscar a timeline do email e a representa na janela de visualização
+	 */
 	
 	public void getEmailTimeLine() {
 		bmail.addActionListener(new ActionListener() {
@@ -306,6 +313,11 @@ public class Interfacegrafica{
 		});
 	}
 
+	/**
+	 * Função que permite inserir o conteúdo na interface gráfica para fazer posts no facebook
+	 * 
+	 *  @author Brogueira
+	 */
 
   public void escreverPostFace() {
 	  bescreverpostf.addActionListener(new ActionListener() {
@@ -319,6 +331,12 @@ public class Interfacegrafica{
 		});
   }
   
+  /**
+   * Função que permite inserir o conteúdo na interface gráfica para fazer tweets no Twitter
+   * 
+   * @author Brogueira
+   */
+  
   public void escreverPostTwitter() {
 	  bescreverpost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -331,6 +349,12 @@ public class Interfacegrafica{
 		});
   }
   
+  /**
+   * Função que permite inserir o conteúdo na interface gráfica para fazer escrever novos emails
+   * 
+   * @author Brogueira
+   */
+  
   public void escreverMail() {
 	  bescrevermail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -341,6 +365,11 @@ public class Interfacegrafica{
 		});
   }
   
+  /**
+   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os posts com essa palavra
+   * 
+   * @author Brogueira
+   */
   public void procurarpalavraFace() {
 	  bfaceprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -352,6 +381,12 @@ public class Interfacegrafica{
 		});
   }
   
+  /**
+   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os tweets com essa palavra
+   * 
+   * @author Brogueira
+   */
+  
   public void procurarpalavraTwitter() {
 	  btwitterprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -362,6 +397,12 @@ public class Interfacegrafica{
 			}
 		});
   }
+  
+  /**
+   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os emails com essa palavra
+   * 
+   * @author Brogueira
+   */
   
   public void procurarpalavraMail() {
 	  bmailprocurar.addActionListener(new ActionListener() {
