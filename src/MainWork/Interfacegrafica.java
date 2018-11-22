@@ -12,14 +12,13 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-
-import facebook.Facebook;
 
 /**
  * Interface gráfica principal desenvolvida, com todos os botões descritos para Facebook, Twitter e E-mail. Também
@@ -126,9 +125,8 @@ public class Interfacegrafica{
 		
 		Dimension d1= new Dimension(500,30);
 		label.setPreferredSize(d1);
-		JTextArea area3 = new JTextArea();
+		JLabel area3 = new JLabel();
 		area3.setText("Escrever palavra que desejar procurar:");
-		area3.setEditable(false);
 		
 		area3.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area3.setForeground(color);
@@ -136,9 +134,8 @@ public class Interfacegrafica{
 		panelp.add(label, BorderLayout.EAST);
 
 
-		JTextArea area1 = new JTextArea();
+		JLabel area1 = new JLabel();
 		area1.setText("Filtros:");
-		area1.setEditable(false);
 		area1.setFont(new Font("SansSerif", Font.BOLD, 30));
 		area1.setForeground(color);
 		Dimension d10= new Dimension(490,30);
@@ -158,9 +155,8 @@ public class Interfacegrafica{
 
 		panel13.add(panel1);
 
-		JTextArea area = new JTextArea();
+		JLabel area = new JLabel();
 		area.setText("Plataformas Online:");
-		area.setEditable(false);
 		area.setFont(new Font("SansSerif", Font.BOLD, 30));
 		area.setForeground(color);
 		
@@ -191,9 +187,8 @@ public class Interfacegrafica{
 		textface.setPreferredSize(d6);
 		
 
-		JTextArea face = new JTextArea();
+		JLabel face = new JLabel();
 		face.setText("FACEBOOK:");
-		face.setEditable(false);
 		face.setFont(new Font("SansSerif", Font.BOLD, 20));
 		face.setForeground(color);
 		panel2.add(face);
@@ -207,9 +202,8 @@ public class Interfacegrafica{
 		panel16.add(panel14);
 
 	
-		JTextArea twitter = new JTextArea();
+		JLabel twitter = new JLabel();
 		twitter.setText("TWITTER:");
-		twitter.setEditable(false);
 		twitter.setFont(new Font("SansSerif", Font.BOLD, 20));
 		twitter.setForeground(color);
 		panel3.add(twitter);
@@ -222,9 +216,8 @@ public class Interfacegrafica{
 		panel16.add(panel3);
 		panel16.add(panel15);
 
-		JTextArea mail = new JTextArea();
+		JLabel mail = new JLabel();
 		mail.setText("E-MAIL:");
-		mail.setEditable(false);
 		mail.setFont(new Font("SansSerif", Font.BOLD, 20));
 		mail.setForeground(color);
 		panel4.add(mail);
@@ -320,7 +313,8 @@ public class Interfacegrafica{
 				model.clear();
 				String procurar=textface.getText();
 				System.out.println(procurar);
-				bda.getFacebook();
+				bda.getFacebook().makePost(procurar);
+				textface.setText("");
 			}
 		});
   }
@@ -332,6 +326,7 @@ public class Interfacegrafica{
 				String procurar=texttwitter.getText();
 				System.out.println(procurar);
 				bda.getTwitter().updateStatus(procurar);
+				texttwitter.setText("");
 			}
 		});
   }
@@ -340,9 +335,8 @@ public class Interfacegrafica{
 	  bescrevermail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				String procurar=textmail.getText();
-				System.out.println(procurar);
 				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textassunto.getText());
+				textmail.setText("");
 			}
 		});
   }

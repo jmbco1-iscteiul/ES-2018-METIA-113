@@ -8,6 +8,8 @@ import javax.swing.JTextArea;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.types.GraphResponse;
 import com.restfb.types.Post;
 import com.restfb.types.User;
 
@@ -21,10 +23,14 @@ import MainWork.SignIN;
  * @author Brogueira
  *
  */
+
+
 public class Facebook {
 	private String token;
 	public SignIN clientFacebook;
 	public FacebookClient fbClient;
+	
+	private final String groupID = "2168682303197759";
 	
 	public Facebook(String token) {
 		this.token=token;
@@ -113,6 +119,13 @@ public class Facebook {
 	}
 	public SignIN getClientFacebook() {
 		return clientFacebook;
+	}
+	
+	
+	public void makePost(String post) {
+		fbClient.publish(groupID + "/feed", GraphResponse.class, Parameter.with("message", post));
+		System.out.println(post);
+
 	}
 	
 	
