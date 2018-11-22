@@ -37,7 +37,7 @@ public class Interfacegrafica{
 	private JTextField textface = new JTextField();
 	private JTextField textmail = new JTextField();
 	private JTextField texttwitter = new JTextField();
-	private JTextField textde = new JTextField();
+	private JTextField textassunto = new JTextField();
 	private JTextField textpara = new JTextField();
 	private JButton bface = new JButton("TimeLine");
 	private JButton bmail = new JButton("TimeLine");
@@ -108,8 +108,8 @@ public class Interfacegrafica{
 		JPanel panel14= new JPanel();
 		JPanel panel17= new JPanel(new GridLayout(2,1));
 		JPanel panel18= new JPanel();
-		JPanel panel1= new JPanel(new GridLayout(2,1));
-		JPanel panel13= new JPanel(new GridLayout(5,1));
+		JPanel panel1= new JPanel();
+		JPanel panel13= new JPanel(new GridLayout(3,1));
 		JPanel panel19= new JPanel();
 		JPanel panel7 = new JPanel();
 		JPanel panel8 = new JPanel();
@@ -124,7 +124,7 @@ public class Interfacegrafica{
 		
 		list.setFont(new Font("SansSerif", Font.BOLD, 15));
 		
-		Dimension d1= new Dimension(500,20);
+		Dimension d1= new Dimension(500,30);
 		label.setPreferredSize(d1);
 		JTextArea area3 = new JTextArea();
 		area3.setText("Escrever palavra que desejar procurar:");
@@ -148,15 +148,15 @@ public class Interfacegrafica{
 
 		
 		panel7.add(borigem);
-		panel13.add(panel7);
+		panel1.add(panel7);
 
 		panel8.add(bkeyword);
-		panel13.add(panel8);
+		panel1.add(panel8);
 
 		panel9.add(bperiodoinfo);
-		panel13.add(panel9);
+		panel1.add(panel9);
 
-		
+		panel13.add(panel1);
 
 		JTextArea area = new JTextArea();
 		area.setText("Plataformas Online:");
@@ -185,7 +185,7 @@ public class Interfacegrafica{
 		bmailprocurar.setPreferredSize(d8);
 		btwitterprocurar.setPreferredSize(d8);
 		
-		Dimension d6= new Dimension(300,30);
+		Dimension d6= new Dimension(365,30);
 		textmail.setPreferredSize(d6);
 		texttwitter.setPreferredSize(d6);
 		textface.setPreferredSize(d6);
@@ -236,9 +236,9 @@ public class Interfacegrafica{
 		panel6.add(bescrevermail, BorderLayout.EAST);
 		panel17.add(panel6);
 		
-		Dimension d7= new Dimension(200,30);
+		Dimension d7= new Dimension(190,30);
 		textpara.setPreferredSize(d7);
-		textde.setPreferredSize(d7);
+		textassunto.setPreferredSize(d7);
 		
 		JTextArea area2 = new JTextArea();
 		area2.setText("Para:");
@@ -247,13 +247,13 @@ public class Interfacegrafica{
 		area2.setForeground(color);
 		
 		JTextArea area4 = new JTextArea();
-		area4.setText("De:");
+		area4.setText("Tema:");
 		area4.setEditable(false);
 		area4.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area4.setForeground(color);
 		
 		panel19.add(area4, BorderLayout.CENTER);
-		panel19.add(textde, BorderLayout.EAST);
+		panel19.add(textassunto, BorderLayout.EAST);
 		
 		panel19.add(area2, BorderLayout.CENTER);
 		panel19.add(textpara, BorderLayout.EAST);
@@ -273,10 +273,6 @@ public class Interfacegrafica{
 
 		JScrollPane scrollpane1 = new JScrollPane(list);
 		panelp1.add(scrollpane1);
-
-
-
-	
 
 		frame.add(panelp,BorderLayout.NORTH);
 		frame.add(panelp1);
@@ -346,7 +342,7 @@ public class Interfacegrafica{
 				model.clear();
 				String procurar=textmail.getText();
 				System.out.println(procurar);
-				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textde.getText());
+				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textassunto.getText());
 			}
 		});
   }
