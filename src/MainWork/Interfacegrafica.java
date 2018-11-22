@@ -139,7 +139,7 @@ public class Interfacegrafica{
 		JTextArea area1 = new JTextArea();
 		area1.setText("Filtros:");
 		area1.setEditable(false);
-		area1.setFont(new Font("SansSerif", Font.BOLD, 40));
+		area1.setFont(new Font("SansSerif", Font.BOLD, 30));
 		area1.setForeground(color);
 		Dimension d10= new Dimension(490,30);
 		area1.setPreferredSize(d10);
@@ -161,7 +161,7 @@ public class Interfacegrafica{
 		JTextArea area = new JTextArea();
 		area.setText("Plataformas Online:");
 		area.setEditable(false);
-		area.setFont(new Font("SansSerif", Font.BOLD, 45));
+		area.setFont(new Font("SansSerif", Font.BOLD, 30));
 		area.setForeground(color);
 		
 		panel13.add(area);
