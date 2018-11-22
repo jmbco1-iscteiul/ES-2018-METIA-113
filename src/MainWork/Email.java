@@ -14,6 +14,13 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * Classe que representa a funcionalidade Email, onde se acede fazendo a autenticação, onde se pode consultar e enviar emails
+ * e ainda onde podemos fazer a pesquisa de um email através de uma palavra pretendida.
+ * 
+ * @author Brogueira
+ *
+ */
 
 public class Email {
 
@@ -74,6 +81,12 @@ public class Email {
 			System.out.println("Erro");
 		}
 	}
+	
+/**
+ * Função que que representa a Timeline do email
+ * 
+ * @param t - Lista que representa a interface gráfica onde vão aparecer os emails
+ */
 
 	public void caixaChegada(DefaultListModel<String> t) {
 		try {
@@ -94,6 +107,16 @@ public class Email {
 			System.out.println("Erro 2");
 		}
 	}
+	
+/**
+ * Função que permite fazer a pesquisa de um email através de uma palavra, onde são apresentados todos os emails que 
+ * contenham essa palavra
+ * 
+ * @param t - lista de emails onde se procura a procura
+ * @param p - palavra a pesquisar
+ * 
+ * @author Brogueira
+ */
 	
 	public void procurarpalavra(DefaultListModel<String> t,String p) {
 		try {
@@ -118,6 +141,15 @@ public class Email {
 		}
 	}
 	
+/**
+ * Função que permita enviar um email.
+ * 
+ * @param to - onde se indica quem é o destinatário do email
+ * @param messageText - onde se introduz o conteúdo do email 
+ * @param subject - onde se indica o assunto do email
+ * 
+ * @author Brogueira
+ */
 	
 	public void sendMail(String to, String messageText, String subject) {
 		try {

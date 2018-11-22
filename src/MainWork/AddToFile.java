@@ -9,7 +9,8 @@ import org.w3c.dom.NodeList;
 
 /**
  * 
- * Classe que tem como objetivo adicionar todos os atributos pretendidos(Token, Account e Password) ao ficheiro XML.
+ * Classe que tem como objetivo adicionar todos os atributos pretendidos(Token, Account e Password) ao ficheiro XML 
+ * tendo em atenção que o mesmo utilizador não se regista duas vezes
  * 
  * @author Brogueira
  *
@@ -25,12 +26,6 @@ public class AddToFile {
 		newElement1.setAttribute("Token", client.getToken());
 		newElement1.setAttribute("Account", client.getMail());
 		newElement1.setAttribute("Password", client.getPass());
-
-
-		// Add new nodes to XML document (root element)
-//		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());         
-//		Node n = doc.getDocumentElement();
-//		n.appendChild(newElement1);
 		
 
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName()); 
