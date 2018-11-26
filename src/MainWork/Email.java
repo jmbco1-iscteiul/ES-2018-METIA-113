@@ -76,24 +76,25 @@ public class Email {
 		propsSender.put("mail.smtp.auth", "true");
 		propsSender.put("mail.smtp.starttls.required", "true");
 	}
+	
 
-	public void caixaTemp(int dias) {
-		try {
-			Folder inbox = store.getFolder("Inbox");
-			inbox.open(Folder.READ_ONLY);
-			Message messages[] = inbox.getMessages();
-			System.out.println(messages.length);
-			for(Message message : messages) { 
-				if(message.getReceivedDate().getTime() > System.currentTimeMillis()-(dias*dayInMilis)) {
-					System.out.println(message.getSubject());
-					System.out.println(message.getReceivedDate());
-				}
-			}	
-
-		} catch (Exception e) {
-			System.out.println("Erro");
-		}
-	}
+//	public void caixaTemp(int dias) {
+//		try {
+//			Folder inbox = store.getFolder("Inbox");
+//			inbox.open(Folder.READ_ONLY);
+//			Message messages[] = inbox.getMessages();
+//			System.out.println(messages.length);
+//			for(Message message : messages) { 
+//				if(message.getReceivedDate().getTime() > System.currentTimeMillis()-(dias*dayInMilis)) {
+//					System.out.println(message.getSubject());
+//					System.out.println(message.getReceivedDate());
+//				}
+//			}	
+//
+//		} catch (Exception e) {
+//			System.out.println("Erro");
+//		}
+//	}
 
 	/**
 	 * Função que que representa a Timeline do email

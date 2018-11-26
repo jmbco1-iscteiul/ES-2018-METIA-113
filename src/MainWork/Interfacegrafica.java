@@ -81,7 +81,7 @@ public class Interfacegrafica{
 		procurarpalavraTwitter();
 		procurarpalavraMail();	
 		
-		
+		selectMail();
 	}
 /**
  * 
@@ -429,7 +429,7 @@ public class Interfacegrafica{
 		public void valueChanged(ListSelectionEvent arg0) {
 			Mensagem m = list.getSelectedValue();
 			try {
-				System.out.println(m.toString());
+				System.out.println(m.toString()+" sad");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
