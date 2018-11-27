@@ -70,6 +70,7 @@ public class Facebook {
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				if (aPost.getMessage() != null && aPost.getMessage().contains(p)) {
+					System.out.println("encontrei 1");
 //					t.addElement("---- Post "+ counter5 + " ----");
 //					t.addElement("Id: "+"fb.com/"+aPost.getId());
 //					t.addElement("Message: "+aPost.getMessage());
@@ -106,6 +107,7 @@ public class Facebook {
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 					Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
+					System.out.println(m.toString());
 //					t.addElement("---- Post "+ counter5 + " ----");
 //					t.addElement("Id: "+"fb.com/"+aPost.getId());
 //					t.addElement("Message: "+aPost.getMessage());
