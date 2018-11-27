@@ -86,8 +86,8 @@ package MainWork;
 		}
 		
 		public static void main(String [] args) {
-			InterfaceInicio n= new InterfaceInicio();
-			n.open();
+			InterfaceInicio no= new InterfaceInicio();
+			no.open();
 			
 			
 			
