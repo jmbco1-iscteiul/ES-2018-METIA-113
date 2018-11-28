@@ -8,9 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -20,7 +22,7 @@ public class InterfaceLogin {
 	private JButton voltar= new JButton("Voltar ao Início");
 	private JButton entrar= new JButton("ENTRAR");
 	private JTextField escreve1 = new JTextField();
-	private JTextField escreve2 = new JTextField();
+	private JPasswordField escreve2 = new JPasswordField();
 	private BomDiaAcademia bda;
 	
 	public InterfaceLogin(BomDiaAcademia bda) {
@@ -33,16 +35,17 @@ public class InterfaceLogin {
 	
 	public void open() {
 		
-		frame.setSize(1000, 300);
+		frame.setSize(1000, 250);
 		frame.setVisible(true);
 
 	}
 	
 	private void addFrameContent() {
 
-		JPanel search = new JPanel(new GridLayout(4, 2));
+		JPanel search = new JPanel(new GridLayout(3, 2));
 		JPanel panel = new JPanel();
 		JPanel panel1 = new JPanel();
+		JPanel panel2 = new JPanel(new GridLayout(2, 1));
 		
 		JTextArea text1 = new JTextArea();
 		JTextArea text2 = new JTextArea();			
@@ -65,11 +68,26 @@ public class InterfaceLogin {
 		
 		escreve1.setForeground(Color.white);
 		escreve2.setForeground(Color.white);
+		
+		JCheckBox b = new JCheckBox("Ver password");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(b.isSelected()) {
+					escreve2.setEchoChar((char)0);
+				}
+				else {
+					escreve2.setEchoChar('*');
+				}
+			}
+	});	
+		
+		panel2.add(escreve2);
+		panel2.add(b);
 	
 		search.add(text1);
 		search.add(escreve1);
 		search.add(text2);
-		search.add(escreve2);
+		search.add(panel2);
 		search.add(panel);
 		search.add(panel1);
 		
@@ -84,10 +102,10 @@ public class InterfaceLogin {
 	public void  LoginNaAplicação() {
 		entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(escreve1.getText().equals("") || escreve2.getText().equals("")) {
+				String s= new String(escreve2.getPassword());
+				if(escreve1.getText().equals("") || s.equals("")) {
 					JOptionPane.showMessageDialog(frame, "Campos de escrita obrigatórios");
-					System.out.println(escreve2.getText());
+					System.out.println(s);
 					System.out.println(escreve1.getText());
 				}	
 					else {

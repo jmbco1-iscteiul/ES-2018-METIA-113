@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -20,14 +22,14 @@ public class InterfaceSignIn {
 	private JFrame frame;
 	private JButton submeter= new JButton("SUBMETER");
 	private JButton sair= new JButton("Sair sem Guardar");
-	private JTextField escreve2 = new JTextField();
-	private JTextField escreve3 = new JTextField();
 	private JTextField escreve1 = new JTextField();
+	private JPasswordField escreve2 = new JPasswordField();
+	private JPasswordField escreve3 = new JPasswordField();
 	private JTextField escreve4 = new JTextField();
 	private JTextField escreve5 = new JTextField();
 	private JTextField escreve6 = new JTextField();
-	private JTextField escreve7 = new JTextField();
-	private JTextField escreve8 = new JTextField();
+	private JPasswordField escreve7 = new JPasswordField();
+	private JPasswordField escreve8 = new JPasswordField();
 	private BomDiaAcademia bda;
 	
 	public InterfaceSignIn(BomDiaAcademia bda) {
@@ -40,7 +42,7 @@ public class InterfaceSignIn {
 	
 	public void open() {
 		
-		frame.setSize(1000, 400);
+		frame.setSize(1000, 600);
 		frame.setVisible(true);
 
 	}
@@ -58,6 +60,10 @@ public class InterfaceSignIn {
 		JTextArea text6 = new JTextArea();
 		JTextArea text7 = new JTextArea();
 		JTextArea text8 = new JTextArea();
+		JPanel panel1 = new JPanel(new GridLayout(2, 1));
+		JPanel panel5 = new JPanel(new GridLayout(2, 1));
+		JPanel panel4 = new JPanel(new GridLayout(2, 1));
+		JPanel panel3 = new JPanel(new GridLayout(2, 1));
 		
 		panel2.add(sair);
 		panel.add(submeter);
@@ -115,13 +121,71 @@ public class InterfaceSignIn {
 		escreve7.setForeground(Color.white);
 		escreve8.setForeground(Color.white);
 		
+		JCheckBox b = new JCheckBox("Ver password");
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(b.isSelected()) {
+					escreve2.setEchoChar((char)0);
+				}
+				else {
+					escreve2.setEchoChar('*');
+				}
+			}
+	});	
+		
+		JCheckBox b1 = new JCheckBox("Ver password");
+		b1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(b1.isSelected()) {
+					escreve3.setEchoChar((char)0);
+				}
+				else {
+					escreve3.setEchoChar('*');
+				}
+			}
+	});	
+		
+		JCheckBox b2 = new JCheckBox("Ver password");
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(b2.isSelected()) {
+					escreve7.setEchoChar((char)0);
+				}
+				else {
+					escreve7.setEchoChar('*');
+				}
+			}
+	});	
+		
+		JCheckBox b3 = new JCheckBox("Ver password");
+		b3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(b3.isSelected()) {
+					escreve8.setEchoChar((char)0);
+				}
+				else {
+					escreve8.setEchoChar('*');
+				}
+			}
+	});	
+		
+			
+		panel1.add(escreve2);
+		panel1.add(b);
+		panel3.add(escreve3);
+		panel3.add(b1);
+		panel4.add(escreve7);
+		panel4.add(b2);
+		panel5.add(escreve8);
+		panel5.add(b3);
+		
 		
 		search.add(text1);
 		search.add(escreve1);
 		search.add(text2);
-		search.add(escreve2);
+		search.add(panel1);
 		search.add(text3);
-		search.add(escreve3);
+		search.add(panel3);
 		search.add(text4);
 		search.add(escreve4);
 		search.add(text5);
@@ -129,13 +193,26 @@ public class InterfaceSignIn {
 		search.add(text6);
 		search.add(escreve6);
 		search.add(text7);
-		search.add(escreve7);
+		search.add(panel4);
 		search.add(text8);
-		search.add(escreve8);
+		search.add(panel5);
 		search.add(panel2);
 		search.add(panel);
 		
 		frame.add(search);
+		
+		sair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+					frame.setVisible(false);
+					InterfaceInicio in = new InterfaceInicio (bda);
+					in.open();
+							
+				
+				
+			}
+	});	
 		
 		registocomsucesso();
 		Sairsemguardar();
@@ -143,29 +220,34 @@ public class InterfaceSignIn {
 	}
 
 	private void registocomsucesso() {
-		
+			
 			submeter.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
 				
-					if(escreve1.getText().equals("") || escreve2.getText().equals("") || escreve3.getText().equals("") ||escreve4.getText().equals("")||escreve5.getText().equals("")||escreve6.getText().equals("")||escreve7.getText().equals("")||escreve8.getText().equals("")) {
+				public void actionPerformed(ActionEvent e) {
+			String s= new String(escreve2.getPassword());
+			String s1= new String(escreve3.getPassword());
+			String s2= new String(escreve7.getPassword());
+			String s3= new String(escreve8.getPassword());
+				
+					if(escreve1.getText().equals("") || s.equals("") || s1.equals("") ||escreve4.getText().equals("")||escreve5.getText().equals("")||escreve6.getText().equals("")||s2.equals("")||s3.equals("")) {
 						JOptionPane.showMessageDialog(frame, "Campos de escrita obrigatórios");
 					
 					}	
 						else {
-							if(!escreve2.getText().equals(escreve3.getText()))  {
+								if(!(s.equals(s1)))  {
 								JOptionPane.showMessageDialog(frame, "Reintrodução da PASSWORD da Aplicação errada, por favor tente novamente!");	
 								
 							}
-							else {
-								if(!escreve7.getText().equals(escreve8.getText()))  {
-									JOptionPane.showMessageDialog(frame, "Reintrodução da PASSWORD da Conta de Email errada, por favor tente novamente!");	
+									else {
+										if(!(s2.equals(s3)))  {
+											JOptionPane.showMessageDialog(frame, "Reintrodução da PASSWORD da Conta de Email errada, por favor tente novamente!");	
 									
-								}
-								else {
-									frame.setVisible(false);
-									InterfaceInicio in = new InterfaceInicio (bda);
-									in.open();
-								}
+									}
+											else {
+												frame.setVisible(false);
+												InterfaceInicio in = new InterfaceInicio (bda);
+												in.open();
+											}
 							}
 					
 					}

@@ -86,6 +86,7 @@ package MainWork;
 			
 			InterfaceSignIn();
 			InterfaceLogin();
+			Interfaceeditar();
 	   
 		}
 		
@@ -119,4 +120,22 @@ package MainWork;
 		});	
 			
 		}
+		
+		public void Interfaceeditar()  {
+			
+			balterar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					frame.setVisible(false);
+			
+					Interfaceeditar editar = new Interfaceeditar (bda);
+					editar.open();
+					
+					
+					
+			}
+		});	
+			
+		}
+
 }
