@@ -16,7 +16,8 @@ public class BomDiaAcademia {
 	private XmlProject xml;
 	private TwitterAccess twitter;
 	private Email mail;
-
+	
+	
 	public BomDiaAcademia() {
 		facebook = new Facebook(token);
 		twitter = new TwitterAccess ();
@@ -39,6 +40,13 @@ public class BomDiaAcademia {
 		return mail;
 	}
 	
+
+	public Interfacegrafica getI() {
+		return i;
+	}
+
+
+
 	public static void main(String[] args) {
 		new BomDiaAcademia();
 	}
