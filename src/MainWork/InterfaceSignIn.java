@@ -128,7 +128,7 @@ public class InterfaceSignIn {
 					escreve2.setEchoChar((char)0);
 				}
 				else {
-					escreve2.setEchoChar('*');
+					escreve2.setEchoChar('\u25CF');
 				}
 			}
 	});	
@@ -140,7 +140,7 @@ public class InterfaceSignIn {
 					escreve3.setEchoChar((char)0);
 				}
 				else {
-					escreve3.setEchoChar('*');
+					escreve3.setEchoChar('\u25CF');
 				}
 			}
 	});	
@@ -152,7 +152,7 @@ public class InterfaceSignIn {
 					escreve7.setEchoChar((char)0);
 				}
 				else {
-					escreve7.setEchoChar('*');
+					escreve7.setEchoChar('\u25CF');
 				}
 			}
 	});	
@@ -164,7 +164,7 @@ public class InterfaceSignIn {
 					escreve8.setEchoChar((char)0);
 				}
 				else {
-					escreve8.setEchoChar('*');
+					escreve8.setEchoChar('\u25CF');
 				}
 			}
 	});	

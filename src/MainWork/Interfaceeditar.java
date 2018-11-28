@@ -102,7 +102,7 @@ public class Interfaceeditar {
 					escreve3.setEchoChar((char)0);
 				}
 				else {
-					escreve3.setEchoChar('*');
+					escreve3.setEchoChar('\u25CF');
 				}
 			}
 	});	
@@ -114,7 +114,7 @@ public class Interfaceeditar {
 					escreve4.setEchoChar((char)0);
 				}
 				else {
-					escreve4.setEchoChar('*');
+					escreve4.setEchoChar('\u25CF');
 				}
 			}
 	});	
@@ -126,7 +126,7 @@ public class Interfaceeditar {
 					escreve5.setEchoChar((char)0);
 				}
 				else {
-					escreve5.setEchoChar('*');
+					escreve5.setEchoChar('\u25CF');
 				}
 			}
 	});	

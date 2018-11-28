@@ -76,7 +76,7 @@ public class InterfaceLogin {
 					escreve2.setEchoChar((char)0);
 				}
 				else {
-					escreve2.setEchoChar('*');
+					escreve2.setEchoChar('\u25CF');
 				}
 			}
 	});	
