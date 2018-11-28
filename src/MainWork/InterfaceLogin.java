@@ -17,13 +17,14 @@ import javax.swing.WindowConstants;
 
 public class InterfaceLogin {
 	private JFrame frame;
+	private JButton voltar= new JButton("Voltar ao Início");
 	private JButton entrar= new JButton("ENTRAR");
 	private JTextField escreve1 = new JTextField();
 	private JTextField escreve2 = new JTextField();
 	private BomDiaAcademia bda;
 	
-	public InterfaceLogin() {
-		
+	public InterfaceLogin(BomDiaAcademia bda) {
+		this.bda=bda;
 		frame = new JFrame("LOGIN NA APLICAÇÃO");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
@@ -45,7 +46,8 @@ public class InterfaceLogin {
 		
 		JTextArea text1 = new JTextArea();
 		JTextArea text2 = new JTextArea();			
-
+		
+		panel.add(voltar);
 		panel1.add(entrar);
 	
 		text1.setText("USERNAME");
@@ -74,7 +76,7 @@ public class InterfaceLogin {
 		frame.add(search,BorderLayout.CENTER);
 		
 		LoginNaAplicação();
-	
+		VoltaraoInicio();
 		   
 	}
 
@@ -90,7 +92,7 @@ public class InterfaceLogin {
 				}	
 					else {
 							frame.setVisible(false);
-							Interfacegrafica  in =  bda.getI ();
+							Interfacegrafica  in =  new Interfacegrafica (bda);
 							in.open();
 						}
 				
@@ -99,6 +101,20 @@ public class InterfaceLogin {
 		
 	}
 	
+	public void  VoltaraoInicio() {
+		voltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			
+							frame.setVisible(false);
+							InterfaceInicio  in =  new InterfaceInicio (bda);
+							in.open();
+						
+				
+			}
+	});	
+		
+	}
 
 
 

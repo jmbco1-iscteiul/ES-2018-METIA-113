@@ -20,10 +20,11 @@ package MainWork;
 		private JButton blogin = new JButton("LOGIN");
 		private JButton bsignin = new JButton("SIGN IN");
 		private JButton balterar = new JButton("CLIQUE AQUI");
+		private BomDiaAcademia bda;
 		
-		
-		public InterfaceInicio() {
+		public InterfaceInicio(BomDiaAcademia bda) {
 			
+			this.bda=bda;
 			frame = new JFrame("ENTRY MENU");
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			addFrameContent();
@@ -82,14 +83,40 @@ package MainWork;
 			
 
 			frame.add(search);
+			
+			InterfaceSignIn();
+			InterfaceLogin();
 	   
 		}
 		
-		public static void main(String [] args) {
-			InterfaceInicio no= new InterfaceInicio();
-			no.open();
+		public void InterfaceSignIn()  {
+			bsignin.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+				frame.setVisible(false);
+				
+				InterfaceSignIn in = new InterfaceSignIn (bda);
+				in.open();
+					
+			}
+		});	
 			
+		}
+		
+		
+		public void InterfaceLogin()  {
 			
+			blogin.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					frame.setVisible(false);
+					InterfaceLogin login = new InterfaceLogin (bda);
+					login.open();
+					
+					
+					
+			}
+		});	
 			
 		}
 }
