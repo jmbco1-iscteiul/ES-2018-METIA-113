@@ -30,6 +30,9 @@ public class InterfaceSignIn {
 	private JTextField escreve6 = new JTextField();
 	private JPasswordField escreve7 = new JPasswordField();
 	private JPasswordField escreve8 = new JPasswordField();
+	private JTextField escreve9 = new JTextField();
+	private JTextField escreve10 = new JTextField();
+	private JTextField escreve11 = new JTextField();
 	private BomDiaAcademia bda;
 	
 	public InterfaceSignIn(BomDiaAcademia bda) {
@@ -42,14 +45,14 @@ public class InterfaceSignIn {
 	
 	public void open() {
 		
-		frame.setSize(1000, 600);
+		frame.setSize(1000, 650);
 		frame.setVisible(true);
 
 	}
 	
 	private void addFrameContent() {
 
-		JPanel search = new JPanel(new GridLayout(9, 2));
+		JPanel search = new JPanel(new GridLayout(12, 2));
 		JPanel panel = new JPanel();
 		JPanel panel2 = new JPanel();
 		JTextArea text1 = new JTextArea();
@@ -60,6 +63,9 @@ public class InterfaceSignIn {
 		JTextArea text6 = new JTextArea();
 		JTextArea text7 = new JTextArea();
 		JTextArea text8 = new JTextArea();
+		JTextArea text9 = new JTextArea();
+		JTextArea text10 = new JTextArea();
+		JTextArea text11 = new JTextArea();
 		JPanel panel1 = new JPanel(new GridLayout(2, 1));
 		JPanel panel5 = new JPanel(new GridLayout(2, 1));
 		JPanel panel4 = new JPanel(new GridLayout(2, 1));
@@ -85,9 +91,21 @@ public class InterfaceSignIn {
 		text4.setEditable(false);
 		text4.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
-		text5.setText("Token de Acesso Twitter :");
+		text5.setText("Token de Acesso Twitter: setOAuthConsumerKey");
 		text5.setEditable(false);
-		text5.setFont(new Font("SansSerif", Font.BOLD, 20));
+		text5.setFont(new Font("SansSerif", Font.BOLD, 18));
+		
+		text9.setText("Token de Acesso Twitter: setOAuthConsumerSecret");
+		text9.setEditable(false);
+		text9.setFont(new Font("SansSerif", Font.BOLD, 18));
+		
+		text10.setText("Token de Acesso Twitter: setOAuthAccessToken");
+		text10.setEditable(false);
+		text10.setFont(new Font("SansSerif", Font.BOLD, 18));
+		
+		text11.setText("Token de Acesso Twitter: setOAuthAccessTokenSecret");
+		text11.setEditable(false);
+		text11.setFont(new Font("SansSerif", Font.BOLD, 18));
 		
 		text6.setText("Conta de Email :");
 		text6.setEditable(false);
@@ -111,6 +129,9 @@ public class InterfaceSignIn {
 		escreve6.setBackground(color);
 		escreve7.setBackground(color);
 		escreve8.setBackground(color);
+		escreve9.setBackground(color);
+		escreve10.setBackground(color);
+		escreve11.setBackground(color);
 		
 		escreve1.setForeground(Color.white);
 		escreve2.setForeground(Color.white);
@@ -120,6 +141,9 @@ public class InterfaceSignIn {
 		escreve6.setForeground(Color.white);
 		escreve7.setForeground(Color.white);
 		escreve8.setForeground(Color.white);
+		escreve9.setForeground(Color.white);
+		escreve10.setForeground(Color.white);
+		escreve11.setForeground(Color.white);
 		
 		JCheckBox b = new JCheckBox("Ver password");
 		b.addActionListener(new ActionListener() {
@@ -190,6 +214,12 @@ public class InterfaceSignIn {
 		search.add(escreve4);
 		search.add(text5);
 		search.add(escreve5);
+		search.add(text9);
+		search.add(escreve9);
+		search.add(text10);
+		search.add(escreve10);
+		search.add(text11);
+		search.add(escreve11);
 		search.add(text6);
 		search.add(escreve6);
 		search.add(text7);
