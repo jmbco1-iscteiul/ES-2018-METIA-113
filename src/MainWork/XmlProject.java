@@ -33,31 +33,41 @@ import org.w3c.dom.NamedNodeMap;
  *
  */
 public class XmlProject {
-
+	private Document doc;
 
 	public XmlProject() {
 		try {	
 			File inputFile = new File("config.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
+			 doc = dBuilder.parse(inputFile);
 			doc.getDocumentElement().normalize();  
 
 			//Leitura
-			Leitura l = new Leitura(doc);
+	//		Leitura l = new Leitura(doc);
 
-			String mail = "mai";
+	//		String mail = "mai";
 			
 		//Remove XML
-		//Remove r = new Remove(doc, "mail");
+	//	Remove r = new Remove(doc, "mail");
 			
+		SignIN client = new SignIN ("eee","eee","eee","eee","eee","eee","eee","eee","eee");
 			//Edit XML
-			//Edit edit = new Edit(doc, mail, client);
+	//		Edit edit = new Edit(doc, mail, client);
 			
 			
 			// Save XML document
-			Save s = new Save(doc);
+	//		Save s = new Save(doc);
 
 		} catch (Exception e) { e.printStackTrace(); }
 	}
+
+	public Document getDoc() {
+		return doc;
+	}
+	
+//	public static void main(String [] args) {
+//		XmlProject x= new XmlProject ();
+//	}
+	
 }

@@ -173,15 +173,19 @@ public class Interfaceeditar {
 								JOptionPane.showMessageDialog(frame, "Reintrodução da PASSWORD  errada, por favor tente novamente");	
 								
 							}
+							else {
+								if(escreve1.getText().contains(" ") || s.contains(" ") || escreve2.getText().contains(" ") || s1.contains(" ") ||  s2.contains(" ")) {
+								JOptionPane.showMessageDialog(frame, "AVISO: Todos os campos para preencher não podem ter espaço entre palavras!");
+								}
 					
-								else {
-								
+									else {
+									JOptionPane.showMessageDialog(frame, "Edição efetuada com sucesso!");
 									frame.setVisible(false);
 									InterfaceInicio in = new InterfaceInicio (bda);
 									in.open();
+									}
 							}
-				
-				}	
+					}	
 			}
 	});	
 	
@@ -190,7 +194,6 @@ public class Interfaceeditar {
 	public void  Sairsemguardar() {
 		sair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				
 					frame.setVisible(false);
 					InterfaceInicio in = new InterfaceInicio (bda);

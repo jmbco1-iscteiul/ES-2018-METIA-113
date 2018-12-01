@@ -66,4 +66,7 @@
 <OtherNewTag>More new data</OtherNewTag>
 <Service Account="mail" Password="pass" Token="EAAD45TT4030BAMppoeRyc1RtdOfUzobKEP18LZCzAmZB9vzxZA3WafngiZBvZCE00TJm6cFyUwEKcOx4hdKJYuJQkDX5DPk5kdjo8321wWGRl6ZCYmkiXVMdAmxkuW205CGKpBDB4Ek9w71RJiXGtIX29iYPVZCQ8MZD"/>
 <OtherNewTag>More new data</OtherNewTag>
+<Service ContadeEmail="e" PassdeEmail="e" Password="e" TokenFacebook="e" TokenTwitter1="e" TokenTwitter2="e" TokenTwitter3="e" TokenTwitter4="e" UserName="e"/>
+<Service ContadeEmail="e" PassdeEmail="e" Password="e" TokenFacebook="e" TokenTwitter1="eee" TokenTwitter2="e" TokenTwitter3="e" TokenTwitter4="e" UserName="e"/>
+<Service ContadeEmail="eeee" PassdeEmail="eee" Password="eee" TokenFacebook="eee" TokenTwitter1="eee" TokenTwitter2="eee" TokenTwitter3="eee" TokenTwitter4="eee" UserName="eee"/>
 </XML>

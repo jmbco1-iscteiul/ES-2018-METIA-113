@@ -1,7 +1,7 @@
 package MainWork;
 
 import facebook.Facebook;
-
+import org.w3c.dom.Document;
 /**
  * Motor principal da aplicação onde se encontram todos os métodos principais.
  * 
@@ -17,7 +17,6 @@ public class BomDiaAcademia {
 	private TwitterAccess twitter;
 	private Email mail;
 	
-	
 	public BomDiaAcademia() {
 		facebook = new Facebook(token);
 		twitter = new TwitterAccess ();
@@ -25,6 +24,10 @@ public class BomDiaAcademia {
 		i = new InterfaceInicio(this);
 		i.open();
 		xml = new XmlProject();
+	}
+
+	public XmlProject getXml() {
+		return xml;
 	}
 
 	public Facebook getFacebook() {

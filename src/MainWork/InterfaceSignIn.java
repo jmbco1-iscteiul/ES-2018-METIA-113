@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 public class InterfaceSignIn {
@@ -34,6 +35,10 @@ public class InterfaceSignIn {
 	private JTextField escreve10 = new JTextField();
 	private JTextField escreve11 = new JTextField();
 	private BomDiaAcademia bda;
+	private String s;
+	private String s1;
+	private String s2;
+	private String s3;
 	
 	public InterfaceSignIn(BomDiaAcademia bda) {
 		this.bda=bda;
@@ -254,10 +259,10 @@ public class InterfaceSignIn {
 			submeter.addActionListener(new ActionListener() {
 				
 				public void actionPerformed(ActionEvent e) {
-			String s= new String(escreve2.getPassword());
-			String s1= new String(escreve3.getPassword());
-			String s2= new String(escreve7.getPassword());
-			String s3= new String(escreve8.getPassword());
+					s= new String(escreve2.getPassword());
+					s1= new String(escreve3.getPassword());
+					s2= new String(escreve7.getPassword());
+					s3= new String(escreve8.getPassword());
 				
 					if(escreve1.getText().equals("") || s.equals("") || s1.equals("") ||escreve4.getText().equals("")||escreve5.getText().equals("")||escreve6.getText().equals("")||s2.equals("")||s3.equals("")) {
 						JOptionPane.showMessageDialog(frame, "Campos de escrita obrigatórios");
@@ -272,12 +277,26 @@ public class InterfaceSignIn {
 										if(!(s2.equals(s3)))  {
 											JOptionPane.showMessageDialog(frame, "Reintrodução da PASSWORD da Conta de Email errada, por favor tente novamente!");	
 									
-									}
+										}
+										else {
+											if(escreve1.getText().contains(" ") || s.contains(" ") || escreve4.getText().contains(" ") || escreve5.getText().contains(" ") || escreve9.getText().contains(" ") || escreve10.getText().contains(" ") || escreve11.getText().contains(" ") || escreve6.getText().contains(" ") || s2.contains(" ")) {
+											JOptionPane.showMessageDialog(frame, "AVISO: Todos os campos para preencher não podem ter espaço entre palavras!");
+											}
+										
 											else {
+												JOptionPane.showMessageDialog(frame, "Registo realizado com sucesso!");
 												frame.setVisible(false);
 												InterfaceInicio in = new InterfaceInicio (bda);
 												in.open();
+												try {
+													AddToFile();
+													
+												} catch (Exception e1) {
+													// TODO Auto-generated catch block
+													e1.printStackTrace();
+												}
 											}
+										}
 							}
 					
 					}
@@ -298,7 +317,13 @@ public class InterfaceSignIn {
 				
 				
 			}
-	});	
+	});		
+}	
 	
-}
+	public void  AddToFile() throws Exception {
+		
+		SignIN i= new SignIN(escreve1.getText(),s,escreve4.getText(),escreve5.getText(),escreve9.getText(),escreve10.getText(),escreve11.getText(),escreve6.getText(),s2);
+		AddToFile a = new AddToFile (bda.getXml().getDoc(),i);
+		Save s= new Save(bda.getXml().getDoc());
+	}
 }
