@@ -29,7 +29,8 @@ public class Remove implements Serializable{
 	private boolean b;
 	private static final long serialVersionUID = 1L;
 
-	public Remove (Document doc, String apagar,Frame frame,String password)  throws Exception {
+
+	public Remove (Document doc, String apagar,Frame frame,String password,SignIN in)  throws Exception {
 		System.out.println("############## Remover docs do XML  ################");
 		t=false;
 		b=false;
@@ -47,15 +48,23 @@ public class Remove implements Serializable{
 				Node nodeatr = nodes.item(i);
 				Element ei= (Element) nodeatr;
 				System.out.println(ei.getAttribute("User"));
-				System.out.println(nodes.item(i).getTextContent()+"OI");
+				
 				if(apagar.equals(ei.getAttribute("User"))) {
 					t=true;
 				}
 					if(password.equals(ei.getAttribute("Password"))) {
-					b=true;
-					doc.getDocumentElement().removeChild(nodes.item(i));
+					b=true;	
 					}
-				
+					if(b && t) {
+						doc.getDocumentElement().removeChild(nodes.item(i));
+						in.setTokenface(ei.getAttribute("TokenFacebook"));
+						in.setTokentwitter1(ei.getAttribute("TokenTwitter1"));
+						in.setTokentwitter2(ei.getAttribute("TokenTwitter2"));
+						in.setTokentwitter3(ei.getAttribute("TokenTwitter3"));
+						in.setTokentwitter4(ei.getAttribute("TokenTwitter4"));
+						in.setEmail(ei.getAttribute("ContadeEmail"));
+						in.setPass(ei.getAttribute("PassdeEmail"));
+					}
 			}
 		}
 		if(!t) {

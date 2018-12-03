@@ -30,16 +30,11 @@ public class Email {
 	private Properties propsReader;
 	private Properties propsSender;
 	private Store store;
+	private String mail;
+	private String pass;
 
-	private String mail="es.pos.amigos@hotmail.com";
-	private String pass="afogaoganso69";
 
-
-	public Email() {
-
-		iniSessaoReader(mail, pass);
-		iniSessaoSender();
-	}
+	
 	/**
 	 * Função que faz a autenticação do utilizador e que permite receber assim receber emails
 	 * 
@@ -49,6 +44,15 @@ public class Email {
 	 * @author Brogueira
 	 */
 
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+		iniSessaoReader(mail, this.pass);
+		iniSessaoSender();
+	}
+	
 	public void iniSessaoReader(String mail, String pass) {
 		propsReader = System.getProperties();
 		propsReader.setProperty("mail.store.protocol", "imaps");

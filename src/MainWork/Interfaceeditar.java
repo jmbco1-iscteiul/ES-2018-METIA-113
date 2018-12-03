@@ -213,10 +213,9 @@ public class Interfaceeditar {
 }
 	
 	public void EditarnoXML() throws Exception {
-		
-		Remove r = new Remove (bda.getXml().getDoc(),escreve1.getText(),frame,s2);
-		if(r.isB()) {
 		SignIN i= new SignIN(escreve2.getText(),s1,"","","","","","","");
+		Remove r = new Remove (bda.getXml().getDoc(),escreve1.getText(),frame,s2,i);
+		if(r.isB() && r.isT()) {
 		AddToFile a = new AddToFile (bda.getXml().getDoc(),i);
 		Save s= new Save(bda.getXml().getDoc());
 		JOptionPane.showMessageDialog(frame, "Edição efetuada com sucesso!");

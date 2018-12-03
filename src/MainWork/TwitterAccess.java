@@ -25,7 +25,10 @@ public final class TwitterAccess  {
 
 	Twitter twitter = TwitterFactory.getSingleton();
 	List<Status> timelineStatuses = new ArrayList<Status>();
-
+	private String tokentwitter1;
+	private String tokentwitter2;
+	private String tokentwitter3;
+	private String tokentwitter4;
 
 /**
  * Função que faz a autenticação no Twitter com os tokens respetivos
@@ -36,10 +39,10 @@ public final class TwitterAccess  {
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
 			cb.setDebugEnabled(true)
-			.setOAuthConsumerKey("omTUULTL1Pd2i4XfVORW2Smzf")
-			.setOAuthConsumerSecret("RatuUpSGLl0LLoajnBw3IojT6fF9vDbC7yJ19FpCav89g65Acj")
-			.setOAuthAccessToken("727114274489913345-4ax0nVCGOl5qUa2dL4StFQzyxUd06sE")
-			.setOAuthAccessTokenSecret("BoRBgd7Pn9eaPDdfHx5AFBpbsY9Q8apNuLxtqXhwRYzzW");
+			.setOAuthConsumerKey(tokentwitter1)
+			.setOAuthConsumerSecret(tokentwitter2)
+			.setOAuthAccessToken(tokentwitter3)
+			.setOAuthAccessTokenSecret(tokentwitter4);
 			TwitterFactory tf = new TwitterFactory(cb.build());
 			twitter = tf.getInstance();
 			timelineStatuses = twitter.getHomeTimeline();
@@ -48,6 +51,23 @@ public final class TwitterAccess  {
 		}
 	}
 	
+	public void setTokentwitter1(String tokentwitter1) {
+	this.tokentwitter1 = tokentwitter1;
+}
+
+public void setTokentwitter2(String tokentwitter2) {
+	this.tokentwitter2 = tokentwitter2;
+}
+
+public void setTokentwitter3(String tokentwitter3) {
+	this.tokentwitter3 = tokentwitter3;
+}
+
+public void setTokentwitter4(String tokentwitter4) {
+	this.tokentwitter4 = tokentwitter4;
+	autenticacao();
+}
+
 	/**
 	 * Função que permite obter a timeline do Twitter do utilizador
 	 * 
@@ -57,7 +77,7 @@ public final class TwitterAccess  {
 	 */
 
 	public void getTimeline(DefaultListModel<Mensagem> t){
-		autenticacao();
+		
 		try{
 //			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
 			int counter=0;

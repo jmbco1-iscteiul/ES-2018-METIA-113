@@ -2,6 +2,7 @@ package MainWork;
 
 
 import java.awt.Frame;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,7 @@ public class AddToFile {
 	private Element newElement1;
 	private Document doc;
 	private SignIN client;
-
+	private ArrayList <SignIN> array = new ArrayList <SignIN> ();
 	private boolean t=false;
 	private boolean b=false;
 	
@@ -59,7 +60,6 @@ public class AddToFile {
 				Node nodeatr = nodes.item(i);
 				Element ei= (Element) nodeatr;
 				System.out.println(ei.getAttribute("User"));
-				System.out.println(nodes.item(i).getTextContent()+"OI");
 					if(client.getUsername().equals(ei.getAttribute("User"))) {
 					t=true;
 					}
@@ -73,7 +73,7 @@ public class AddToFile {
 			}
 			}
 		if(!b && !t) {
-			
+			array.add(client);
 			n.appendChild(newElement1);
 			}
 		
@@ -91,5 +91,11 @@ public class AddToFile {
 	public Element getNewElement() {
 		return newElement1;
 	}
+
+	public ArrayList<SignIN> getArray() {
+		return array;
+	}
+	
+	
 
 }

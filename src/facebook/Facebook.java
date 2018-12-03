@@ -26,15 +26,14 @@ import MainWork.SignIN;
  */
 
 public class Facebook {
-	private String token;
+	
+
 	public SignIN clientFacebook;
 	public FacebookClient fbClient;
-	
 	private final String groupID = "2168682303197759";
-	
-	public Facebook(String token) {
-		this.token=token;
-		autenticacao();
+	private String token;
+	public Facebook() {
+		
 	}
 
 /**
@@ -51,6 +50,10 @@ public class Facebook {
 		System.out.println(me.getName());
 	}
 	
+	public void setToken(String token) {
+		this.token = token;
+		autenticacao();
+	}
 	
 	/**
 	 * Função que tem como objetivo pesquisar todos os posts com uma String pretentida.

@@ -55,19 +55,37 @@ public class Interfacegrafica{
 	private	JButton bescreverpost = new JButton("Escrever Post");
 	private	JButton bescreverpostf = new JButton("Escrever Post");
 	private	JButton bescrevermail = new JButton("Escrever Email");
+	private	JButton sair = new JButton("Sair da Aplicação");
 	private	DefaultListModel<Mensagem> model = new DefaultListModel<>();
 	private	JList<Mensagem> list = new JList<>(model);
-
+	private String tokenface;
+	private String tokentwitter1;
+	private String tokentwitter2;
+	private String tokentwitter3;
+	private String tokentwitter4;
+	private String contaemail; 
+	private String passemail;
 	
-	public Interfacegrafica(BomDiaAcademia bda) {
-		
+	
+	public Interfacegrafica(BomDiaAcademia bda, String tokenface, String tokentwitter1, String tokentwitter2, String tokentwitter3, String tokentwitter4, String contaemail, String passemail) {
 		this.bda = bda;
+		this.tokenface=tokenface;
+		this.tokentwitter1=tokentwitter1;
+		this.tokentwitter2=tokentwitter2;
+		this.tokentwitter3=tokentwitter3;
+		this.tokentwitter4=tokentwitter4;
+		this.contaemail=contaemail;
+		this.passemail=passemail;
+		
+		
 
 		frame = new JFrame("MAIN MENU");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
 		open();
+		
+		setTokens();
 		
 		getFaceTimeLine();
 		getTwitterTimeLine();
@@ -82,6 +100,7 @@ public class Interfacegrafica{
 		procurarpalavraMail();	
 		
 		selectMail();
+		sair();
 	}
 /**
  * 
@@ -124,6 +143,7 @@ public class Interfacegrafica{
 		JPanel panel6 = new JPanel();
 		JPanel panel20 = new JPanel();
 		JPanel panel21 = new JPanel();
+		JPanel panel22 = new JPanel();
 		Color color= new Color(128,128,255);
 		
 		list.setFont(new Font("SansSerif", Font.BOLD, 15));
@@ -256,11 +276,14 @@ public class Interfacegrafica{
 		panel19.add(area2, BorderLayout.CENTER);
 		panel19.add(textpara, BorderLayout.EAST);
 		
-
+	
+		panel19.add(panel22);
 		panel17.add(panel19);
+		
 		panel16.add(panel17);
 		
 		panel18.add(panel16);
+		
 		
 		panel21.add(panel20);
 		panel21.add(panel18);
@@ -282,6 +305,16 @@ public class Interfacegrafica{
 	 * 
 	 * @author Brogueira
 	 */
+	
+	public void setTokens() {
+		bda.getFacebook().setToken(tokenface);
+		bda.getTwitter().setTokentwitter1(tokentwitter1);
+		bda.getTwitter().setTokentwitter2(tokentwitter2);
+		bda.getTwitter().setTokentwitter3(tokentwitter3);
+		bda.getTwitter().setTokentwitter4(tokentwitter4);
+		bda.getMail().setMail(contaemail);
+		bda.getMail().setPass(passemail);
+	}
 	
 	public void getFaceTimeLine() {
 		bface.addActionListener(new ActionListener() {
@@ -438,5 +471,17 @@ public class Interfacegrafica{
 	});  
   }
   
-  
+  public void  sair() {
+		sair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					frame.setVisible(false);
+					InterfaceInicio in = new InterfaceInicio (bda);
+					in.open();
+				
+			}
+	});	
+	
+}
+ 
 }
