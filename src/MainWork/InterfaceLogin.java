@@ -17,6 +17,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 public class InterfaceLogin {
 	private JFrame frame;
 	private JButton voltar= new JButton("Voltar ao Início");
@@ -24,6 +29,7 @@ public class InterfaceLogin {
 	private JTextField escreve1 = new JTextField();
 	private JPasswordField escreve2 = new JPasswordField();
 	private BomDiaAcademia bda;
+	private String s;
 	
 	public InterfaceLogin(BomDiaAcademia bda) {
 		this.bda=bda;
@@ -102,16 +108,14 @@ public class InterfaceLogin {
 	public void  LoginNaAplicação() {
 		entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String s= new String(escreve2.getPassword());
+				s= new String(escreve2.getPassword());
 				if(escreve1.getText().equals("") || s.equals("")) {
 					JOptionPane.showMessageDialog(frame, "Campos de escrita obrigatórios");
 					System.out.println(s);
 					System.out.println(escreve1.getText());
 				}	
 					else {
-							frame.setVisible(false);
-							Interfacegrafica  in =  new Interfacegrafica (bda);
-							in.open();
+							LoginSucesso();
 						}
 				
 			}
@@ -134,6 +138,36 @@ public class InterfaceLogin {
 		
 	}
 
+	public void LoginSucesso () {
+		boolean b= false;
+		boolean t= false;
+		NodeList nodes = bda.getXml().getDoc().getDocumentElement().getChildNodes();
+		
+		System.out.println(nodes.getLength());
+		for (int i = 0; i < nodes.getLength(); i++) {
+			if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap atr = nodes.item(i).getAttributes();
+				Node nodeatr = nodes.item(i);
+				Element ei= (Element) nodeatr;
+				System.out.println(ei.getAttribute("User"));
+				System.out.println(nodes.item(i).getTextContent()+"OI");
+				
+						if(escreve1.getText().equals(ei.getAttribute("User"))) {
+							if(s.equals(ei.getAttribute("Password"))) {
+								t=true;
+								b=true;
+								frame.setVisible(false);
+								Interfacegrafica  in =  new Interfacegrafica (bda);
+								in.open();
+						}
+					}
+				}
+			}
+		if(!b &&  !t) {
+			JOptionPane.showMessageDialog(frame, "UserName e/ou Palavra-Passe mal introduzidos");
+		}
+	
+ 	}
 
 
 

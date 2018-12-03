@@ -27,6 +27,9 @@ public class Interfaceeditar {
 	private JPasswordField escreve4 = new JPasswordField();
 	private JPasswordField escreve5 = new JPasswordField();
 	private BomDiaAcademia bda;
+	String s;
+	String s1;
+	String s2;
 	
 	public Interfaceeditar(BomDiaAcademia bda) {
 		this.bda=bda;
@@ -161,9 +164,9 @@ public class Interfaceeditar {
 		
 		confirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String s= new String(escreve4.getPassword());
-				String s1= new String(escreve5.getPassword());
-				String s2= new String(escreve3.getPassword());
+				s= new String(escreve4.getPassword());
+				s1= new String(escreve5.getPassword());
+				s2= new String(escreve3.getPassword());
 				if(escreve1.getText().equals("") || escreve2.getText().equals("") || s2.equals("") || s.equals("") || s1.equals("")) {
 					JOptionPane.showMessageDialog(frame, "Campos de escrita obrigatórios");
 		
@@ -179,10 +182,13 @@ public class Interfaceeditar {
 								}
 					
 									else {
-									JOptionPane.showMessageDialog(frame, "Edição efetuada com sucesso!");
-									frame.setVisible(false);
-									InterfaceInicio in = new InterfaceInicio (bda);
-									in.open();
+									try {
+										EditarnoXML();
+										
+									} catch (Exception e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
 									}
 							}
 					}	
@@ -205,4 +211,20 @@ public class Interfaceeditar {
 	});	
 	
 }
-}
+	
+	public void EditarnoXML() throws Exception {
+		
+		Remove r = new Remove (bda.getXml().getDoc(),escreve1.getText(),frame,s2);
+		if(r.isB()) {
+		SignIN i= new SignIN(escreve2.getText(),s1,"","","","","","","");
+		AddToFile a = new AddToFile (bda.getXml().getDoc(),i);
+		Save s= new Save(bda.getXml().getDoc());
+		JOptionPane.showMessageDialog(frame, "Edição efetuada com sucesso!");
+		frame.setVisible(false);
+		InterfaceInicio in = new InterfaceInicio (bda);
+		in.open();
+		}
+		}
+	}
+	
+

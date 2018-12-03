@@ -284,10 +284,6 @@ public class InterfaceSignIn {
 											}
 										
 											else {
-												JOptionPane.showMessageDialog(frame, "Registo realizado com sucesso!");
-												frame.setVisible(false);
-												InterfaceInicio in = new InterfaceInicio (bda);
-												in.open();
 												try {
 													AddToFile();
 													
@@ -324,6 +320,18 @@ public class InterfaceSignIn {
 		
 		SignIN i= new SignIN(escreve1.getText(),s,escreve4.getText(),escreve5.getText(),escreve9.getText(),escreve10.getText(),escreve11.getText(),escreve6.getText(),s2);
 		AddToFile a = new AddToFile (bda.getXml().getDoc(),i);
+		if(a.isT()) {
+			JOptionPane.showMessageDialog(frame, "AVISO: Já existe um Utilizador com este UserName!");
+		}
+		if(a.isB()) {
+			JOptionPane.showMessageDialog(frame, "AVISO: Já existe um Utilizador com esta Password!");
+		}
+		if(!a.isB() && !a.isT()) {
 		Save s= new Save(bda.getXml().getDoc());
+		JOptionPane.showMessageDialog(frame, "Registo realizado com sucesso!");
+		frame.setVisible(false);
+		InterfaceInicio in = new InterfaceInicio (bda);
+		in.open();
+		}
 	}
 }
