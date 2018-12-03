@@ -22,6 +22,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * Interface gráfica do Login, com todos os botões e campos de texto onde se inserem os dados para entrar na aplicação 
+ * @author Brogueira
+ *
+ */
+
 public class InterfaceLogin {
 	private JFrame frame;
 	private JButton voltar= new JButton("Voltar ao Início");
@@ -39,12 +45,21 @@ public class InterfaceLogin {
 		frame.pack();
 	}
 	
+	/**
+	 * Função que abre a janela principal e lhe o tamanha pretendido
+	 * @author Brogueira
+	 */
 	public void open() {
 		
 		frame.setSize(1000, 250);
 		frame.setVisible(true);
 
 	}
+	
+	/**
+	 * Função que cria a disposição dos botões e das caixas onde se inserem os dados
+	 *  @author Brogueira
+	 */
 	
 	private void addFrameContent() {
 
@@ -104,6 +119,10 @@ public class InterfaceLogin {
 		   
 	}
 
+	/**
+	 * Função que permite fazer o login
+	 * @author Brogueira
+	 */
 	
 	public void  LoginNaAplicação() {
 		entrar.addActionListener(new ActionListener() {
@@ -123,6 +142,11 @@ public class InterfaceLogin {
 		
 	}
 	
+	/**
+	 * Função que faz com que se retroceda e se volte à interface gráfica inicial
+	 * @author Brogueira
+	 */
+	
 	public void  VoltaraoInicio() {
 		voltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,6 +162,11 @@ public class InterfaceLogin {
 		
 	}
 
+	/**
+	 * Função que permite fazer o login com sucesso
+	 * @author Brogueira
+	 */
+	
 	public void LoginSucesso () {
 		boolean b= false;
 		boolean t= false;

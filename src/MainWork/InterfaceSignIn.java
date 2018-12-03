@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
+/**
+ * Interface gráfica da aplicação que serve para fazer o registo do utilizador com os seus respetivos dados
+ *  
+ * @author Brogueira
+ *
+ */
 public class InterfaceSignIn {
 
 	

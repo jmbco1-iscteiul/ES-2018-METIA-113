@@ -14,6 +14,13 @@ package MainWork;
 	import javax.swing.JTextField;
 	import javax.swing.WindowConstants;
 
+	/**
+	 * Interface gráfica inicial da aplicação onde se pode escolher entre fazer o login(entrar na aplicação tendo o registo já efetuado)
+	 * ou sign in(fazer o registo na aplicação com os respetivos dados)
+	 * 
+	 * @author Brogueira
+	 *
+	 */
 	public class InterfaceInicio {
 
 		private JFrame frame;
@@ -31,12 +38,23 @@ package MainWork;
 			frame.pack();
 		}
 		
+		/**
+		 * Função que abre a janela principal e lhe o tamanha pretendido
+		 * @author Brogueira
+		 * 
+		 */
+		
 		public void open() {
 			
 			frame.setSize(1000, 200);
 			frame.setVisible(true);
 
 		}
+		
+		/**
+		 * Função que cria a disposição dos botões, onde se escolhe entre fazer login, sign in ou alterar a password
+		 *  @author Brogueira
+		 */
 		
 		private void addFrameContent() {
 
@@ -90,6 +108,10 @@ package MainWork;
 	   
 		}
 		
+		/**
+		 * Função que abre a interface de sign in, onde se faz o registo de utilizador
+		 * @author Brogueira
+		 */
 		public void InterfaceSignIn()  {
 			bsignin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -104,6 +126,10 @@ package MainWork;
 			
 		}
 		
+		/** 
+		 * Função que abre a interface de login onde se introduz os dados para entrar na aplicação
+		 * @author Brogueira
+		 */
 		
 		public void InterfaceLogin()  {
 			
@@ -121,6 +147,10 @@ package MainWork;
 			
 		}
 		
+/**
+ * Função que abre a interface onde se atualizam os dados de utilizador
+ * @author Brogueira
+ */
 		public void Interfaceeditar()  {
 			
 			balterar.addActionListener(new ActionListener() {

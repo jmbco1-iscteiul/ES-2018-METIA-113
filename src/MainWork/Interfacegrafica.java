@@ -342,6 +342,8 @@ public class Interfacegrafica{
 	
 	/**
 	 * Função que vai buscar a timeline do email e a representa na janela de visualização
+	 * 
+	 * @author Brogueira
 	 */
 	
 	public void getEmailTimeLine() {
