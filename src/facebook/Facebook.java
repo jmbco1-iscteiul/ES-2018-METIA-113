@@ -55,7 +55,7 @@ public class Facebook {
 
 	public void setToken(String token) {
 		this.token = token;
-		autenticacao();
+//		autenticacao();
 	}
 
 	/**
@@ -99,6 +99,10 @@ public class Facebook {
 			}
 		}
 		return modelFace;
+	}
+	
+	public void setModelFace(DefaultListModel<Mensagem> modelFace) {
+		this.modelFace = modelFace;
 	}
 
 	public SignIN getClientFacebook() {

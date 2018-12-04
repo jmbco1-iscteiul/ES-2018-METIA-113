@@ -70,7 +70,7 @@ public final class TwitterAccess  {
 
 	public void setTokentwitter4(String tokentwitter4) {
 		this.tokentwitter4 = tokentwitter4;
-		autenticacao();
+//		autenticacao();
 	}
 
 	/**
@@ -85,6 +85,10 @@ public final class TwitterAccess  {
 		for(int i = 0; i<modelTwitter.size();i++) {
 			t.addElement(modelTwitter.getElementAt(i));
 		}
+	}
+	
+	public void setModelTwitter(DefaultListModel<Mensagem> modelTwitter) {
+		this.modelTwitter = modelTwitter;
 	}
 	
 	public DefaultListModel<Mensagem> getModelTwitter(){

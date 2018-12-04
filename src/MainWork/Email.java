@@ -50,6 +50,10 @@ public class Email {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+//		iniSessaoReader(mail, this.pass);
+//		iniSessaoSender();
+	}
+	public void autenticacao(){
 		iniSessaoReader(mail, this.pass);
 		iniSessaoSender();
 	}
@@ -129,6 +133,10 @@ public class Email {
 			System.out.println("Erro 2");
 		}
 		return modelEmail;
+	}
+	
+	public void setModelEmail(DefaultListModel<Mensagem> modelEmail) {
+		this.modelEmail = modelEmail;
 	}
 
 	/**

@@ -124,7 +124,7 @@ public class InterfaceLogin {
 	 * @author Brogueira
 	 */
 
-	public void  LoginNaAplicação() {
+	public void LoginNaAplicação() {
 		entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				s= new String(escreve2.getPassword());

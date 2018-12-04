@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
+import javax.mail.Message;
 import javax.swing.DefaultListModel;
 
 public class Guarda {
@@ -45,55 +47,43 @@ public class Guarda {
 			System.out.println("Email Guardado");
 
 
-
-			carregar();
 		} catch (IOException e){
 			e.printStackTrace();
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public void carregar(){
+	public ArrayList<DefaultListModel<Mensagem>> carregar(String user){
+		ArrayList<DefaultListModel<Mensagem>> l = new ArrayList<>();
+
+		
 		try {
-			FileInputStream readfile1 = new FileInputStream("./Historico/" + bda.getUserName() + "/Twitter.txt");
+			FileInputStream readfile1 = new FileInputStream("./Historico/" + user + "/Twitter.txt");
 			ObjectInputStream in1 = new ObjectInputStream(readfile1);
 			twitter = (DefaultListModel<Mensagem>) in1.readObject();
 			in1.close();
+			l.add(twitter);
 			System.out.println("Twitter Carregado");
 
-			FileInputStream readfile2 = new FileInputStream("./Historico/" + bda.getUserName() + "/Face.txt");
+			FileInputStream readfile2 = new FileInputStream("./Historico/" + user + "/Face.txt");
 			ObjectInputStream in2 = new ObjectInputStream(readfile2);
 			face = (DefaultListModel<Mensagem>) in2.readObject();
 			in2.close();
+			l.add(face);
 			System.out.println("Face Carregado");
 
 
-			FileInputStream readfile3 = new FileInputStream("./Historico/" + bda.getUserName() + "/Email.txt");
+			FileInputStream readfile3 = new FileInputStream("./Historico/" + user + "/Email.txt");
 			ObjectInputStream in3 = new ObjectInputStream(readfile3);
 			email = (DefaultListModel<Mensagem>) in3.readObject();
 			in3.close();
+			l.add(email);
 			System.out.println("Email Carregado");
-
-			System.out.println("-------Twitter-----");
-
-			for(int i = 0; i<twitter.size(); i++) {
-				System.out.println(twitter.getElementAt(i));
-			}
-			System.out.println("-------Face-----");
-
-			for(int i = 0; i<face.size(); i++) {
-				System.out.println(face.getElementAt(i));
-			}
-			System.out.println("-------Email-----");
-
-			for(int i = 0; i<email.size(); i++) {
-				System.out.println(email.getElementAt(i));
-			}
-
+			
 		} catch (Exception e){
 			e.printStackTrace();
-
 		}
+		return l;
 	}
 
 }
