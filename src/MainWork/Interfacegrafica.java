@@ -112,6 +112,7 @@ public class Interfacegrafica{
 
 		selectMail();
 		sair();
+		
 	}
 
 	/**
@@ -330,6 +331,7 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				bda.getFacebook().timeline(model);
+				setModel(model);
 			}
 		});
 	}
@@ -346,16 +348,13 @@ public class Interfacegrafica{
 				model.clear();
 
 				for(int i = 0; i<bda.getFacebook().getModelFace().size();i++) {
-
 					model.addElement(bda.getFacebook().getModelFace().get(i));
 				}
 				for(int i = 0; i<bda.getTwitter().getModelTwitter().size();i++) {
-
 					model.addElement(bda.getTwitter().getModelTwitter().get(i));
 				}
 
 				for(int i = 0; i<bda.getMail().getModelEmail().size();i++) {
-
 					model.addElement(bda.getMail().getModelEmail().get(i));
 				}
 
@@ -371,6 +370,7 @@ public class Interfacegrafica{
 				model.clear();
 				InterfacePeriododaInformacao d = new InterfacePeriododaInformacao(bda, model);
 				d.open();
+				
 			}
 		});
 	}
@@ -380,6 +380,7 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				bda.getTwitter().getTimeline(model);
+				setModel(model);
 			}
 		});
 	}
@@ -395,6 +396,7 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				bda.getMail().caixaChegada(model);
+				setModel(model);
 			}
 		});
 	}
@@ -461,8 +463,8 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
-				System.out.println(procurar);
 				bda.getFacebook().search(procurar,model);
+				setModel(model);
 			}
 		});
 	}
@@ -478,8 +480,8 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
-				System.out.println(procurar);
 				bda.getTwitter().searchTweet(procurar, model);
+				setModel(model);
 			}
 		});
 	}
@@ -495,8 +497,8 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
-				System.out.println(procurar);
 				bda.getMail().procurarpalavra(model,procurar);
+				setModel(model);
 			}
 		});
 	}
@@ -506,10 +508,9 @@ public class Interfacegrafica{
 
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
-
 				try {
 					Mensagem m = list.getSelectedValue();
-					System.out.println(m.toString()+" sad");
+					System.out.println(m.toString());
 				} catch (Exception e) {
 					System.out.println("apanhei");
 				}
@@ -530,24 +531,18 @@ public class Interfacegrafica{
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setModel(DefaultListModel<Mensagem> model) {
 		ArrayList<Mensagem> m = new ArrayList<>();
 		for(int i = 0; i<model.size(); i++) {
 			m.add(model.get(i));
 		}
-		System.out.println("-----+++++" + m.get(40));
+
 		Collections.sort(m, new Comparador());
-		System.out.println("-----+++++" + m.get(40));
 		this.model.clear();
 
 		for(int i = 0; i<m.size(); i++) {
 			this.model.addElement((Mensagem) m.get(i));
-			//			System.out.println(model.get(i));
 		}
-
-
-
 	}
 
 }

@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -39,8 +41,10 @@ public class InterfacePeriododaInformacao {
 	private DefaultListModel<Mensagem> modelFace;
 	private DefaultListModel<Mensagem> modelTwitter;
 	private DefaultListModel<Mensagem> modelMail;
+	
 
 	public InterfacePeriododaInformacao(BomDiaAcademia bda, DefaultListModel<Mensagem> model) {
+		
 		this.bda=bda;
 		this.model = model;
 		temp = new DefaultListModel<Mensagem>();
@@ -82,40 +86,41 @@ public class InterfacePeriododaInformacao {
 				model.clear();
 				temp.clear();
 				float dias = Integer.parseInt(t.getText());
-				System.out.println("----------"+ dias*dayInMilis);
 
 				for(int i = 0; i<modelFace.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelFace.get(i).getData().getTime());
-					System.out.println("Diferenca face: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
-						System.out.println("cona");
 						temp.addElement(modelFace.get(i));
 					}
 				}
 				
 				for(int i = 0; i<modelTwitter.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelTwitter.get(i).getData().getTime());
-					System.out.println("Diferenca twitter: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
-						System.out.println("cona");
 						temp.addElement(modelTwitter.get(i));
 					}
 				}
 				
 				for(int i = 0; i<modelMail.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelMail.get(i).getData().getTime());
-					System.out.println("Diferenca mail: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
-						System.out.println("cona");
 						temp.addElement(modelMail.get(i));
 					}
 				}
-				model.clear();
-				for(int j = 0; j<temp.size(); j++) {
-					model.addElement(temp.get(j));
-
+				
+				ArrayList<Mensagem> m = new ArrayList<>();
+				for(int i = 0; i<temp.size(); i++) {
+					m.add(temp.get(i));
 				}
 
+				Collections.sort(m, new Comparador());
+				model.clear();
+
+				for(int i = 0; i<m.size(); i++) {
+					model.addElement((Mensagem) m.get(i));
+				}
+				
+				
 			}
 		});	
 

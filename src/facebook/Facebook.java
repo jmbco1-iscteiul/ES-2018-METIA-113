@@ -85,7 +85,7 @@ public class Facebook {
 	 * @author Brogueira
 	 */
 
-	public void timeline( DefaultListModel<Mensagem> t) {
+	public void timeline(DefaultListModel<Mensagem> t) {
 		for(int i = 0; i<modelFace.size();i++) {
 			t.addElement(modelFace.getElementAt(i));
 		}
@@ -96,7 +96,6 @@ public class Facebook {
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
-				//				System.out.println(m.toString());
 				modelFace.addElement(m);
 			}
 		}
