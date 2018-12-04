@@ -43,6 +43,7 @@ public class Facebook {
 	public void autenticacao() {
 		fbClient = new DefaultFacebookClient(token);
 		User me = fbClient.fetchObject("me", User.class);
+
 		System.out.println("Facebook:");
 		System.out.println("Id: " + me.getId());
 		System.out.println("Name: " + me.getName());
@@ -50,12 +51,12 @@ public class Facebook {
 
 		modelFace = new DefaultListModel<Mensagem>();
 		result = fbClient.fetchConnection("me/feed",Post.class);
-		getModelFace();
+		modelFace();
 	}
 
 	public void setToken(String token) {
 		this.token = token;
-//		autenticacao();
+		//		autenticacao();
 	}
 
 	/**
@@ -89,18 +90,22 @@ public class Facebook {
 			t.addElement(modelFace.getElementAt(i));
 		}
 	}
-	
-	public DefaultListModel<Mensagem> getModelFace() {
+
+	public void modelFace() {
+		modelFace.clear();
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
-//				System.out.println(m.toString());
+				//				System.out.println(m.toString());
 				modelFace.addElement(m);
 			}
 		}
+	}
+
+	public DefaultListModel<Mensagem> getModelFace() {
 		return modelFace;
 	}
-	
+
 	public void setModelFace(DefaultListModel<Mensagem> modelFace) {
 		this.modelFace = modelFace;
 	}

@@ -71,7 +71,7 @@ public class Email {
 			Folder inbox = store.getFolder("Inbox");
 			inbox.open(Folder.READ_ONLY);
 			messages = inbox.getMessages();
-			getModelEmail();
+			modelEmail();
 		} catch (Exception e) {
 			System.out.println("Erro 1");
 		}
@@ -123,7 +123,8 @@ public class Email {
 		}
 	}
 	
-	public DefaultListModel<Mensagem> getModelEmail() {
+	public void modelEmail() {
+		modelEmail.clear();
 		try {
 			for(Message message : messages) { 
 				Mensagem m = new Mensagem("M", message.getSubject(), message.getReceivedDate());
@@ -132,6 +133,9 @@ public class Email {
 		} catch (Exception e) {
 			System.out.println("Erro 2");
 		}
+	}
+	
+	public DefaultListModel<Mensagem> getModelEmail() {
 		return modelEmail;
 	}
 	

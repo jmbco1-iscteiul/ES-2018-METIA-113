@@ -134,7 +134,8 @@ public class InterfaceLogin {
 					System.out.println(escreve1.getText());
 				}	
 				else {
-					LoginSucesso();
+						LoginSucesso();
+					
 				}
 
 			}
@@ -174,8 +175,6 @@ public class InterfaceLogin {
 				NamedNodeMap atr = nodes.item(i).getAttributes();
 				Node nodeatr = nodes.item(i);
 				Element ei= (Element) nodeatr;
-//				System.out.println(ei.getAttribute("User"));
-//				System.out.println(nodes.item(i).getTextContent()+"OI");
 
 				if(escreve1.getText().equals(ei.getAttribute("User"))) {
 					if(s.equals(ei.getAttribute("Password"))) {
@@ -183,13 +182,6 @@ public class InterfaceLogin {
 						t=true;
 						b=true;
 						frame.setVisible(false);
-//						System.out.println(ei.getAttribute("TokenFacebook"));
-//						System.out.println(ei.getAttribute("TokenTwitter1"));
-//						System.out.println(ei.getAttribute("TokenTwitter2"));
-//						System.out.println(ei.getAttribute("TokenTwitter3"));
-//						System.out.println(ei.getAttribute("TokenTwitter4"));
-//						System.out.println(ei.getAttribute("ContadeEmail"));
-//						System.out.println(ei.getAttribute("PassdeEmail"));
 
 						Interfacegrafica  in =  new Interfacegrafica (bda,ei.getAttribute("TokenFacebook"), ei.getAttribute("TokenTwitter1"), ei.getAttribute("TokenTwitter2"), ei.getAttribute("TokenTwitter3"),ei.getAttribute("TokenTwitter4"),ei.getAttribute("ContadeEmail"),ei.getAttribute("PassdeEmail"));
 						in.open();

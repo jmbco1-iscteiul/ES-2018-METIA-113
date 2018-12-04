@@ -345,7 +345,7 @@ public class Interfacegrafica{
 		bperiodoinfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				InterfacePeriododaInformacao d = new InterfacePeriododaInformacao(bda,model);
+				InterfacePeriododaInformacao d = new InterfacePeriododaInformacao(bda, model);
 				d.open();
 			}
 		});
@@ -482,12 +482,12 @@ public class Interfacegrafica{
 		
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
-			Mensagem m = list.getSelectedValue();
+			
 			try {
+				Mensagem m = list.getSelectedValue();
 				System.out.println(m.toString()+" sad");
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("apanhei");
 			}
 		}
 	});  
@@ -504,6 +504,10 @@ public class Interfacegrafica{
 			}
 	});	
 	
+}
+  
+public void setModel(DefaultListModel<Mensagem> model) {
+	this.model = model;
 }
  
 }

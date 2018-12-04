@@ -24,12 +24,12 @@ public class BomDiaAcademia {
 	
 	private String userName;
 
-	private boolean internetConnection;
+	boolean internetConnection;
 
 	public BomDiaAcademia() {
 		internetConnection = netIsAvailable();
 
-		if(internetConnection) {
+//		if(internetConnection) {
 			facebook = new Facebook();
 			twitter = new TwitterAccess ();
 			mail = new Email();
@@ -37,7 +37,7 @@ public class BomDiaAcademia {
 			i = new InterfaceInicio(this);
 			i.open();
 			xml = new XmlProject();
-		}
+//		}
 	}
 	
 	public void setUserName(String userName) {

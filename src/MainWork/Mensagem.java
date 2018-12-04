@@ -48,6 +48,8 @@ public class Mensagem implements Serializable{
 	}
 
 
+	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public String toString() {
@@ -64,4 +66,12 @@ public class Mensagem implements Serializable{
 		
 	}
 
+	public Date getData() {
+		return data;
+	}
+	
+public void setData(Date data) {
+		this.data = data;
+	}
+	
 }

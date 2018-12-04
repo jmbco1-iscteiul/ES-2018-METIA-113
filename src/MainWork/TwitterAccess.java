@@ -50,7 +50,7 @@ public final class TwitterAccess  {
 			twitter = tf.getInstance();
 			timelineStatuses = twitter.getHomeTimeline();
 			modelTwitter = new DefaultListModel<Mensagem>();
-			getModelTwitter();
+			modelTwitter();
 		}catch (Exception e) { 
 			System.out.println(e.getMessage()); 
 		}
@@ -70,7 +70,6 @@ public final class TwitterAccess  {
 
 	public void setTokentwitter4(String tokentwitter4) {
 		this.tokentwitter4 = tokentwitter4;
-//		autenticacao();
 	}
 
 	/**
@@ -91,7 +90,8 @@ public final class TwitterAccess  {
 		this.modelTwitter = modelTwitter;
 	}
 	
-	public DefaultListModel<Mensagem> getModelTwitter(){
+	public void modelTwitter(){
+		modelTwitter.clear();
 		try{
 			for (Status status : timelineStatuses) {
 				if (status.getUser().getName() != null) {
@@ -102,6 +102,9 @@ public final class TwitterAccess  {
 		} catch (Exception e) { 
 			System.out.println("erro");
 		}
+	}
+	
+	public DefaultListModel<Mensagem> getModelTwitter() {
 		return modelTwitter;
 	}
 
