@@ -21,7 +21,7 @@ public class BomDiaAcademia {
 	private TwitterAccess twitter;
 	private Email mail;
 	private Guarda guarda;
-	
+
 	private String userName;
 
 	boolean internetConnection;
@@ -29,22 +29,20 @@ public class BomDiaAcademia {
 	public BomDiaAcademia() {
 		internetConnection = netIsAvailable();
 
-//		if(internetConnection) {
-			facebook = new Facebook();
-			twitter = new TwitterAccess ();
-			mail = new Email();
-			guarda = new Guarda(this);
-			i = new InterfaceInicio(this);
-			i.open();
-			xml = new XmlProject();
-//		}
+		facebook = new Facebook();
+		twitter = new TwitterAccess();
+		mail = new Email();
+		guarda = new Guarda(this);
+		i = new InterfaceInicio(this);
+		i.open();
+		xml = new XmlProject();
 	}
-	
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 		System.out.println("-------------------USER NAME: " + userName);
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}

@@ -8,10 +8,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -64,8 +63,8 @@ public class Interfacegrafica{
 	private String tokentwitter4;
 	private String contaemail; 
 	private String passemail;
-	
-	
+
+
 	public Interfacegrafica(BomDiaAcademia bda, String tokenface, String tokentwitter1, String tokentwitter2, String tokentwitter3, String tokentwitter4, String contaemail, String passemail) {
 		this.bda = bda;
 		this.tokenface=tokenface;
@@ -75,15 +74,15 @@ public class Interfacegrafica{
 		this.tokentwitter4=tokentwitter4;
 		this.contaemail=contaemail;
 		this.passemail=passemail;
-		
-		
+
+
 
 		frame = new JFrame("MAIN MENU");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
 		open();
-		
+
 		setTokens();
 		if(bda.internetConnection) {
 			bda.getFacebook().autenticacao();
@@ -95,44 +94,45 @@ public class Interfacegrafica{
 			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
 			bda.getMail().setModelEmail(bda.getGuarda().carregar(bda.getUserName()).get(2));
 		}
-		
+
 		PeriododaInformacao();
 		TodasTimeLines();
-		
+
 		getFaceTimeLine();
 		getTwitterTimeLine();
 		getEmailTimeLine();
-		
+
 		escreverPostFace();
 		escreverPostTwitter();
 		escreverMail();
-		
+
 		procurarpalavraFace();
 		procurarpalavraTwitter();
 		procurarpalavraMail();	
-		
+
 		selectMail();
 		sair();
 	}
-/**
- * 
- * Função que abre a janela principal e lhe o tamanha pretendido
- * 
- * @author Brogueira
- * 
- */
+
+	/**
+	 * 
+	 * Função que abre a janela principal e lhe o tamanha pretendido
+	 * 
+	 * @author Brogueira
+	 * 
+	 */
 	public void open() {
 
 		frame.setSize(1000, 900);
 		frame.setVisible(true);
 
 	}
-/**
- * Função que cria a disposição dos botões, da barra e da caixa onde se representa os resultados das pesquisas.
- *  Cria-se um Layout principal e posteriormente os Layouts secundários.
- *  
- *  @author Brogueira
- */
+	/**
+	 * Função que cria a disposição dos botões, da barra e da caixa onde se representa os resultados das pesquisas.
+	 *  Cria-se um Layout principal e posteriormente os Layouts secundários.
+	 *  
+	 *  @author Brogueira
+	 */
 	private void addFrameContent() {
 
 		JPanel search = new JPanel(new GridLayout(1, 2));
@@ -157,14 +157,14 @@ public class Interfacegrafica{
 		JPanel panel21 = new JPanel();
 		JPanel panel22 = new JPanel();
 		Color color= new Color(128,128,255);
-		
+
 		list.setFont(new Font("SansSerif", Font.BOLD, 15));
-		
+
 		Dimension d1= new Dimension(500,30);
 		label.setPreferredSize(d1);
 		JLabel area3 = new JLabel();
 		area3.setText("Escrever palavra que desejar procurar:");
-		
+
 		area3.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area3.setForeground(color);
 		panelp.add(area3, BorderLayout.CENTER);
@@ -193,11 +193,11 @@ public class Interfacegrafica{
 		area.setText("Plataformas Online:");
 		area.setFont(new Font("SansSerif", Font.BOLD, 30));
 		area.setForeground(color);
-		
+
 		panel13.add(area);
 		panel19.add(panel13);
 		panel20.add(panel13);
-//		panel1.add(panel13);
+		//		panel1.add(panel13);
 		bface.setFont(new Font("SansSerif", Font.BOLD, 20));
 		bmail.setFont(new Font("SansSerif", Font.BOLD, 20));
 		btwitter.setFont(new Font("SansSerif", Font.BOLD, 20));
@@ -209,17 +209,17 @@ public class Interfacegrafica{
 		bface.setPreferredSize(d5);
 		bmail.setPreferredSize(d5);
 		btwitter.setPreferredSize(d5);
-		
+
 		Dimension d8= new Dimension(180,60);
 		bfaceprocurar.setPreferredSize(d8);
 		bmailprocurar.setPreferredSize(d8);
 		btwitterprocurar.setPreferredSize(d8);
-		
+
 		Dimension d6= new Dimension(365,30);
 		textmail.setPreferredSize(d6);
 		texttwitter.setPreferredSize(d6);
 		textface.setPreferredSize(d6);
-		
+
 
 		JLabel face = new JLabel();
 		face.setText("FACEBOOK:");
@@ -228,14 +228,14 @@ public class Interfacegrafica{
 		panel2.add(face);
 		panel2.add(bface);
 		panel2.add(bfaceprocurar);
-		
+
 		panel14.add(textface, BorderLayout.CENTER);
 		panel14.add(bescreverpostf, BorderLayout.EAST);
-		
+
 		panel16.add(panel2);
 		panel16.add(panel14);
 
-	
+
 		JLabel twitter = new JLabel();
 		twitter.setText("TWITTER:");
 		twitter.setFont(new Font("SansSerif", Font.BOLD, 20));
@@ -243,10 +243,10 @@ public class Interfacegrafica{
 		panel3.add(twitter);
 		panel3.add(btwitter);
 		panel3.add(btwitterprocurar);
-		
+
 		panel15.add(texttwitter, BorderLayout.CENTER);
 		panel15.add(bescreverpost, BorderLayout.EAST);
-		
+
 		panel16.add(panel3);
 		panel16.add(panel15);
 
@@ -258,45 +258,45 @@ public class Interfacegrafica{
 		panel4.add(bmail);
 		panel4.add(bmailprocurar);
 		panel16.add(panel4);
-		
+
 		panel6.add(textmail, BorderLayout.CENTER);
 		panel6.add(bescrevermail, BorderLayout.EAST);
 		panel17.add(panel6);
-		
+
 		Dimension d7= new Dimension(190,30);
 		textpara.setPreferredSize(d7);
 		textassunto.setPreferredSize(d7);
-		
+
 		JTextArea area2 = new JTextArea();
 		area2.setText("Para:");
 		area2.setEditable(false);
 		area2.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area2.setForeground(color);
-		
+
 		JTextArea area4 = new JTextArea();
 		area4.setText("Tema:");
 		area4.setEditable(false);
 		area4.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area4.setForeground(color);
-		
+
 		panel19.add(area4, BorderLayout.CENTER);
 		panel19.add(textassunto, BorderLayout.EAST);
-		
+
 		panel19.add(area2, BorderLayout.CENTER);
 		panel19.add(textpara, BorderLayout.EAST);
-		
-	
+
+
 		panel19.add(panel22);
 		panel17.add(panel19);
-		
+
 		panel16.add(panel17);
-		
+
 		panel18.add(panel16);
-		
-		
+
+
 		panel21.add(panel20);
 		panel21.add(panel18);
-		
+
 		panelp.add(search);
 		panelp1.add(panel21);
 		//				panelp2.add(panel6);
@@ -314,7 +314,7 @@ public class Interfacegrafica{
 	 * 
 	 * @author Brogueira
 	 */
-	
+
 	public void setTokens() {
 		bda.getFacebook().setToken(tokenface);
 		bda.getTwitter().setTokentwitter1(tokentwitter1);
@@ -323,9 +323,8 @@ public class Interfacegrafica{
 		bda.getTwitter().setTokentwitter4(tokentwitter4);
 		bda.getMail().setMail(contaemail);
 		bda.getMail().setPass(passemail);
-//		bda.getGuarda().guardar();
 	}
-	
+
 	public void getFaceTimeLine() {
 		bface.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -334,34 +333,34 @@ public class Interfacegrafica{
 			}
 		});
 	}
-	
-/**
- * Função que vai buscar a timeline do twitter e a representa na janela de visualização
- * 
- * @author Brogueira
- */
-	
+
+	/**
+	 * Função que vai buscar a timeline do twitter e a representa na janela de visualização
+	 * 
+	 * @author Brogueira
+	 */
+
 	public void TodasTimeLines() {
 		bkeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
-				
+
 				for(int i = 0; i<bda.getFacebook().getModelFace().size();i++) {
-					
-						model.addElement(bda.getFacebook().getModelFace().get(i));
+
+					model.addElement(bda.getFacebook().getModelFace().get(i));
 				}
 				for(int i = 0; i<bda.getTwitter().getModelTwitter().size();i++) {
-					
-						model.addElement(bda.getTwitter().getModelTwitter().get(i));
-				}
-				
-				for(int i = 0; i<bda.getMail().getModelEmail().size();i++) {
-			
-						model.addElement(bda.getMail().getModelEmail().get(i));
+
+					model.addElement(bda.getTwitter().getModelTwitter().get(i));
 				}
 
-				
-				
+				for(int i = 0; i<bda.getMail().getModelEmail().size();i++) {
+
+					model.addElement(bda.getMail().getModelEmail().get(i));
+				}
+
+				setModel(model);
+
 			}
 		});
 	}
@@ -375,7 +374,7 @@ public class Interfacegrafica{
 			}
 		});
 	}
-	
+
 	public void getTwitterTimeLine() {
 		btwitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -384,13 +383,13 @@ public class Interfacegrafica{
 			}
 		});
 	}
-	
+
 	/**
 	 * Função que vai buscar a timeline do email e a representa na janela de visualização
 	 * 
 	 * @author Brogueira
 	 */
-	
+
 	public void getEmailTimeLine() {
 		bmail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -406,8 +405,8 @@ public class Interfacegrafica{
 	 *  @author Brogueira
 	 */
 
-  public void escreverPostFace() {
-	  bescreverpostf.addActionListener(new ActionListener() {
+	public void escreverPostFace() {
+		bescreverpostf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=textface.getText();
@@ -416,16 +415,16 @@ public class Interfacegrafica{
 				textface.setText("");
 			}
 		});
-  }
-  
-  /**
-   * Função que permite inserir o conteúdo na interface gráfica para fazer tweets no Twitter
-   * 
-   * @author Brogueira
-   */
-  
-  public void escreverPostTwitter() {
-	  bescreverpost.addActionListener(new ActionListener() {
+	}
+
+	/**
+	 * Função que permite inserir o conteúdo na interface gráfica para fazer tweets no Twitter
+	 * 
+	 * @author Brogueira
+	 */
+
+	public void escreverPostTwitter() {
+		bescreverpost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=texttwitter.getText();
@@ -434,31 +433,31 @@ public class Interfacegrafica{
 				texttwitter.setText("");
 			}
 		});
-  }
-  
-  /**
-   * Função que permite inserir o conteúdo na interface gráfica para fazer escrever novos emails
-   * 
-   * @author Brogueira
-   */
-  
-  public void escreverMail() {
-	  bescrevermail.addActionListener(new ActionListener() {
+	}
+
+	/**
+	 * Função que permite inserir o conteúdo na interface gráfica para fazer escrever novos emails
+	 * 
+	 * @author Brogueira
+	 */
+
+	public void escreverMail() {
+		bescrevermail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textassunto.getText());
 				textmail.setText("");
 			}
 		});
-  }
-  
-  /**
-   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os posts com essa palavra
-   * 
-   * @author Brogueira
-   */
-  public void procurarpalavraFace() {
-	  bfaceprocurar.addActionListener(new ActionListener() {
+	}
+
+	/**
+	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os posts com essa palavra
+	 * 
+	 * @author Brogueira
+	 */
+	public void procurarpalavraFace() {
+		bfaceprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
@@ -466,16 +465,16 @@ public class Interfacegrafica{
 				bda.getFacebook().search(procurar,model);
 			}
 		});
-  }
-  
-  /**
-   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os tweets com essa palavra
-   * 
-   * @author Brogueira
-   */
-  
-  public void procurarpalavraTwitter() {
-	  btwitterprocurar.addActionListener(new ActionListener() {
+	}
+
+	/**
+	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os tweets com essa palavra
+	 * 
+	 * @author Brogueira
+	 */
+
+	public void procurarpalavraTwitter() {
+		btwitterprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
@@ -483,16 +482,16 @@ public class Interfacegrafica{
 				bda.getTwitter().searchTweet(procurar, model);
 			}
 		});
-  }
-  
-  /**
-   * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os emails com essa palavra
-   * 
-   * @author Brogueira
-   */
-  
-  public void procurarpalavraMail() {
-	  bmailprocurar.addActionListener(new ActionListener() {
+	}
+
+	/**
+	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os emails com essa palavra
+	 * 
+	 * @author Brogueira
+	 */
+
+	public void procurarpalavraMail() {
+		bmailprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=label.getText();
@@ -500,39 +499,55 @@ public class Interfacegrafica{
 				bda.getMail().procurarpalavra(model,procurar);
 			}
 		});
-  }
-  
-  public void selectMail() {
-	list.addListSelectionListener(new ListSelectionListener() {
-		
-		@Override
-		public void valueChanged(ListSelectionEvent arg0) {
-			
-			try {
-				Mensagem m = list.getSelectedValue();
-				System.out.println(m.toString()+" sad");
-			} catch (Exception e) {
-				System.out.println("apanhei");
+	}
+
+	public void selectMail() {
+		list.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+
+				try {
+					Mensagem m = list.getSelectedValue();
+					System.out.println(m.toString()+" sad");
+				} catch (Exception e) {
+					System.out.println("apanhei");
+				}
 			}
-		}
-	});  
-  }
-  
-  public void  sair() {
+		});  
+	}
+
+	public void  sair() {
 		sair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-					frame.setVisible(false);
-					InterfaceInicio in = new InterfaceInicio (bda);
-					in.open();
-				
+
+				frame.setVisible(false);
+				InterfaceInicio in = new InterfaceInicio (bda);
+				in.open();
+
 			}
-	});	
-	
-}
-  
-public void setModel(DefaultListModel<Mensagem> model) {
-	this.model = model;
-}
- 
+		});	
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void setModel(DefaultListModel<Mensagem> model) {
+		ArrayList<Mensagem> m = new ArrayList<>();
+		for(int i = 0; i<model.size(); i++) {
+			m.add(model.get(i));
+		}
+		System.out.println("-----+++++" + m.get(40));
+		Collections.sort(m, new Comparador());
+		System.out.println("-----+++++" + m.get(40));
+		this.model.clear();
+
+		for(int i = 0; i<m.size(); i++) {
+			this.model.addElement((Mensagem) m.get(i));
+			//			System.out.println(model.get(i));
+		}
+
+
+
+	}
+
 }
