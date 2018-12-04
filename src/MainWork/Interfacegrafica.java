@@ -314,6 +314,7 @@ public class Interfacegrafica{
 		bda.getTwitter().setTokentwitter4(tokentwitter4);
 		bda.getMail().setMail(contaemail);
 		bda.getMail().setPass(passemail);
+		bda.getGuarda().guardar();
 	}
 	
 	public void getFaceTimeLine() {

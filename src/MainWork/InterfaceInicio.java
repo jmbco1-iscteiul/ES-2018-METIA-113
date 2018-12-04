@@ -135,13 +135,9 @@ package MainWork;
 			
 			blogin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
 					frame.setVisible(false);
 					InterfaceLogin login = new InterfaceLogin (bda);
 					login.open();
-					
-					
-					
 			}
 		});	
 			
@@ -155,14 +151,9 @@ package MainWork;
 			
 			balterar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
 					frame.setVisible(false);
-			
 					Interfaceeditar editar = new Interfaceeditar (bda);
 					editar.open();
-					
-					
-					
 			}
 		});	
 			

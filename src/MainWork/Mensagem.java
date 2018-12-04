@@ -1,5 +1,6 @@
 package MainWork;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,7 +9,12 @@ import java.util.Date;
  *@author Brogueira
  */
 
-public class Mensagem{
+public class Mensagem implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private final String tipo;
 
