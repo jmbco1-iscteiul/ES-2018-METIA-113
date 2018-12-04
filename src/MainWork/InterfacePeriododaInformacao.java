@@ -36,9 +36,9 @@ public class InterfacePeriododaInformacao {
 	private JTextField t= new JTextField();
 	private DefaultListModel<Mensagem> model;
 	private DefaultListModel<Mensagem> temp = new DefaultListModel<Mensagem>();
-	private DefaultListModel<Mensagem> modelFace = bda.getFacebook().getModelFace();
-	private DefaultListModel<Mensagem> modelTwitter = bda.getTwitter().getModelTwitter();
-	private DefaultListModel<Mensagem> modelMail = bda.getMail().getModelEmail();
+	private DefaultListModel<Mensagem> modelFace;
+	private DefaultListModel<Mensagem> modelTwitter;
+	private DefaultListModel<Mensagem> modelMail;
 
 	public InterfacePeriododaInformacao(BomDiaAcademia bda, DefaultListModel<Mensagem> model) {
 		this.bda=bda;
@@ -49,7 +49,6 @@ public class InterfacePeriododaInformacao {
 		modelMail = bda.getMail().getModelEmail();
 		
 		frame = new JFrame("INSERIR NÚMERO DE DIAS A VISUALIZAR ");
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
 

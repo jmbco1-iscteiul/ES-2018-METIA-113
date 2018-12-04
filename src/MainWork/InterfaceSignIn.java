@@ -242,19 +242,6 @@ public class InterfaceSignIn {
 		
 		frame.add(search);
 		
-		sair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-					frame.setVisible(false);
-					InterfaceInicio in = new InterfaceInicio (bda);
-					in.open();
-							
-				
-				
-			}
-	});	
-		
 		registocomsucesso();
 		Sairsemguardar();
 
