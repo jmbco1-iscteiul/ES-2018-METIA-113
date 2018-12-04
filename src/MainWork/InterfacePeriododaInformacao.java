@@ -35,19 +35,27 @@ public class InterfacePeriododaInformacao {
 	private BomDiaAcademia bda;
 	private JTextField t= new JTextField();
 	private DefaultListModel<Mensagem> model;
+	private DefaultListModel<Mensagem> temp = new DefaultListModel<Mensagem>();
+	private DefaultListModel<Mensagem> modelFace = bda.getFacebook().getModelFace();
+	private DefaultListModel<Mensagem> modelTwitter = bda.getTwitter().getModelTwitter();
+	private DefaultListModel<Mensagem> modelMail = bda.getMail().getModelEmail();
 
 	public InterfacePeriododaInformacao(BomDiaAcademia bda, DefaultListModel<Mensagem> model) {
 		this.bda=bda;
 		this.model = model;
-
+		temp = new DefaultListModel<Mensagem>();
+		modelFace = bda.getFacebook().getModelFace();
+		modelTwitter = bda.getTwitter().getModelTwitter();
+		modelMail = bda.getMail().getModelEmail();
+		
 		frame = new JFrame("INSERIR NÚMERO DE DIAS A VISUALIZAR ");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
 
-		MostrarTimeLine();
+		MostrarTimeLineemDias();
 	}
-
+	
 	public void open() {
 
 		frame.setSize(500, 100);
@@ -67,21 +75,19 @@ public class InterfacePeriododaInformacao {
 
 	}
 
-	public void  MostrarTimeLine() {
+	
+	public void  MostrarTimeLineemDias() {
 		executar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				model.clear();
-				DefaultListModel<Mensagem> temp = new DefaultListModel<Mensagem>();
-				DefaultListModel<Mensagem> modelFace = bda.getFacebook().getModelFace();
-				DefaultListModel<Mensagem> modelTwitter = bda.getTwitter().getModelTwitter();
-				DefaultListModel<Mensagem> modelMail = bda.getMail().getModelEmail();
-
-				int dias = Integer.parseInt(t.getText());
+				temp.clear();
+				float dias = Integer.parseInt(t.getText());
+				System.out.println("----------"+ dias*dayInMilis);
 
 				for(int i = 0; i<modelFace.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelFace.get(i).getData().getTime());
-					System.out.println("Diferenca: " + diferenca);
+					System.out.println("Diferenca face: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
 						System.out.println("cona");
 						temp.addElement(modelFace.get(i));
@@ -90,7 +96,7 @@ public class InterfacePeriododaInformacao {
 				
 				for(int i = 0; i<modelTwitter.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelTwitter.get(i).getData().getTime());
-					System.out.println("Diferenca: " + diferenca);
+					System.out.println("Diferenca twitter: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
 						System.out.println("cona");
 						temp.addElement(modelTwitter.get(i));
@@ -99,7 +105,7 @@ public class InterfacePeriododaInformacao {
 				
 				for(int i = 0; i<modelMail.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelMail.get(i).getData().getTime());
-					System.out.println("Diferenca: " + diferenca);
+					System.out.println("Diferenca mail: " + diferenca);
 					if(diferenca < dias*dayInMilis) {
 						System.out.println("cona");
 						temp.addElement(modelMail.get(i));

@@ -97,6 +97,7 @@ public class Interfacegrafica{
 		}
 		
 		PeriododaInformacao();
+		TodasTimeLines();
 		
 		getFaceTimeLine();
 		getTwitterTimeLine();
@@ -340,7 +341,31 @@ public class Interfacegrafica{
  * @author Brogueira
  */
 	
-	
+	public void TodasTimeLines() {
+		bkeyword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				
+				for(int i = 0; i<bda.getFacebook().getModelFace().size();i++) {
+					
+						model.addElement(bda.getFacebook().getModelFace().get(i));
+				}
+				for(int i = 0; i<bda.getTwitter().getModelTwitter().size();i++) {
+					
+						model.addElement(bda.getTwitter().getModelTwitter().get(i));
+				}
+				
+				for(int i = 0; i<bda.getMail().getModelEmail().size();i++) {
+			
+						model.addElement(bda.getMail().getModelEmail().get(i));
+				}
+
+				
+				
+			}
+		});
+	}
+
 	public void PeriododaInformacao() {
 		bperiodoinfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
