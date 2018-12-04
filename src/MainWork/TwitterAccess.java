@@ -23,18 +23,21 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public final class TwitterAccess  {
 
-	Twitter twitter = TwitterFactory.getSingleton();
-	List<Status> timelineStatuses = new ArrayList<Status>();
+	private Twitter twitter = TwitterFactory.getSingleton();
+	private List<Status> timelineStatuses = new ArrayList<Status>();
 	private String tokentwitter1;
 	private String tokentwitter2;
 	private String tokentwitter3;
 	private String tokentwitter4;
+	
+	private DefaultListModel<Mensagem> modelTwitter;
+	
 
-/**
- * Função que faz a autenticação no Twitter com os tokens respetivos
- * 
- * @author Brogueira
- */
+	/**
+	 * Função que faz a autenticação no Twitter com os tokens respetivos
+	 * 
+	 * @author Brogueira
+	 */
 	public void autenticacao () {	
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -46,27 +49,29 @@ public final class TwitterAccess  {
 			TwitterFactory tf = new TwitterFactory(cb.build());
 			twitter = tf.getInstance();
 			timelineStatuses = twitter.getHomeTimeline();
+			modelTwitter = new DefaultListModel<Mensagem>();
+			getModelTwitter();
 		}catch (Exception e) { 
 			System.out.println(e.getMessage()); 
 		}
 	}
-	
+
 	public void setTokentwitter1(String tokentwitter1) {
-	this.tokentwitter1 = tokentwitter1;
-}
+		this.tokentwitter1 = tokentwitter1;
+	}
 
-public void setTokentwitter2(String tokentwitter2) {
-	this.tokentwitter2 = tokentwitter2;
-}
+	public void setTokentwitter2(String tokentwitter2) {
+		this.tokentwitter2 = tokentwitter2;
+	}
 
-public void setTokentwitter3(String tokentwitter3) {
-	this.tokentwitter3 = tokentwitter3;
-}
+	public void setTokentwitter3(String tokentwitter3) {
+		this.tokentwitter3 = tokentwitter3;
+	}
 
-public void setTokentwitter4(String tokentwitter4) {
-	this.tokentwitter4 = tokentwitter4;
-	autenticacao();
-}
+	public void setTokentwitter4(String tokentwitter4) {
+		this.tokentwitter4 = tokentwitter4;
+//		autenticacao();
+	}
 
 	/**
 	 * Função que permite obter a timeline do Twitter do utilizador
@@ -77,28 +82,27 @@ public void setTokentwitter4(String tokentwitter4) {
 	 */
 
 	public void getTimeline(DefaultListModel<Mensagem> t){
-		
+		for(int i = 0; i<modelTwitter.size();i++) {
+			t.addElement(modelTwitter.getElementAt(i));
+		}
+	}
+	
+	public void setModelTwitter(DefaultListModel<Mensagem> modelTwitter) {
+		this.modelTwitter = modelTwitter;
+	}
+	
+	public DefaultListModel<Mensagem> getModelTwitter(){
 		try{
-//			t.addElement("|||||||||||||||||||||||| VER TIMELINE ||||||||||||||||||||||||");
-			int counter=0;
-			int counterTotal = 0;
 			for (Status status : timelineStatuses) {
 				if (status.getUser().getName() != null) {
-//					t.addElement(status.getId() + "    " + status.getCreatedAt() + " - " + "@" + status.getUser().getName() + ":" + status.getText());
 					Mensagem m = new Mensagem("T", status.getText(), status.getUser().getName(), status.getCreatedAt());
-					t.addElement(m);
-//					t.addElement("____________________________________________________________");
-					counter++;
+					modelTwitter.addElement(m);
 				}
-				counterTotal++;
 			}
-
-
-//			t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
 		} catch (Exception e) { 
 			System.out.println("erro");
 		}
-//			t.addElement(e.getMessage() + " - deu erro"); }
+		return modelTwitter;
 	}
 
 	/**
@@ -108,7 +112,7 @@ public void setTokentwitter4(String tokentwitter4) {
 	 * 
 	 * @author Brogueira
 	 */
-	
+
 	public void updateStatus(String estado) {
 		Status status = null;
 		try {
@@ -127,20 +131,14 @@ public void setTokentwitter4(String tokentwitter4) {
 	 *
 	 *@author Brogueira
 	 */
-	
+
 	public void searchTweet(String palavra,DefaultListModel<Mensagem> t) {
-		int counter=0;
-		int counterTotal=0;
 		for(Status status : timelineStatuses) {
 			if(status.getText().contains(palavra)) {
-//				t.addElement("@" + status.getUser().getScreenName() + ":" + status.getText());
 				Mensagem m = new Mensagem("T", status.getText(), status.getUser().getScreenName(), status.getCreatedAt());
 				t.addElement(m);
-				counter++;
 			}
-			counterTotal++;
 		}
-//		t.addElement("-------------\nNº of Results: " + counter+"/"+counterTotal);
 	}
-	
+
 }

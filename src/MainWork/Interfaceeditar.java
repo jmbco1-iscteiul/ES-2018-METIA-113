@@ -17,6 +17,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * Interface gráfica onde é possivel atualizar os dados do utilizador
+ * @author Brogueira
+ *
+ */
+
 public class Interfaceeditar {
 	private JFrame frame;
 	private JButton confirmar= new JButton("CONFIRMAR");
@@ -39,12 +45,24 @@ public class Interfaceeditar {
 		frame.pack();
 	}
 	
+	/**
+	 * 
+	 * Função que abre a janela principal e lhe o tamanha pretendido 
+	 * @author Brogueira
+	 * 
+	 */
+	
 	public void open() {
 		
 		frame.setSize(1000, 400);
 		frame.setVisible(true);
 
 	}
+	
+	/**
+	 * Função que cria a disposição dos botões, das barras e da caixa de texto onde se insere os dados.
+	 *  @author Brogueira
+	 */
 	
 	private void addFrameContent() {
 
@@ -160,6 +178,10 @@ public class Interfaceeditar {
 		Sairsemguardar();
 	}
 	
+	/**
+	 * Função que tem como objetivo atualizar os dados do utilizador com sucesso
+	 * @author Brogueira
+	 */
 	public void  Editadocomsucesso() {
 		
 		confirmar.addActionListener(new ActionListener() {
@@ -196,6 +218,10 @@ public class Interfaceeditar {
 	});	
 	
 }
+	/**
+	 * Função que faz com que se feche a interface sem se guardar os dados
+	 * @author Brogueira
+	 */
 	
 	public void  Sairsemguardar() {
 		sair.addActionListener(new ActionListener() {
@@ -212,6 +238,12 @@ public class Interfaceeditar {
 	
 }
 	
+	/**
+	 * Função que permite atualizar dos dados do utilizador no ficheiro XML
+	 *  
+	 * @throws Exception
+	 * @author Brogueira
+	 */
 	public void EditarnoXML() throws Exception {
 		SignIN i= new SignIN(escreve2.getText(),s1,"","","","","","","");
 		Remove r = new Remove (bda.getXml().getDoc(),escreve1.getText(),frame,s2,i);

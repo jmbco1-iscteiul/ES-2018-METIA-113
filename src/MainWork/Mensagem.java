@@ -1,13 +1,20 @@
 package MainWork;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author Asus
- *
+ * Classe Mensagem que representa o que é enviado nos emails
+ *@author Brogueira
  */
-public class Mensagem{
+
+public class Mensagem implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private final String tipo;
 

@@ -66,8 +66,5 @@ public class XmlProject {
 		return doc;
 	}
 	
-//	public static void main(String [] args) {
-//		XmlProject x= new XmlProject ();
-//	}
 	
 }

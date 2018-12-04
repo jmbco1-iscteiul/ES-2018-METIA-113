@@ -85,6 +85,16 @@ public class Interfacegrafica{
 		open();
 		
 		setTokens();
+		if(bda.internetConnection) {
+			bda.getFacebook().autenticacao();
+			bda.getTwitter().autenticacao();
+			bda.getMail().autenticacao();
+			bda.getGuarda().guardar();
+		}else{
+			bda.getTwitter().setModelTwitter(bda.getGuarda().carregar(bda.getUserName()).get(0));
+			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
+			bda.getMail().setModelEmail(bda.getGuarda().carregar(bda.getUserName()).get(2));
+		}
 		
 		PeriododaInformacao();
 		
@@ -312,6 +322,7 @@ public class Interfacegrafica{
 		bda.getTwitter().setTokentwitter4(tokentwitter4);
 		bda.getMail().setMail(contaemail);
 		bda.getMail().setPass(passemail);
+//		bda.getGuarda().guardar();
 	}
 	
 	public void getFaceTimeLine() {
@@ -351,6 +362,8 @@ public class Interfacegrafica{
 	
 	/**
 	 * Função que vai buscar a timeline do email e a representa na janela de visualização
+	 * 
+	 * @author Brogueira
 	 */
 	
 	public void getEmailTimeLine() {

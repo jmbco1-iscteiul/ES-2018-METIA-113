@@ -33,8 +33,9 @@ public class Email {
 	private String mail;
 	private String pass;
 
+	private DefaultListModel<Mensagem> modelEmail;
+	private Message messages[];
 
-	
 	/**
 	 * Função que faz a autenticação do utilizador e que permite receber assim receber emails
 	 * 
@@ -49,10 +50,14 @@ public class Email {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+//		iniSessaoReader(mail, this.pass);
+//		iniSessaoSender();
+	}
+	public void autenticacao(){
 		iniSessaoReader(mail, this.pass);
 		iniSessaoSender();
 	}
-	
+
 	public void iniSessaoReader(String mail, String pass) {
 		propsReader = System.getProperties();
 		propsReader.setProperty("mail.store.protocol", "imaps");
@@ -61,6 +66,12 @@ public class Email {
 			Session session = Session.getDefaultInstance(propsReader, null);
 			store = session.getStore("imaps");
 			store.connect(host, mail, pass);
+
+			modelEmail = new DefaultListModel<Mensagem>();
+			Folder inbox = store.getFolder("Inbox");
+			inbox.open(Folder.READ_ONLY);
+			messages = inbox.getMessages();
+			getModelEmail();
 		} catch (Exception e) {
 			System.out.println("Erro 1");
 		}
@@ -80,25 +91,25 @@ public class Email {
 		propsSender.put("mail.smtp.auth", "true");
 		propsSender.put("mail.smtp.starttls.required", "true");
 	}
-	
 
-//	public void caixaTemp(int dias) {
-//		try {
-//			Folder inbox = store.getFolder("Inbox");
-//			inbox.open(Folder.READ_ONLY);
-//			Message messages[] = inbox.getMessages();
-//			System.out.println(messages.length);
-//			for(Message message : messages) { 
-//				if(message.getReceivedDate().getTime() > System.currentTimeMillis()-(dias*dayInMilis)) {
-//					System.out.println(message.getSubject());
-//					System.out.println(message.getReceivedDate());
-//				}
-//			}	
-//
-//		} catch (Exception e) {
-//			System.out.println("Erro");
-//		}
-//	}
+
+	//	public void caixaTemp(int dias) {
+	//		try {
+	//			Folder inbox = store.getFolder("Inbox");
+	//			inbox.open(Folder.READ_ONLY);
+	//			Message messages[] = inbox.getMessages();
+	//			System.out.println(messages.length);
+	//			for(Message message : messages) { 
+	//				if(message.getReceivedDate().getTime() > System.currentTimeMillis()-(dias*dayInMilis)) {
+	//					System.out.println(message.getSubject());
+	//					System.out.println(message.getReceivedDate());
+	//				}
+	//			}	
+	//
+	//		} catch (Exception e) {
+	//			System.out.println("Erro");
+	//		}
+	//	}
 
 	/**
 	 * Função que que representa a Timeline do email
@@ -107,24 +118,25 @@ public class Email {
 	 */
 
 	public void caixaChegada(DefaultListModel<Mensagem> t) {
+		for(int i = 0; i<modelEmail.size();i++) {
+			t.addElement(modelEmail.getElementAt(i));
+		}
+	}
+	
+	public DefaultListModel<Mensagem> getModelEmail() {
 		try {
-			Folder inbox = store.getFolder("Inbox");
-			inbox.open(Folder.READ_ONLY);
-			Message messages[] = inbox.getMessages();
-			System.out.println("o tamanho é: " + messages.length);
 			for(Message message : messages) { 
 				Mensagem m = new Mensagem("M", message.getSubject(), message.getReceivedDate());
-				t.addElement(m);
-				//				long date = message.getReceivedDate().getTime();
-				//				java.util.Date dateTime=new java.util.Date((long)date*1000);
-				//				String datum = String.valueOf(dateTime);
-				//				t.addElement(datum);
-				//				t.addElement("-------------------------------------");
+				modelEmail.addElement(m);
 			}
-			System.out.println(messages.length);
 		} catch (Exception e) {
 			System.out.println("Erro 2");
 		}
+		return modelEmail;
+	}
+	
+	public void setModelEmail(DefaultListModel<Mensagem> modelEmail) {
+		this.modelEmail = modelEmail;
 	}
 
 	/**
@@ -139,22 +151,11 @@ public class Email {
 
 	public void procurarpalavra(DefaultListModel<Mensagem> t,String p) {
 		try {
-			Folder inbox = store.getFolder("Inbox");
-			inbox.open(Folder.READ_ONLY);
-			Message messages[] = inbox.getMessages();
-			System.out.println("o tamanho é: " + messages.length);
 			for(Message message : messages) { 
-				System.out.println(message.getSubject());
 				if (message.getSubject().contains(p)) {
 					t.addElement(new Mensagem("M", message.getSubject(), message.getReceivedDate()));
-//					long date = message.getReceivedDate().getTime();
-//					java.util.Date dateTime=new java.util.Date((long)date*1000);
-//					String datum = String.valueOf(dateTime);
-					//				t.addElement(datum);
-					//				t.addElement("-------------------------------------");
 				}
 			}
-			System.out.println(messages.length);
 		} catch (Exception e) {
 			System.out.println("Erro 2");
 		}

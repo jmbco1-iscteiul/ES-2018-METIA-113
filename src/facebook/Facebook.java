@@ -26,21 +26,20 @@ import MainWork.SignIN;
  */
 
 public class Facebook {
-	
 
 	public SignIN clientFacebook;
 	public FacebookClient fbClient;
 	private final String groupID = "2168682303197759";
 	private String token;
-	public Facebook() {
-		
-	}
 
-/**
- * Função para autenticação no facebook, com o token respetivo.
- * 
- * @author Brogueira
- */
+	private Connection<Post> result;
+	private DefaultListModel<Mensagem> modelFace;
+
+	/**
+	 * Função para autenticação no facebook, com o token respetivo.
+	 * 
+	 * @author Brogueira
+	 */
 	public void autenticacao() {
 		fbClient = new DefaultFacebookClient(token);
 		User me = fbClient.fetchObject("me", User.class);
@@ -48,13 +47,17 @@ public class Facebook {
 		System.out.println("Id: " + me.getId());
 		System.out.println("Name: " + me.getName());
 		System.out.println(me.getName());
+
+		modelFace = new DefaultListModel<Mensagem>();
+		result = fbClient.fetchConnection("me/feed",Post.class);
+		getModelFace();
 	}
-	
+
 	public void setToken(String token) {
 		this.token = token;
-		autenticacao();
+//		autenticacao();
 	}
-	
+
 	/**
 	 * Função que tem como objetivo pesquisar todos os posts com uma String pretentida.
 	 *
@@ -64,90 +67,58 @@ public class Facebook {
 	 * @author Brogueira
 	 */
 	public void search(String p, DefaultListModel<Mensagem> t) {
-	
-		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
-		System.out.println("\nPosts:");
-		int counter5 = 0;
-		int counterTotal = 0;
 
 		for (List<Post> page : result) {
 			for (Post aPost : page) {
 				if (aPost.getMessage() != null && aPost.getMessage().contains(p)) {
 					System.out.println("encontrei 1");
-//					t.addElement("---- Post "+ counter5 + " ----");
-//					t.addElement("Id: "+"fb.com/"+aPost.getId());
-//					t.addElement("Message: "+aPost.getMessage());
-//					t.addElement("---- Post "+ counter5 + " ----");
-//					t.addElement("Created: "+aPost.getCreatedTime());
-//					System.out.println("---- Post "+ counter5 + " ----");
-//					System.out.println("Id: "+"fb.com/"+aPost.getId());
-//					System.out.println("Message: "+aPost.getMessage());
-//					System.out.println("Created: "+aPost.getCreatedTime());
 					t.addElement(new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime()));
-					counter5++;
 				}
-				counterTotal++;
 			}
 		}
-//		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
-		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
-		
-	
 	}
-	
+
 	/**
 	 * Função que permite obter a timeline do Facebook do utilizador
 	 * @param t- Lista da interface gráfica onde aperecem todos os posts~
 	 * @author Brogueira
 	 */
-	public void timeline( DefaultListModel<Mensagem> t) {
-		
-		Connection<Post> result = fbClient.fetchConnection("me/feed",Post.class);
-		System.out.println("\nPosts:");
-		int counter5 = 0;
-		int counterTotal = 0;
 
-		for (List<Post> page : result) {
-			for (Post aPost : page) {
-					Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
-					System.out.println(m.toString());
-//					t.addElement("---- Post "+ counter5 + " ----");
-//					t.addElement("Id: "+"fb.com/"+aPost.getId());
-//					t.addElement("Message: "+aPost.getMessage());
-//					t.addElement("---- Post "+ counter5 + " ----");
-//					t.addElement("Created: "+aPost.getCreatedTime());
-					t.addElement(m);
-//					System.out.println("---- Post "+ counter5 + " ----");
-//					System.out.println("Id: "+"fb.com/"+aPost.getId());
-//					System.out.println("Message: "+aPost.getMessage());
-//					System.out.println("Created: "+aPost.getCreatedTime());
-					counter5++;	
-			}
+	public void timeline( DefaultListModel<Mensagem> t) {
+		for(int i = 0; i<modelFace.size();i++) {
+			t.addElement(modelFace.getElementAt(i));
 		}
-		counterTotal++;
-//		t.addElement("-------------\nNo of Results: " + counter5+"/"+counterTotal);
-		System.out.println("-------------\nNo of Results: " + counter5+"/"+counterTotal);
-		
-	
 	}
 	
+	public DefaultListModel<Mensagem> getModelFace() {
+		for (List<Post> page : result) {
+			for (Post aPost : page) {
+				Mensagem m = new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime());
+//				System.out.println(m.toString());
+				modelFace.addElement(m);
+			}
+		}
+		return modelFace;
+	}
+	
+	public void setModelFace(DefaultListModel<Mensagem> modelFace) {
+		this.modelFace = modelFace;
+	}
+
 	public SignIN getClientFacebook() {
 		return clientFacebook;
 	}
-	
+
 	/**
 	 * Função que permite fazer posts no facebook
 	 * @param post- conteúdo do post
 	 * @author Brogueira
 	 */
-	
+
 	public void makePost(String post) {
 		fbClient.publish(groupID + "/feed", GraphResponse.class, Parameter.with("message", post));
 		System.out.println(post);
 
 	}
-	
-	
-	
-	
+
 }
