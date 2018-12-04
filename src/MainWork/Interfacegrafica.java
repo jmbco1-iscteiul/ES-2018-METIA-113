@@ -49,8 +49,7 @@ public class Interfacegrafica{
 	private	JButton bfaceprocurar = new JButton("Procurar Palavra");
 	private JButton bmailprocurar = new JButton("Procurar Palavra");
 	private JButton btwitterprocurar = new JButton("Procurar Palavra");
-	private JButton borigem = new JButton("Origem");
-	private JButton bkeyword = new JButton("Palavra-Chave");
+	private JButton bkeyword = new JButton("Mostrar todas as TimeLine");
 	private	JButton bperiodoinfo = new JButton("Período da Informação");
 	private	JButton bescreverpost = new JButton("Escrever Post");
 	private	JButton bescreverpostf = new JButton("Escrever Post");
@@ -86,6 +85,8 @@ public class Interfacegrafica{
 		open();
 		
 		setTokens();
+		
+		PeriododaInformacao();
 		
 		getFaceTimeLine();
 		getTwitterTimeLine();
@@ -168,9 +169,6 @@ public class Interfacegrafica{
 		panel13.add(area1);
 
 
-		
-		panel7.add(borigem);
-		panel1.add(panel7);
 
 		panel8.add(bkeyword);
 		panel1.add(panel8);
@@ -330,6 +328,17 @@ public class Interfacegrafica{
  * 
  * @author Brogueira
  */
+	
+	
+	public void PeriododaInformacao() {
+		bperiodoinfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				InterfacePeriododaInformacao d = new InterfacePeriododaInformacao(bda,model);
+				d.open();
+			}
+		});
+	}
 	
 	public void getTwitterTimeLine() {
 		btwitter.addActionListener(new ActionListener() {
