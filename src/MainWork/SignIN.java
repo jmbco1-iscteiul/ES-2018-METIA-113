@@ -17,6 +17,7 @@ public class SignIN {
 	private String tokentwitter4;
 	private String Email;
 	private String pass;
+	
 	public SignIN(String username, String password, String tokenface, String tokentwitter1, String tokentwitter2,
 			String tokentwitter3, String tokentwitter4, String email, String pass) {
 		this.username = username;
