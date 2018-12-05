@@ -134,8 +134,8 @@ public class InterfaceLogin {
 					System.out.println(escreve1.getText());
 				}	
 				else {
-						LoginSucesso();
-					
+					LoginSucesso();
+
 				}
 
 			}
@@ -169,7 +169,6 @@ public class InterfaceLogin {
 		boolean t= false;
 		NodeList nodes = bda.getXml().getDoc().getDocumentElement().getChildNodes();
 
-//		System.out.println(nodes.getLength());
 		for (int i = 0; i < nodes.getLength(); i++) {
 			if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				NamedNodeMap atr = nodes.item(i).getAttributes();

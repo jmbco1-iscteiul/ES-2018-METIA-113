@@ -85,7 +85,7 @@ public class Facebook {
 
 	public void timeline(DefaultListModel<Mensagem> t) {
 		for(int i = 0; i<modelFace.size();i++) {
-			t.addElement(modelFace.getElementAt(i));
+			t.addElement(modelFace.get(i));
 		}
 	}
 
