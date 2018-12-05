@@ -3,31 +3,29 @@ package MainWork;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.PrintWriter;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingWorker;
 import javax.swing.WindowConstants;
-import javax.swing.border.Border;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 
 /**
@@ -87,16 +85,16 @@ public class Interfacegrafica{
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
-				open();
+		open();
 
-		
+
 		setTokens();
 		if(bda.internetConnection) {
 			bda.getFacebook().autenticacao();
 			bda.getTwitter().autenticacao();
 			bda.getMail().autenticacao();
 			bda.getGuarda().guardar();
-//			open();
+			//			open();
 		}else{
 			bda.getTwitter().setModelTwitter(bda.getGuarda().carregar(bda.getUserName()).get(0));
 			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
@@ -110,7 +108,7 @@ public class Interfacegrafica{
 			textmail.setEditable(false);
 			textpara.setEditable(false);
 			texttwitter.setEditable(false);
-//			open();
+			//			open();
 		}
 
 		PeriododaInformacao();
@@ -523,22 +521,37 @@ public class Interfacegrafica{
 	}
 
 	public void selectMail() {
-		list.addListSelectionListener(new ListSelectionListener() {
 
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				try {
-					Mensagem m = list.getSelectedValue();
-					if(m.getTipo().equals("M")) {
-						System.out.println(m.getMailContent());
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				if (evt.getClickCount() == 2) {
+					try {
+
+						Mensagem m = list.getSelectedValue();
+						if(m.getTipo().equals("M")) {
+
+							PrintWriter printWriter;
+							printWriter = new PrintWriter (new File("file.html"));
+							printWriter.println (m.getMailContent());
+							printWriter.close ();
+
+							URI uri;
+							uri = new URI("file.html");
+							uri.normalize();
+							Desktop.getDesktop().browse(uri);
+
+						}
+					} catch (Exception e) {
+						//					list.clearSelection();
+						System.out.println("apanhei");
 					}
-				} catch (Exception e) {
-					list.clearSelection();
-					System.out.println("apanhei");
-				}
+				} 
 			}
-		});  
+		});
+
+
 	}
+
 
 	public void  sair() {
 		sair.addActionListener(new ActionListener() {

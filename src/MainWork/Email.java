@@ -1,6 +1,8 @@
 package MainWork;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.Properties;
 
@@ -83,7 +85,7 @@ public class Email implements Serializable{
 			messages = inbox.getMessages();
 			modelEmail();
 		} catch (Exception e) {
-			System.out.println("Erro 1");
+			System.out.println("Erro no Mail");
 		}
 	}
 
@@ -146,11 +148,10 @@ public class Email implements Serializable{
 					}
 				}
 				
-				if(conteudo == null) {
-					System.out.println("---------------NULL----------------");
-				}
+				
 				Mensagem m = new Mensagem("M", message.getSubject(), conteudo, message.getReceivedDate());
 				modelEmail.addElement(m);
+				
 			}
 		} catch (Exception e) {
 			System.out.println("Erro 2");
