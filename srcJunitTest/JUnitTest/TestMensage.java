@@ -1,20 +1,16 @@
-package Test;
+package JUnitTest;
 
 import static org.junit.Assert.*;
 
-import java.util.Date;
-
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 
-import MainWork.Mensagem;
-import MainWork.SignIN;
+public class TestMensage {
 
-
-public class TestMensagem {
 	String[] m = null;
-	
-	
+	int i = 2;
+
+
 	@Before
 	public void setUp()  {
 		String[] meses = {"Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"};
@@ -23,10 +19,13 @@ public class TestMensagem {
 
 	@Test
 	public void testMes() {
-		int i = 2;
+		
 		assertEquals("Mar", m[2]);
 	}
-	
 
-	
+
 }
+
+
+
+
