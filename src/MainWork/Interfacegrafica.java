@@ -87,7 +87,7 @@ public class Interfacegrafica{
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		addFrameContent();
 		frame.pack();
-		//		open();
+				open();
 
 		
 		setTokens();
@@ -96,7 +96,7 @@ public class Interfacegrafica{
 			bda.getTwitter().autenticacao();
 			bda.getMail().autenticacao();
 			bda.getGuarda().guardar();
-			open();
+//			open();
 		}else{
 			bda.getTwitter().setModelTwitter(bda.getGuarda().carregar(bda.getUserName()).get(0));
 			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
@@ -110,7 +110,7 @@ public class Interfacegrafica{
 			textmail.setEditable(false);
 			textpara.setEditable(false);
 			texttwitter.setEditable(false);
-			open();
+//			open();
 		}
 
 		PeriododaInformacao();
@@ -480,15 +480,10 @@ public class Interfacegrafica{
 	public void procurarpalavraFace() {
 		bfaceprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("1");
 				model.clear();
-				System.out.println("2");
 				String procurar=label.getText();
-				System.out.println("3");
 				bda.getFacebook().search(procurar,model);
-				System.out.println("4");
 				setModel(model);
-				System.out.println("5");
 			}
 		});
 	}
@@ -534,7 +529,9 @@ public class Interfacegrafica{
 			public void valueChanged(ListSelectionEvent arg0) {
 				try {
 					Mensagem m = list.getSelectedValue();
-					System.out.println(m.toString());
+					if(m.getTipo().equals("M")) {
+						System.out.println(m.getMailContent());
+					}
 				} catch (Exception e) {
 					list.clearSelection();
 					System.out.println("apanhei");

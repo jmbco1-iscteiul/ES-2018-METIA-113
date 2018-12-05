@@ -10,16 +10,22 @@ import java.util.Date;
  *@author Brogueira
  */
 
-public class Mensagem implements Serializable{
+public class Mensagem extends Object implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 826905894253379454L;
+
+	/**
+	 * 
+	 */
 
 	private final String tipo;
 
 	private String content;
+
+	private String mailContent;
 	private String subject;
 	private String to;
 
@@ -28,24 +34,43 @@ public class Mensagem implements Serializable{
 	private String creator;
 
 
-	public Mensagem(String tipo, String content, Date data) {//mail face
+	public Mensagem(String tipo, String content, Date data) {// face
 		this.tipo = tipo;
 		this.content = content;
 		this.data = data;
 	}
 
-	public Mensagem(String tipo, String content, String creator, Date data) {//twitter
-		this.tipo = tipo;
-		this.content = content;
-		this.creator = creator;
-		this.data = data;
+	//	public Mensagem(String tipo, String subject, Object content, Date data) {// mail
+	//		this.tipo = tipo;
+	//		this.subject = subject;
+	//		this.mailContent = content;
+	//		this.data = data;
+	//	}
 
+	public Mensagem(String tipo, String content, String creator, Date data) {//twitter mail
+		if(tipo.equals("T")) {
+			this.tipo = tipo;
+			this.content = content;
+			this.creator = creator;
+			this.data = data;
+		}else{
+			this.tipo = tipo;
+			this.subject = content;
+			this.mailContent = creator;
+			this.data = data;
+		}
 	}
+
+
 
 	public String mes(int i) {
 		String[] meses = {"Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"};
 
 		return meses[i];
+	}
+
+	public String getMailContent() {
+		return mailContent;
 	}
 
 	public String getContent() {
@@ -58,9 +83,18 @@ public class Mensagem implements Serializable{
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
-	
 
-		return cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(cal.get(Calendar.MONTH)) + "/" + cal.get(Calendar.YEAR) + " - " + content;
+		String resultado = "ups";
+		if(content == null && tipo.equals("F")) {
+			resultado = cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(cal.get(Calendar.MONTH)) + "/" + cal.get(Calendar.YEAR) + " - " + "Imagem";
+		}else if(tipo.equals("M")){
+
+			resultado = cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(cal.get(Calendar.MONTH)) + "/" + cal.get(Calendar.YEAR) + " - " + subject;
+		}else {
+			resultado = cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(cal.get(Calendar.MONTH)) + "/" + cal.get(Calendar.YEAR) + " - " + content;
+		}
+
+		return resultado;
 	}
 
 
@@ -72,6 +106,8 @@ public class Mensagem implements Serializable{
 		this.data = data;
 	}
 
-
+	public String getTipo() {
+		return tipo;
+	}
 
 }

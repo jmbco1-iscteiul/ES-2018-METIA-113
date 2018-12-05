@@ -1,18 +1,20 @@
 package MainWork;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /**
  * Classe que representa a funcionalidade Email, onde se acede fazendo a autenticação, onde se pode consultar e enviar emails
@@ -22,8 +24,12 @@ import javax.swing.JOptionPane;
  *
  */
 
-public class Email {
+public class Email implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final int dayInMilis = 86400000;
 	private final String host ="smtp-mail.outlook.com" ;
 
@@ -53,8 +59,6 @@ public class Email {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
-//		iniSessaoReader(mail, this.pass);
-//		iniSessaoSender();
 	}
 	public String getPass() {
 		return pass;
@@ -99,24 +103,6 @@ public class Email {
 	}
 
 
-	//	public void caixaTemp(int dias) {
-	//		try {
-	//			Folder inbox = store.getFolder("Inbox");
-	//			inbox.open(Folder.READ_ONLY);
-	//			Message messages[] = inbox.getMessages();
-	//			System.out.println(messages.length);
-	//			for(Message message : messages) { 
-	//				if(message.getReceivedDate().getTime() > System.currentTimeMillis()-(dias*dayInMilis)) {
-	//					System.out.println(message.getSubject());
-	//					System.out.println(message.getReceivedDate());
-	//				}
-	//			}	
-	//
-	//		} catch (Exception e) {
-	//			System.out.println("Erro");
-	//		}
-	//	}
-
 	/**
 	 * Função que que representa a Timeline do email
 	 * 
@@ -124,27 +110,59 @@ public class Email {
 	 */
 
 	public void caixaChegada(DefaultListModel<Mensagem> t) {
+
+		System.out.println("tamanho da modelEmail: " + modelEmail.size());
 		for(int i = 0; i<modelEmail.size();i++) {
 			t.addElement(modelEmail.getElementAt(i));
 		}
 	}
-	
+
 	public void modelEmail() {
 		modelEmail.clear();
 		try {
 			for(Message message : messages) { 
-				Mensagem m = new Mensagem("M", message.getSubject(), message.getReceivedDate());
+
+				String conteudo = "";
+
+				if(message.getContent() instanceof String) {
+					conteudo = (String) message.getContent();
+				}else {
+					Multipart multipart = (Multipart) message.getContent();
+
+					for (int x = 0; x < multipart.getCount(); x++) {
+						BodyPart bodyPart = multipart.getBodyPart(x);
+
+						String disposition = bodyPart.getDisposition();
+
+						if (disposition != null && (disposition.equals(BodyPart.ATTACHMENT))) {
+							System.out.println("Mail have some attachment : ");
+
+							DataHandler handler = bodyPart.getDataHandler();
+							System.out.println("file name : " + handler.getName());
+						} else {
+							conteudo = bodyPart.getContent().toString();
+//							System.out.println("é isto?" + bodyPart.getContent().toString());
+						}
+					}
+				}
+				
+				if(conteudo == null) {
+					System.out.println("---------------NULL----------------");
+				}
+				Mensagem m = new Mensagem("M", message.getSubject(), conteudo, message.getReceivedDate());
 				modelEmail.addElement(m);
 			}
 		} catch (Exception e) {
 			System.out.println("Erro 2");
+			e.printStackTrace();
+
 		}
 	}
-	
+
 	public DefaultListModel<Mensagem> getModelEmail() {
 		return modelEmail;
 	}
-	
+
 	public void setModelEmail(DefaultListModel<Mensagem> modelEmail) {
 		this.modelEmail = modelEmail;
 	}
@@ -160,13 +178,13 @@ public class Email {
 	 */
 
 	public void procurarpalavra(DefaultListModel<Mensagem> t,String p) {
-		
+
 		for(int i = 0; i<modelEmail.size();i++) {
 			if(modelEmail.get(i).toString().contains(p)) {
 				t.addElement(modelEmail.get(i));
 			}
 		}
-		
+
 	}
 
 

@@ -26,7 +26,7 @@ public class BomDiaAcademia {
 
 	public BomDiaAcademia() {
 		internetConnection = netIsAvailable();
-
+		
 		facebook = new Facebook();
 		twitter = new TwitterAccess();
 		mail = new Email();
@@ -65,6 +65,7 @@ public class BomDiaAcademia {
 	public InterfaceInicio getI() {
 		return i;
 	}
+	
 
 	public Guarda getGuarda() {
 		return guarda;
