@@ -48,10 +48,16 @@ public class Email {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	public String getMail() {
+		return mail;
+	}
 	public void setPass(String pass) {
 		this.pass = pass;
 //		iniSessaoReader(mail, this.pass);
 //		iniSessaoSender();
+	}
+	public String getPass() {
+		return pass;
 	}
 	public void autenticacao(){
 		iniSessaoReader(mail, this.pass);

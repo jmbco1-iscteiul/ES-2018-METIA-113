@@ -59,17 +59,33 @@ public final class TwitterAccess  {
 	public void setTokentwitter1(String tokentwitter1) {
 		this.tokentwitter1 = tokentwitter1;
 	}
+	public String getTokentwitter1() {
+		return tokentwitter1;
+	}
+	
 
 	public void setTokentwitter2(String tokentwitter2) {
 		this.tokentwitter2 = tokentwitter2;
 	}
 
+	public String getTokentwitter2() {
+		return tokentwitter2;
+	}
+	
 	public void setTokentwitter3(String tokentwitter3) {
 		this.tokentwitter3 = tokentwitter3;
+	}
+	
+	public String getTokentwitter3() {
+		return tokentwitter3;
 	}
 
 	public void setTokentwitter4(String tokentwitter4) {
 		this.tokentwitter4 = tokentwitter4;
+	}
+	
+	public String getTokentwitter4() {
+		return tokentwitter4;
 	}
 
 	/**
