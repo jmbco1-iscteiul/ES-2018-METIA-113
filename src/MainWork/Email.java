@@ -154,15 +154,13 @@ public class Email {
 	 */
 
 	public void procurarpalavra(DefaultListModel<Mensagem> t,String p) {
-		try {
-			for(Message message : messages) { 
-				if (message.getSubject().contains(p)) {
-					t.addElement(new Mensagem("M", message.getSubject(), message.getReceivedDate()));
-				}
+		
+		for(int i = 0; i<modelEmail.size();i++) {
+			if(modelEmail.get(i).toString().contains(p)) {
+				t.addElement(modelEmail.get(i));
 			}
-		} catch (Exception e) {
-			System.out.println("Erro 2");
 		}
+		
 	}
 
 

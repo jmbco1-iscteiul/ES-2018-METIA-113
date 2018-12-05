@@ -29,9 +29,9 @@ public final class TwitterAccess  {
 	private String tokentwitter2;
 	private String tokentwitter3;
 	private String tokentwitter4;
-	
+
 	private DefaultListModel<Mensagem> modelTwitter;
-	
+
 
 	/**
 	 * Função que faz a autenticação no Twitter com os tokens respetivos
@@ -80,17 +80,17 @@ public final class TwitterAccess  {
 	 * @author Brogueira
 	 */
 
-	public void getTimeline(DefaultListModel<Mensagem> t){
+	public void getTimeline(DefaultListModel<Mensagem> t){//dando a lista que é mostrada na interface, nesta é posta a lista do twitter(modelTwitter) para qe seja mostrada
 		for(int i = 0; i<modelTwitter.size();i++) {
 			t.addElement(modelTwitter.getElementAt(i));
 		}
 	}
-	
+
 	public void setModelTwitter(DefaultListModel<Mensagem> modelTwitter) {
 		this.modelTwitter = modelTwitter;
 	}
 	
-	public void modelTwitter(){
+	public void modelTwitter(){//esta funcao carrega os tweets na lista modelTwitter no arranque da aplicação
 		modelTwitter.clear();
 		try{
 			for (Status status : timelineStatuses) {
@@ -103,7 +103,7 @@ public final class TwitterAccess  {
 			System.out.println("erro");
 		}
 	}
-	
+
 	public DefaultListModel<Mensagem> getModelTwitter() {
 		return modelTwitter;
 	}
@@ -135,11 +135,10 @@ public final class TwitterAccess  {
 	 *@author Brogueira
 	 */
 
-	public void searchTweet(String palavra,DefaultListModel<Mensagem> t) {
-		for(Status status : timelineStatuses) {
-			if(status.getText().contains(palavra)) {
-				Mensagem m = new Mensagem("T", status.getText(), status.getUser().getScreenName(), status.getCreatedAt());
-				t.addElement(m);
+	public void searchTweet(String p,DefaultListModel<Mensagem> t) {
+		for(int i = 0; i<modelTwitter.size();i++) {
+			if(modelTwitter.get(i).toString().contains(p)) {
+				t.addElement(modelTwitter.get(i));
 			}
 		}
 	}

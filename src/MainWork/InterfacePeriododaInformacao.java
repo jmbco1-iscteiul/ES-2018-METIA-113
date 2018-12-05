@@ -117,7 +117,7 @@ public class InterfacePeriododaInformacao {
 				model.clear();
 
 				for(int i = 0; i<m.size(); i++) {
-					model.addElement((Mensagem) m.get(i));
+					model.addElement( m.get(i));
 				}
 				
 				

@@ -93,6 +93,15 @@ public class Interfacegrafica{
 			bda.getTwitter().setModelTwitter(bda.getGuarda().carregar(bda.getUserName()).get(0));
 			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
 			bda.getMail().setModelEmail(bda.getGuarda().carregar(bda.getUserName()).get(2));
+			
+			bescrevermail.setEnabled(false);
+			bescreverpost.setEnabled(false);
+			bescreverpostf.setEnabled(false);
+			textassunto.setEditable(false);
+			textface.setEditable(false);
+			textmail.setEditable(false);
+			textpara.setEditable(false);
+			texttwitter.setEditable(false);
 		}
 
 		PeriododaInformacao();
@@ -268,15 +277,13 @@ public class Interfacegrafica{
 		textpara.setPreferredSize(d7);
 		textassunto.setPreferredSize(d7);
 
-		JTextArea area2 = new JTextArea();
+		JLabel area2 = new JLabel();
 		area2.setText("Para:");
-		area2.setEditable(false);
 		area2.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area2.setForeground(color);
 
-		JTextArea area4 = new JTextArea();
+		JLabel area4 = new JLabel();
 		area4.setText("Tema:");
-		area4.setEditable(false);
 		area4.setFont(new Font("SansSerif", Font.BOLD, 15));
 		area4.setForeground(color);
 

@@ -68,15 +68,13 @@ public class Facebook {
 	 * @author Brogueira
 	 */
 	public void search(String p, DefaultListModel<Mensagem> t) {
-
-		for (List<Post> page : result) {
-			for (Post aPost : page) {
-				if (aPost.getMessage() != null && aPost.getMessage().contains(p)) {
-					System.out.println("encontrei 1");
-					t.addElement(new Mensagem("F", aPost.getMessage(), aPost.getCreatedTime()));
-				}
+		
+		for(int i = 0; i<modelFace.size();i++) {
+			if(modelFace.get(i).toString().contains(p)) {
+				t.addElement(modelFace.get(i));
 			}
 		}
+		
 	}
 
 	/**

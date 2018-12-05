@@ -48,29 +48,18 @@ public class Mensagem implements Serializable{
 		return meses[i];
 	}
 
+	public String getContent() {
+		return content;
+	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public String toString() {
 
-		//		if(tipo.equals("M")) {
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(data);
 
-		//			return cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(data.getMonth()) + "/" + data.getYear() + " - " + content;
-		//		}if(tipo.equals("F")){
-		//			Calendar cal = Calendar.getInstance();
-		//			cal.setTime(data);
-		//
-		//			return cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(data.getMonth()) + "/" + data.getYear() + " - " + content;
-		//		}if(tipo.equals("T")){
-		//			Calendar cal = Calendar.getInstance();
-		//			cal.setTime(data);
-		//
-		//			return cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(data.getMonth()) + "/" + data.getYear() + " - " + content;
-		//		}else{
-		return cal.get(Calendar.DAY_OF_MONTH) + "/" + mes(data.getMonth()) + "/" + cal.get(Calendar.YEAR) + " - " + content;
+		return cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR) + " - " + content;
 	}
 
 
@@ -81,26 +70,6 @@ public class Mensagem implements Serializable{
 	public void setData(Date data) {
 		this.data = data;
 	}
-
-
-
-//	@Override
-//	public int compare(Mensagem m1, Mensagem m2) {
-//		Calendar cal1 = Calendar.getInstance();
-//		cal1.setTime(m1.getData());
-//
-//		Calendar cal2 = Calendar.getInstance();
-//		cal2.setTime(m2.getData());
-//
-//		if(cal1.get(Calendar.YEAR) > cal2.get(Calendar.YEAR)) {
-//			return 1;
-//		}else if(cal1.get(Calendar.MONTH) > cal2.get(Calendar.MONTH)) {
-//			return 1;
-//		}else if(cal1.get(Calendar.DAY_OF_MONTH) < cal2.get(Calendar.DAY_OF_MONTH)) {
-//			return 1;
-//		}
-//		return -1;
-//	}
 
 
 
