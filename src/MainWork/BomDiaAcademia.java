@@ -1,13 +1,11 @@
 package MainWork;
 
-import facebook.Facebook;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.w3c.dom.Document;
+import facebook.Facebook;
 /**
  * Motor principal da aplicação onde se encontram todos os métodos principais.
  * 
