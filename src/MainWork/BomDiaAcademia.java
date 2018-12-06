@@ -38,7 +38,6 @@ public class BomDiaAcademia extends Thread{
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-		System.out.println("-------------------USER NAME: " + userName);
 	}
 
 	public String getUserName() {
