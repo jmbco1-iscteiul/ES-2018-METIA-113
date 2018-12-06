@@ -7,6 +7,7 @@
 **      CONSULTE OS SITES DO FACEBOOK, TWITTER E E-MAIL PARA OBTER OS TOKENS RESPETIVOS PARA INICIAR SESSÃO**
 **      REGISTE-SE, EFETUANDO O LOGIN NA APLICAÇÃO**
 **      DESFRUTE DA UTILIZAÇÃO DO NOSSO SOFTWARE**
+**		ENCONTRARÁ UM VIDEO DEMONSTRATIVO DA APLICAÇÃO NO LINK SEGUINTE: https://www.youtube.com/watch?v=v0S_Tmnl2Qg&feature=youtu.be
 
 #                                    NOTA:
 **  Caso encontre algum erro, defeito ou bug, por favor entre em contacto connosco! Obrigado   **
