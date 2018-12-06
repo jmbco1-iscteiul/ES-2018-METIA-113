@@ -1,10 +1,7 @@
 package MainWork;
 
 
-import java.awt.Frame;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,21 +18,21 @@ import org.w3c.dom.NodeList;
  *
  */
 public class AddToFile {
-	
+
 	private Element newElement1;
 	private Document doc;
 	private SignIN client;
 	private ArrayList <SignIN> array = new ArrayList <SignIN> ();
 	private boolean t=false;
 	private boolean b=false;
-	
-	
+
+
 	public AddToFile(Document doc, SignIN client) {
 		this.doc=doc;
 		this.client=client;
 		// Adding new element Service with attributes to the XML document (root node)
 		System.out.println("\n----- Adding new element <Service> with attributes to the XML document -----");
-		
+
 		newElement1 = doc.createElement("Service");
 		newElement1.setAttribute("User", client.getUsername());
 		newElement1.setAttribute("Password", client.getPassword());
@@ -46,47 +43,44 @@ public class AddToFile {
 		newElement1.setAttribute("TokenTwitter4", client.getTokentwitter4());
 		newElement1.setAttribute("ContadeEmail", client.getEmail());
 		newElement1.setAttribute("PassdeEmail", client.getPass());
-		
 
-		System.out.println("Root element :" + doc.getDocumentElement().getNodeName()); 
-			
+
 		NodeList nodes = doc.getDocumentElement().getChildNodes();
 		Node n = doc.getDocumentElement();
-		
+
 		System.out.println(nodes.getLength());
 		for (int i = 0; i < nodes.getLength(); i++) {
 			if(nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				NamedNodeMap atr = nodes.item(i).getAttributes();
 				Node nodeatr = nodes.item(i);
 				Element ei= (Element) nodeatr;
-				System.out.println(ei.getAttribute("User"));
-					if(client.getUsername().equals(ei.getAttribute("User"))) {
+				if(client.getUsername().equals(ei.getAttribute("User"))) {
 					t=true;
-					}
-						if(client.getPassword().equals(ei.getAttribute("Password"))) {
-						b=true;
-					}
-					if(client.getUsername().equals(ei.getAttribute("User")) && client.getPassword().equals(ei.getAttribute("Password"))) {
-						t=true;
-						b=true;
-					}
+				}
+				if(client.getPassword().equals(ei.getAttribute("Password"))) {
+					b=true;
+				}
+				if(client.getUsername().equals(ei.getAttribute("User")) && client.getPassword().equals(ei.getAttribute("Password"))) {
+					t=true;
+					b=true;
+				}
 			}
-			}
+		}
 		if(!b && !t) {
 			array.add(client);
 			n.appendChild(newElement1);
-			}
-		
+		}
+
 	}	
-		
+
 	public boolean isT() {
 		return t;
 	}
-	
+
 	public boolean isB() {
 		return b;
 	}
-	
+
 
 	public Element getNewElement() {
 		return newElement1;
@@ -95,7 +89,7 @@ public class AddToFile {
 	public ArrayList<SignIN> getArray() {
 		return array;
 	}
-	
-	
+
+
 
 }

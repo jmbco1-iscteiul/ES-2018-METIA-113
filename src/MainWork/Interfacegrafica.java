@@ -94,7 +94,6 @@ public class Interfacegrafica{
 			bda.getTwitter().autenticacao();
 			bda.getMail().autenticacao();
 			bda.getGuarda().guardar();
-			//			open();
 		}else{
 			bda.getTwitter().setModelTwitter(bda.getGuarda().carregar(bda.getUserName()).get(0));
 			bda.getFacebook().setModelFace(bda.getGuarda().carregar(bda.getUserName()).get(1));
@@ -108,7 +107,6 @@ public class Interfacegrafica{
 			textmail.setEditable(false);
 			textpara.setEditable(false);
 			texttwitter.setEditable(false);
-			//			open();
 		}
 
 		PeriododaInformacao();
@@ -342,13 +340,8 @@ public class Interfacegrafica{
 	public void getFaceTimeLine() {
 		bface.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("1");
 				model.clear();
-				System.out.println("2");
-				bda.getFacebook().timeline(model);
-				System.out.println("3");
-				setModel(model);
-				System.out.println("4");
+				setModel(bda.getFacebook().getModelFace());
 			}
 		});
 	}
@@ -429,7 +422,6 @@ public class Interfacegrafica{
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				String procurar=textface.getText();
-				System.out.println(procurar);
 				bda.getFacebook().makePost(procurar);
 				textface.setText("");
 			}
@@ -542,8 +534,7 @@ public class Interfacegrafica{
 
 						}
 					} catch (Exception e) {
-						//					list.clearSelection();
-						System.out.println("apanhei");
+						System.out.println("Erro na abertura do Email");
 					}
 				} 
 			}
@@ -571,10 +562,8 @@ public class Interfacegrafica{
 		for(int i = 0; i<model.size(); i++) {
 			m.add(model.get(i));
 		}
-
 		Collections.sort(m, new Comparador());
 		this.model.clear();
-
 		for(int i = 0; i<m.size(); i++) {
 			this.model.addElement(m.get(i));
 		}

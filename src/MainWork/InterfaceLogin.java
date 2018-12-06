@@ -50,10 +50,8 @@ public class InterfaceLogin {
 	 * @author Brogueira
 	 */
 	public void open() {
-
 		frame.setSize(1000, 250);
 		frame.setVisible(true);
-
 	}
 
 	/**
@@ -135,12 +133,9 @@ public class InterfaceLogin {
 				}	
 				else {
 					LoginSucesso();
-
 				}
-
 			}
 		});	
-
 	}
 
 	/**

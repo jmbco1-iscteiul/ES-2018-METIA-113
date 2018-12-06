@@ -40,31 +40,19 @@ public class XmlProject {
 			File inputFile = new File("config.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			 doc = dBuilder.parse(inputFile);
+			doc = dBuilder.parse(inputFile);
 			doc.getDocumentElement().normalize();  
 
-			//Leitura
-	//		Leitura l = new Leitura(doc);
+			SignIN client = new SignIN ("eee","eee","eee","eee","eee","eee","eee","eee","eee");
 
-	//		String mail = "mai";
-			
-		//Remove XML
-	//	Remove r = new Remove(doc, "mail");
-			
-		SignIN client = new SignIN ("eee","eee","eee","eee","eee","eee","eee","eee","eee");
-			//Edit XML
-	//		Edit edit = new Edit(doc, mail, client);
-			
-			
-			// Save XML document
-	//		Save s = new Save(doc);
-
-		} catch (Exception e) { e.printStackTrace(); }
+		} catch (Exception e) { 
+			System.out.println("Erro no XML");
+		}
 	}
 
 	public Document getDoc() {
 		return doc;
 	}
-	
-	
+
+
 }

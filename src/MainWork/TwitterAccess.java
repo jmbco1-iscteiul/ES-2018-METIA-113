@@ -52,7 +52,7 @@ public final class TwitterAccess  {
 			modelTwitter = new DefaultListModel<Mensagem>();
 			modelTwitter();
 		}catch (Exception e) { 
-			System.out.println(e.getMessage()); 
+			System.out.println("Erro na autenticação do Twitter"); 
 		}
 	}
 
@@ -62,7 +62,6 @@ public final class TwitterAccess  {
 	public String getTokentwitter1() {
 		return tokentwitter1;
 	}
-	
 
 	public void setTokentwitter2(String tokentwitter2) {
 		this.tokentwitter2 = tokentwitter2;
@@ -71,11 +70,11 @@ public final class TwitterAccess  {
 	public String getTokentwitter2() {
 		return tokentwitter2;
 	}
-	
+
 	public void setTokentwitter3(String tokentwitter3) {
 		this.tokentwitter3 = tokentwitter3;
 	}
-	
+
 	public String getTokentwitter3() {
 		return tokentwitter3;
 	}
@@ -83,7 +82,7 @@ public final class TwitterAccess  {
 	public void setTokentwitter4(String tokentwitter4) {
 		this.tokentwitter4 = tokentwitter4;
 	}
-	
+
 	public String getTokentwitter4() {
 		return tokentwitter4;
 	}
@@ -96,7 +95,7 @@ public final class TwitterAccess  {
 	 * @author Brogueira
 	 */
 
-	public void getTimeline(DefaultListModel<Mensagem> t){//dando a lista que é mostrada na interface, nesta é posta a lista do twitter(modelTwitter) para qe seja mostrada
+	public void getTimeline(DefaultListModel<Mensagem> t){
 		for(int i = 0; i<modelTwitter.size();i++) {
 			t.addElement(modelTwitter.getElementAt(i));
 		}
@@ -105,8 +104,8 @@ public final class TwitterAccess  {
 	public void setModelTwitter(DefaultListModel<Mensagem> modelTwitter) {
 		this.modelTwitter = modelTwitter;
 	}
-	
-	public void modelTwitter(){//esta funcao carrega os tweets na lista modelTwitter no arranque da aplicação
+
+	public void modelTwitter(){
 		modelTwitter.clear();
 		try{
 			for (Status status : timelineStatuses) {
@@ -116,7 +115,7 @@ public final class TwitterAccess  {
 				}
 			}
 		} catch (Exception e) { 
-			System.out.println("erro");
+			System.out.println("Erro Twitter");
 		}
 	}
 
@@ -139,7 +138,6 @@ public final class TwitterAccess  {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Successfully updated the status to [" + status.getText() + "].");
 	}
 
 	/**

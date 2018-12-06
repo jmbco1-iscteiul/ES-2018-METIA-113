@@ -12,7 +12,7 @@ import facebook.Facebook;
  * @author Brogueira
  *
  */
-public class BomDiaAcademia {
+public class BomDiaAcademia extends Thread{
 	private Facebook facebook;
 	private InterfaceInicio i;
 	private XmlProject xml;
@@ -25,7 +25,7 @@ public class BomDiaAcademia {
 	boolean internetConnection;
 
 	public BomDiaAcademia() {
-		internetConnection = netIsAvailable();
+		internetConnection = false;
 		
 		facebook = new Facebook();
 		twitter = new TwitterAccess();

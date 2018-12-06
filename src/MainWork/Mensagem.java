@@ -17,10 +17,6 @@ public class Mensagem extends Object implements Serializable{
 	 */
 	private static final long serialVersionUID = 826905894253379454L;
 
-	/**
-	 * 
-	 */
-
 	private final String tipo;
 
 	private String content;
@@ -39,13 +35,6 @@ public class Mensagem extends Object implements Serializable{
 		this.content = content;
 		this.data = data;
 	}
-
-	//	public Mensagem(String tipo, String subject, Object content, Date data) {// mail
-	//		this.tipo = tipo;
-	//		this.subject = subject;
-	//		this.mailContent = content;
-	//		this.data = data;
-	//	}
 
 	public Mensagem(String tipo, String content, String creator, Date data) {//twitter mail
 		if(tipo.equals("T")) {

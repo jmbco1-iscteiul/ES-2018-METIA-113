@@ -26,6 +26,5 @@ public class Save {
 		StreamResult result = new StreamResult(new FileOutputStream("config.xml"));
 		DOMSource source = new DOMSource(doc);
 		transformer.transform(source, result);
-
 	}
 }

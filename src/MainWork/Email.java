@@ -32,7 +32,6 @@ public class Email implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final int dayInMilis = 86400000;
 	private final String host ="smtp-mail.outlook.com" ;
 
 	private Properties propsReader;
@@ -85,7 +84,7 @@ public class Email implements Serializable{
 			messages = inbox.getMessages();
 			modelEmail();
 		} catch (Exception e) {
-			System.out.println("Erro no Mail");
+			System.out.println("Erro no Inicio de sessão do EMail");
 		}
 	}
 
@@ -112,8 +111,6 @@ public class Email implements Serializable{
 	 */
 
 	public void caixaChegada(DefaultListModel<Mensagem> t) {
-
-		System.out.println("tamanho da modelEmail: " + modelEmail.size());
 		for(int i = 0; i<modelEmail.size();i++) {
 			t.addElement(modelEmail.getElementAt(i));
 		}
@@ -137,26 +134,22 @@ public class Email implements Serializable{
 						String disposition = bodyPart.getDisposition();
 
 						if (disposition != null && (disposition.equals(BodyPart.ATTACHMENT))) {
-							System.out.println("Mail have some attachment : ");
+							System.out.println("Email tem anexos : ");
 
 							DataHandler handler = bodyPart.getDataHandler();
-							System.out.println("file name : " + handler.getName());
+							System.out.println("Nome do ficheiro : " + handler.getName());
 						} else {
 							conteudo = bodyPart.getContent().toString();
-//							System.out.println("é isto?" + bodyPart.getContent().toString());
 						}
 					}
 				}
-				
-				
+
 				Mensagem m = new Mensagem("M", message.getSubject(), conteudo, message.getReceivedDate());
 				modelEmail.addElement(m);
-				
+
 			}
 		} catch (Exception e) {
-			System.out.println("Erro 2");
-			e.printStackTrace();
-
+			System.out.println("Erro Email");
 		}
 	}
 
@@ -179,13 +172,11 @@ public class Email implements Serializable{
 	 */
 
 	public void procurarpalavra(DefaultListModel<Mensagem> t,String p) {
-
 		for(int i = 0; i<modelEmail.size();i++) {
 			if(modelEmail.get(i).toString().contains(p)) {
 				t.addElement(modelEmail.get(i));
 			}
 		}
-
 	}
 
 
@@ -214,9 +205,8 @@ public class Email implements Serializable{
 			transport.connect(host, mail, pass);
 			transport.sendMessage(msg, msg.getAllRecipients());
 			transport.close();
-			System.out.println("message send successfully");
 		}catch (Exception e) {
-			System.out.println("Erro de envio");
+			System.out.println("Erro no envio de email");
 		}
 	}
 

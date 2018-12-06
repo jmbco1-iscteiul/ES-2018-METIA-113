@@ -56,7 +56,6 @@ public class Facebook {
 
 	public void setToken(String token) {
 		this.token = token;
-		//		autenticacao();
 	}
 
 	/**
@@ -68,13 +67,12 @@ public class Facebook {
 	 * @author Brogueira
 	 */
 	public void search(String p, DefaultListModel<Mensagem> t) {
-		
+
 		for(int i = 0; i<modelFace.size();i++) {
 			if(modelFace.get(i).toString().contains(p)) {
 				t.addElement(modelFace.get(i));
 			}
 		}
-		
 	}
 
 	/**
@@ -84,9 +82,7 @@ public class Facebook {
 	 */
 
 	public void timeline(DefaultListModel<Mensagem> t) {
-		for(int i = 0; i<modelFace.size();i++) {
-			t.addElement(modelFace.get(i));
-		}
+		t = this.modelFace;
 	}
 
 	public void modelFace() {
@@ -120,7 +116,6 @@ public class Facebook {
 	public void makePost(String post) {
 		fbClient.publish(groupID + "/feed", GraphResponse.class, Parameter.with("message", post));
 		System.out.println(post);
-
 	}
 
 }
