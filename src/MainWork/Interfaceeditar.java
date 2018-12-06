@@ -46,7 +46,6 @@ public class Interfaceeditar {
 	}
 
 	/**
-	 * 
 	 * Função que abre a janela principal e lhe o tamanha pretendido 
 	 * @author Brogueira
 	 * 
@@ -233,7 +232,6 @@ public class Interfaceeditar {
 
 	/**
 	 * Função que permite atualizar dos dados do utilizador no ficheiro XML
-	 *  
 	 * @throws Exception
 	 * @author Brogueira
 	 */

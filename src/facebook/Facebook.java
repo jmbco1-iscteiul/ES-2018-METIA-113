@@ -37,7 +37,6 @@ public class Facebook {
 
 	/**
 	 * Função para autenticação no facebook, com o token respetivo.
-	 * 
 	 * @author Brogueira
 	 */
 	public void autenticacao() {
@@ -60,7 +59,6 @@ public class Facebook {
 
 	/**
 	 * Função que tem como objetivo pesquisar todos os posts com uma String pretentida.
-	 *
 	 * @param p - String a pesquisar
 	 * @param t - lista de resultados
 	 * 
@@ -85,6 +83,10 @@ public class Facebook {
 		t = this.modelFace;
 	}
 
+	/**
+	 * Função que carrega os posts do facebook na lista de posts em formato Mensagem
+	 * @author Brogueira
+	 */
 	public void modelFace() {
 		modelFace.clear();
 		for (List<Post> page : result) {

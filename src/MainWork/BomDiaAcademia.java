@@ -6,9 +6,9 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import facebook.Facebook;
+
 /**
  * Motor principal da aplicação onde se encontram todos os métodos principais.
- * 
  * @author Brogueira
  *
  */
@@ -70,6 +70,11 @@ public class BomDiaAcademia extends Thread{
 	public Guarda getGuarda() {
 		return guarda;
 	}	
+	
+	/**
+	 * Função que verifica se há conecção à internet
+	 * @return true se houver ligação ou false se não houver ligação
+	 */
 	private static boolean netIsAvailable() {
 		try {
 			final URL url = new URL("http://www.google.com");

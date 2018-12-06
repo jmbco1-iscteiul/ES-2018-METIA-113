@@ -125,14 +125,11 @@ public class Interfacegrafica{
 		procurarpalavraMail();	
 
 		selectMail();
-		sair();
 
 	}
 
 	/**
-	 * 
 	 * Função que abre a janela principal e lhe o tamanha pretendido
-	 * 
 	 * @author Brogueira
 	 * 
 	 */
@@ -142,10 +139,10 @@ public class Interfacegrafica{
 		frame.setVisible(true);
 
 	}
+
 	/**
 	 * Função que cria a disposição dos botões, da barra e da caixa onde se representa os resultados das pesquisas.
 	 *  Cria-se um Layout principal e posteriormente os Layouts secundários.
-	 *  
 	 *  @author Brogueira
 	 */
 	private void addFrameContent() {
@@ -321,9 +318,9 @@ public class Interfacegrafica{
 
 	}
 
+
 	/**
 	 * Função que vai buscar a timeline do facebook e a representa na janela de visualização
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -337,6 +334,11 @@ public class Interfacegrafica{
 		bda.getMail().setPass(passemail);
 	}
 
+	/**
+	 * Função que apresenta a timeline do facebook na frame
+	 * @author Brogueira
+	 */
+
 	public void getFaceTimeLine() {
 		bface.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -347,10 +349,9 @@ public class Interfacegrafica{
 	}
 
 	/**
-	 * Função que vai buscar a timeline do twitter e a representa na janela de visualização
-	 * 
+	 * Função que vai buscar todas as timelines e as representa na janela de visualização
 	 * @author Brogueira
-	 */
+	 */	
 
 	public void TodasTimeLines() {
 		bkeyword.addActionListener(new ActionListener() {
@@ -374,6 +375,10 @@ public class Interfacegrafica{
 		});
 	}
 
+	/**
+	 * Função que vai buscar, dado um número de dias, as timelines e as representa na janela de visualização
+	 * @author Brogueira
+	 */	
 	public void PeriododaInformacao() {
 		bperiodoinfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -384,6 +389,11 @@ public class Interfacegrafica{
 			}
 		});
 	}
+
+	/**
+	 * Função que vai buscar a timeline do twitter e a representa na janela de visualização
+	 * @author Brogueira
+	 */
 
 	public void getTwitterTimeLine() {
 		btwitter.addActionListener(new ActionListener() {
@@ -397,7 +407,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que vai buscar a timeline do email e a representa na janela de visualização
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -413,7 +422,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que permite inserir o conteúdo na interface gráfica para fazer posts no facebook
-	 * 
 	 *  @author Brogueira
 	 */
 
@@ -430,7 +438,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que permite inserir o conteúdo na interface gráfica para fazer tweets no Twitter
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -448,7 +455,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que permite inserir o conteúdo na interface gráfica para fazer escrever novos emails
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -458,15 +464,17 @@ public class Interfacegrafica{
 				model.clear();
 				bda.getMail().sendMail(textpara.getText(),textmail.getText(),textassunto.getText());
 				textmail.setText("");
+				textassunto.setText("");
+				textpara.setText("");
 			}
 		});
 	}
 
 	/**
 	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os posts com essa palavra
-	 * 
 	 * @author Brogueira
 	 */
+
 	public void procurarpalavraFace() {
 		bfaceprocurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -480,7 +488,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os tweets com essa palavra
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -497,7 +504,6 @@ public class Interfacegrafica{
 
 	/**
 	 * Função que permite inserir uma palavra na interface gráfica para pesquisar todos os emails com essa palavra
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -511,6 +517,11 @@ public class Interfacegrafica{
 			}
 		});
 	}
+
+	/**
+	 * Função de leitura do conteúdo dos emails
+	 * @author Brogueira
+	 */
 
 	public void selectMail() {
 
@@ -543,19 +554,11 @@ public class Interfacegrafica{
 
 	}
 
-
-	public void  sair() {
-		sair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				frame.setVisible(false);
-				InterfaceInicio in = new InterfaceInicio (bda);
-				in.open();
-
-			}
-		});	
-
-	}
+	/**
+	 * Função que organiza por ordem cronológica as Mensagens a apresentar
+	 * @param model- lista a organizar
+	 * @author Brogueira
+	 */
 
 	public void setModel(DefaultListModel<Mensagem> model) {
 		ArrayList<Mensagem> m = new ArrayList<>();

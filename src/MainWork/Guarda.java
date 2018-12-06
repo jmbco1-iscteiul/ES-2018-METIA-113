@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import javax.mail.Message;
 import javax.swing.DefaultListModel;
 
+/**
+ * Classe que guarda e carrega os emails
+ * @author Brogueira
+ *
+ */
 public class Guarda {
 
 	private BomDiaAcademia bda;
@@ -22,7 +27,10 @@ public class Guarda {
 	public Guarda(BomDiaAcademia bda){
 		this.bda = bda;
 	}
-
+/**
+ * Função que guarda os conteúdos no ficheiro de texto
+ * @author Brogueira
+ */
 	public void guardar() {
 		try {
 			File f = new File("./Historico/" + bda.getUserName());
@@ -49,6 +57,12 @@ public class Guarda {
 		}
 	}
 
+	/**
+	 * Função que lê o que está guardado nos ficheiros de texto
+	 * @param user- utilizador
+	 * @return arraylist com as listas carregadas(email, twitter e facebook)
+	 * @author Brogueira
+	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<DefaultListModel<Mensagem>> carregar(String user){
 		ArrayList<DefaultListModel<Mensagem>> l = new ArrayList<>();

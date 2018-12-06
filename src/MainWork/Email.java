@@ -28,9 +28,6 @@ import javax.swing.DefaultListModel;
 
 public class Email implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private final String host ="smtp-mail.outlook.com" ;
 
@@ -43,14 +40,6 @@ public class Email implements Serializable{
 	private DefaultListModel<Mensagem> modelEmail;
 	private Message messages[];
 
-	/**
-	 * Função que faz a autenticação do utilizador e que permite receber assim receber emails
-	 * 
-	 * @param mail- email do utilizador
-	 * @param pass- password do utilizador
-	 * 
-	 * @author Brogueira
-	 */
 
 	public void setMail(String mail) {
 		this.mail = mail;
@@ -64,11 +53,23 @@ public class Email implements Serializable{
 	public String getPass() {
 		return pass;
 	}
+	
+	/**
+	 * Função que faz a autenticação no email
+	 * @author Brogueira
+	 */
 	public void autenticacao(){
 		iniSessaoReader(mail, this.pass);
 		iniSessaoSender();
 	}
 
+	/**
+	 * Função que faz a autenticação do utilizador e que permite assim carregar/ler os emails
+	 * @param mail- email do utilizador
+	 * @param pass- password do utilizador
+	 * 
+	 * @author Brogueira
+	 */
 	public void iniSessaoReader(String mail, String pass) {
 		propsReader = System.getProperties();
 		propsReader.setProperty("mail.store.protocol", "imaps");
@@ -90,7 +91,6 @@ public class Email implements Serializable{
 
 	/**
 	 * Função que cria as condições para depois se enviar emails
-	 * 
 	 * @author Brogueira
 	 */
 	public void iniSessaoSender() {
@@ -105,9 +105,8 @@ public class Email implements Serializable{
 
 
 	/**
-	 * Função que que representa a Timeline do email
-	 * 
-	 * @param t - Lista que representa a interface gráfica onde vão aparecer os emails
+	 * Função que coloca os emails na lista principal de apresentação na frame
+	 * @param t- lista principal
 	 */
 
 	public void caixaChegada(DefaultListModel<Mensagem> t) {
@@ -115,7 +114,12 @@ public class Email implements Serializable{
 			t.addElement(modelEmail.getElementAt(i));
 		}
 	}
-
+	
+	/**
+	 * Função que carrega os emails na lista, é a Timeline do email
+	 * @author Brogueira
+	 */
+	
 	public void modelEmail() {
 		modelEmail.clear();
 		try {
@@ -164,7 +168,6 @@ public class Email implements Serializable{
 	/**
 	 * Função que permite fazer a pesquisa de um email através de uma palavra, onde são apresentados todos os emails que 
 	 * contenham essa palavra
-	 * 
 	 * @param t - lista de emails onde se procura a procura
 	 * @param p - palavra a pesquisar
 	 * 
@@ -182,7 +185,6 @@ public class Email implements Serializable{
 
 	/**
 	 * Função que permita enviar um email.
-	 * 
 	 * @param to - onde se indica quem é o destinatário do email
 	 * @param messageText - onde se introduz o conteúdo do email 
 	 * @param subject - onde se indica o assunto do email

@@ -32,8 +32,8 @@ public class InterfaceLogin {
 	private JFrame frame;
 	private JButton voltar= new JButton("Voltar ao Início");
 	private JButton entrar= new JButton("ENTRAR");
-	private JTextField escreve1 = new JTextField("ESProject");
-	private JPasswordField escreve2 = new JPasswordField("12345");
+	private JTextField escreve1 = new JTextField("");
+	private JPasswordField escreve2 = new JPasswordField("");
 	private BomDiaAcademia bda;
 	private String s;
 
