@@ -25,7 +25,7 @@ public class BomDiaAcademia extends Thread{
 	boolean internetConnection;
 
 	public BomDiaAcademia() {
-		internetConnection = false;
+		internetConnection = netIsAvailable();
 		
 		facebook = new Facebook();
 		twitter = new TwitterAccess();
