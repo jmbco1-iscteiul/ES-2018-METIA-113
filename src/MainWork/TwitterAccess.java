@@ -16,9 +16,7 @@ import twitter4j.conf.ConfigurationBuilder;
 /**
  * Classe que impleta a funcionalidade Twitter onde se pode aceder a este através da autenticção,  
  * consultar tweets e fazer pesquisas destes mesmos através de uma String pretendida.
- * 
  * @author Brogueira
- *
  */
 
 public final class TwitterAccess  {
@@ -35,9 +33,9 @@ public final class TwitterAccess  {
 
 	/**
 	 * Função que faz a autenticação no Twitter com os tokens respetivos
-	 * 
 	 * @author Brogueira
 	 */
+
 	public void autenticacao () {	
 		try {
 			ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -89,9 +87,7 @@ public final class TwitterAccess  {
 
 	/**
 	 * Função que permite obter a timeline do Twitter do utilizador
-	 * 
 	 * @param t- Lista da interface gráfica onde aperecem todos os tweets
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -104,6 +100,11 @@ public final class TwitterAccess  {
 	public void setModelTwitter(DefaultListModel<Mensagem> modelTwitter) {
 		this.modelTwitter = modelTwitter;
 	}
+
+	/**
+	 * Função que carrega os tweets na lista de tweets da classe
+	 * @author Brogueira
+	 */
 
 	public void modelTwitter(){
 		modelTwitter.clear();
@@ -125,9 +126,7 @@ public final class TwitterAccess  {
 
 	/**
 	 * Função que permite que sejam publicados novos tweets
-	 * 
 	 * @param estado- Conteúdo do novo tweet
-	 * 
 	 * @author Brogueira
 	 */
 
@@ -142,10 +141,8 @@ public final class TwitterAccess  {
 
 	/**
 	 * Função que permite pesquisar tweets através de uma String específica
-	 * 
 	 * @param palavra- palavra a pesquisas tweets
 	 * @param t- Lista da interface gráfica onde aperecem todos os tweets
-	 *
 	 *@author Brogueira
 	 */
 

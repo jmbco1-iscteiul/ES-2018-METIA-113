@@ -30,8 +30,8 @@ import org.w3c.dom.NamedNodeMap;
 /**
  * Classe do ficheiro XML onde se acede ao ficheiro, se faz a leitura deste e se guarda o que se pretende nele também.
  * @author Brogueira
- *
  */
+
 public class XmlProject {
 	private Document doc;
 

@@ -19,10 +19,9 @@ import javax.swing.WindowConstants;
 
 /**
  * Interface gráfica da aplicação que serve para fazer o registo do utilizador com os seus respetivos dados
- *  
  * @author Brogueira
- *
  */
+
 public class InterfaceSignIn {
 
 	private JFrame frame;
@@ -53,10 +52,20 @@ public class InterfaceSignIn {
 		frame.pack();
 	}
 
+	/**
+	 * Função que abre a janela principal e lhe o tamanha pretendido
+	 * @author Brogueira
+	 */
+
 	public void open() {
 		frame.setSize(1000, 650);
 		frame.setVisible(true);
 	}
+
+	/**
+	 * Função que cria a disposição dos botões e das caixas onde se inserem os dados
+	 *  @author Brogueira
+	 */
 
 	private void addFrameContent() {
 
@@ -244,6 +253,11 @@ public class InterfaceSignIn {
 
 	}
 
+	/**
+	 * Função que permite efetuar o registo na aplicação com sucesso
+	 * @author Brogueira
+	 */
+
 	private void registocomsucesso() {
 
 		submeter.addActionListener(new ActionListener() {
@@ -290,6 +304,12 @@ public class InterfaceSignIn {
 
 	}
 
+
+	/**
+	 * Função que faz com que se feche a interface sem se guardar os dados
+	 * @author Brogueira
+	 */
+
 	public void  Sairsemguardar() {
 		sair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -299,6 +319,12 @@ public class InterfaceSignIn {
 			}
 		});		
 	}	
+
+	/**
+	 * Função que adiciona os novos dados ao ficheiro XML
+	 * @throws Exception
+	 * @author Brogueira
+	 */
 
 	public void  AddToFile() throws Exception {
 

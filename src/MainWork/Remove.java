@@ -16,15 +16,11 @@ import org.w3c.dom.NodeList;
 
 /**
  * Classe que tem como função remover dados do ficheiro XML
- * 
  * @author Brogueira
- *
  */
+
 public class Remove implements Serializable{
 
-	/**
-	 * 
-	 */
 	private boolean t;
 	private boolean b;
 	private static final long serialVersionUID = 1L;

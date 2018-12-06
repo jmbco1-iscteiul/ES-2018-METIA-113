@@ -49,6 +49,7 @@ public class InterfaceLogin {
 	 * Função que abre a janela principal e lhe o tamanha pretendido
 	 * @author Brogueira
 	 */
+
 	public void open() {
 		frame.setSize(1000, 250);
 		frame.setVisible(true);
@@ -118,7 +119,7 @@ public class InterfaceLogin {
 	}
 
 	/**
-	 * Função que permite fazer o login
+	 * Função que permite fazer o login na aplicação
 	 * @author Brogueira
 	 */
 

@@ -17,9 +17,7 @@ import javax.swing.WindowConstants;
 /**
  * Interface gráfica inicial da aplicação onde se pode escolher entre fazer o login(entrar na aplicação tendo o registo já efetuado)
  * ou sign in(fazer o registo na aplicação com os respetivos dados)
- * 
  * @author Brogueira
- *
  */
 public class InterfaceInicio {
 
@@ -109,6 +107,7 @@ public class InterfaceInicio {
 	 * Função que abre a interface de sign in, onde se faz o registo de utilizador
 	 * @author Brogueira
 	 */
+
 	public void InterfaceSignIn()  {
 		bsignin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,6 +137,7 @@ public class InterfaceInicio {
 	 * Função que abre a interface onde se atualizam os dados de utilizador
 	 * @author Brogueira
 	 */
+
 	public void Interfaceeditar()  {
 		balterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

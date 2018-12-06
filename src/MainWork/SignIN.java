@@ -1,12 +1,10 @@
 package MainWork;
 
 /**
- * 
  * Classe que caracteriza os métodos de autenticação, o e-mail, uma password e o token respetivo de cada utilizador.
- * 
  * @author Brogueira
- *
  */
+
 public class SignIN {
 	private String username;
 	private String Password;

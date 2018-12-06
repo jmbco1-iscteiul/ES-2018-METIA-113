@@ -29,6 +29,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * Classe para introdução do número de dias pretendidos para pesquisa
+ * @author Brogueira
+ *
+ */
+
 public class InterfacePeriododaInformacao {
 	private static final int dayInMilis = 86400000;
 
@@ -41,28 +47,38 @@ public class InterfacePeriododaInformacao {
 	private DefaultListModel<Mensagem> modelFace;
 	private DefaultListModel<Mensagem> modelTwitter;
 	private DefaultListModel<Mensagem> modelMail;
-	
+
 
 	public InterfacePeriododaInformacao(BomDiaAcademia bda, DefaultListModel<Mensagem> model) {
-		
+
 		this.bda=bda;
 		this.model = model;
 		temp = new DefaultListModel<Mensagem>();
 		modelFace = bda.getFacebook().getModelFace();
 		modelTwitter = bda.getTwitter().getModelTwitter();
 		modelMail = bda.getMail().getModelEmail();
-		
+
 		frame = new JFrame("INSERIR NÚMERO DE DIAS A VISUALIZAR ");
 		addFrameContent();
 		frame.pack();
 
 		MostrarTimeLineemDias();
 	}
-	
+
+	/**
+	 * Função que abre a janela principal e lhe o tamanha pretendido
+	 * @author Brogueira
+	 */
+
 	public void open() {
 		frame.setSize(500, 100);
 		frame.setVisible(true);
 	}
+
+	/**
+	 * Função que cria a disposição dos botões e das caixas onde se inserem os dados
+	 *  @author Brogueira
+	 */
 
 	private void addFrameContent() {
 
@@ -76,7 +92,11 @@ public class InterfacePeriododaInformacao {
 
 	}
 
-	
+	/**
+	 * Função que adiciona à lista apenas as mensagens dos dias pretendidos
+	 * @author Brogueira
+	 */
+
 	public void  MostrarTimeLineemDias() {
 		executar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,21 +111,21 @@ public class InterfacePeriododaInformacao {
 						temp.addElement(modelFace.get(i));
 					}
 				}
-				
+
 				for(int i = 0; i<modelTwitter.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelTwitter.get(i).getData().getTime());
 					if(diferenca < dias*dayInMilis) {
 						temp.addElement(modelTwitter.get(i));
 					}
 				}
-				
+
 				for(int i = 0; i<modelMail.size();i++) {
 					float diferenca = (System.currentTimeMillis() - modelMail.get(i).getData().getTime());
 					if(diferenca < dias*dayInMilis) {
 						temp.addElement(modelMail.get(i));
 					}
 				}
-				
+
 				ArrayList<Mensagem> m = new ArrayList<>();
 				for(int i = 0; i<temp.size(); i++) {
 					m.add(temp.get(i));
